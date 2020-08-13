@@ -1,0 +1,82 @@
+\begin{table}[htb]
+\begin{center}
+  \begin{tabular}{c|ccc|c|cccc} 
+   intrusion senario & $A$ & $B$ & $C$ & $\LLbplusc$ & $\LLsrcForm$ &
+   $\LLatimesb$ & $\LLatimesc$ & $\LLdistForm$  \\ \hline
+    cost & 30 & 20 & 10  & 10  & 40 & 50 & 40 & 40 \\
+  \end{tabular}
+\end{center}
+\caption{quantified valuation for chepest  --- an example}
+\end{table}
+
+
+\newcommand{\QVaTimesC}{A \otimes C}
+\newcommand{\QVbTimesC}{B \otimes C}
+
+\begin{table}[htb]
+\begin{center}
+  \begin{tabular}{c|ccc|c|cccc} 
+   intrusion senario & $A$ & $B$ & $C$ & $\LLbplusc$ & $\LLsrcForm$ &
+   $\LLatimesb$ & $\LLatimesc$ & $\LLdistForm$  \\ \hline
+   probability & 0.9 & 0.8 & 0.7 & 0.94 & 0.846 & 0.72 & 0.63 & 0.8964  \\
+   expense & 30 & 20 & 10  & 30  & 60 & 50 & 40 & 90 \\
+  \end{tabular}
+\end{center}
+\caption{quantified valuation for costs and probability --- an example}
+\end{table}
+
+\subsection{distributive attribute domain}
+
+A
+
+\subsection{lowest-cost-based analysis}
+
+\begin{eqnarray*}
+\valuationC{A \otimes B} &=& \valuationC{A} + \valuationC{B} \\
+\valuationC{A \oplus B} &=& \min \set{\valuationC{A},\valuationC{B}} 
+\end{eqnarray*}
+
+The valuation for $\oplus$ ($min{}$) obviously breaks the soundness,
+because  $\oplus$ is required to be an least upper bound from the inference rule. 
+Specifically, it must be an upperbound for $\interpret{A}$,
+ i.e., $\interpret{A} \leq \interpret{A} \oplus \interpret{B}$.
+
+
+\subsection{attack-cost-gain-based analysis}
+
+The actual decision-making process of attackers is more complicated and that the interactions between different parameters
+play an important role. 
+
+For example, if the success probability and possible monetary gain are considered as parameters, their product (i.e. the expected gain) also has a meaning and can be taken into account when making decisions about attacks.
+
+The model of probability and expense, for instance, can be modeled by the following valuations: 
+
+\begin{eqnarray*}
+\valuationP{A \otimes B} &=& \valuationP{A} \times \valuationP{B} \\
+\valuationP{A \oplus B} 
+  &=& \valuationP{A} + \valuationP{B} - (\valuationP{A} \times \valuationP{B}) 
+\end{eqnarray*}
+
+\begin{eqnarray*}
+\valuationE{A \otimes B} &=& \valuationE{A} + \valuationE{B} \\
+\valuationE{A \oplus B} &=& \valuationE{A} + \valuationE{B} 
+\end{eqnarray*}
+
+When the gain $\valuationG{A}$  for an attack scenario $A$  is specified,  the expected gain can be calculated by
+$\valuationG{A} \times \valuationP{A}$. 
+
+The rational attacker do not attack if the attack scenario is unprofitable and chose the most profitable attack scenarios. 
+
+The attacke scenario ( attack suite / intrusion scenario )  shows ways of attacking. 
+
+
+
+
+\subsection{impact(risk * damage)-based analysis}
+
+\subsection{capabilities-based analysis}
+
+\url{http://www.amenaza.com/AT-whatAre.php}
+
+Performing the leaf level attack operations usually requires the adversary to expend resources (time, money, skill, etc.) 
+Different attack scenarios will have different sets of resources costs. Since adversaries differ in their characteristics, some scenarios will be better suited to one adversary and other scenarios to another. The analysis of which scenarios best fit a given adversary is known as capabilities-based analysis.

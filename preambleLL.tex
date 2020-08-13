@@ -1,0 +1,110 @@
+\newcommand{\LLaddUnitRule}{
+\begin{center}
+\begin{prooftree}
+\RightLabel{L$\LLzero$}
+\AxiomC{}
+\UnaryInfC{${\Gamma,\LLzero} \fCenter {D}$}
+	\DisplayProof \hskip 64pt
+\RightLabel{R$\LLtop$}
+\AxiomC{}
+\UnaryInfC{${\Gamma} \fCenter {\LLtop}$}
+\end{prooftree}
+\end{center}
+}
+
+\newcommand{\LLwithRule}{
+\begin{center}
+\begin{prooftree}
+\RightLabel{L$\with$$(i = 1,2)$}
+\AxiomC {$\Gamma,A_i \fCenter D$}
+\UnaryInfC  {$\Gamma,A_1 \with A_2 \fCenter D$}
+	\DisplayProof \hskip 64pt
+\RightLabel{R$\with$}
+\AxiomC {$\Gamma \fCenter A$}
+\AxiomC {$\Gamma \fCenter B$}
+\BinaryInfC  {$\Gamma \fCenter A \with B$}
+\end{prooftree}
+\end{center}
+}
+
+\newcommand{\LLoplusRule}{
+\begin{center}
+\begin{prooftree}
+\RightLabel{L$\oplus$}
+\AxiomC {$\Gamma,A \fCenter D$}
+\AxiomC {$\Gamma,B \fCenter D$}
+\BinaryInfC  {$\Gamma,A\oplus B \fCenter D$}
+	\DisplayProof \hskip 64pt
+\RightLabel{R$\oplus$$(i = 1,2)$}
+\AxiomC {$\Gamma \fCenter A_i$}
+\UnaryInfC  {$\Gamma \fCenter A_1 \oplus A_2$}
+%
+\end{prooftree}
+\end{center}
+}
+
+\newcommand{\LLmultUnitRule}{
+\begin{center}
+\begin{prooftree}
+\RightLabel{L$\LLone$}
+\AxiomC{$\Gamma\fCenter D$}
+\UnaryInfC{$\Gamma,\LLone\fCenter D$}
+	\DisplayProof \hskip 24pt
+\RightLabel{R$\LLone$}
+\AxiomC{}
+\UnaryInfC{$ \fCenter \LLone $}
+	\DisplayProof \hskip 24pt
+\RightLabel{L$\LLbot$}
+\AxiomC{}
+\UnaryInfC{$\LLbot \fCenter$}
+	\DisplayProof \hskip 24pt
+\RightLabel{R$\LLbot$}
+\AxiomC{$\Gamma\fCenter $}
+\UnaryInfC{$\Gamma\fCenter \LLbot$}
+\end{prooftree}
+\end{center}
+}
+
+\newcommand{\LLotimesRule}{
+\begin{center}
+\begin{prooftree}
+\RightLabel{L$\LLotimes$}
+\AxiomC {$\Gamma,A,B \fCenter D$}
+\UnaryInfC  {$\Gamma,A \LLotimes B \fCenter D$}
+	\DisplayProof \hskip 64pt
+\RightLabel{R$\LLotimes$}
+\AxiomC {$\Gamma_0 \fCenter A$}
+\AxiomC {$\Gamma_1 \fCenter B$}
+\BinaryInfC  {$\Gamma_0,\Gamma_1 \fCenter A\LLotimes B$}
+\end{prooftree}
+\end{center}
+}
+
+\newcommand{\LLimpRule} {
+\begin{center}
+\begin{prooftree}
+\RightLabel{L$\LLimp$}
+\AxiomC {$\Gamma_0 \fCenter A$}
+\AxiomC {$\Gamma_1,B \fCenter D$}
+\BinaryInfC  {$\Gamma_0,\Gamma_1,A\LLimp B \fCenter D$}
+	\DisplayProof \hskip 64pt
+\RightLabel{R$\LLimp$}
+\AxiomC {$\Gamma,A \fCenter B$}
+\UnaryInfC  {$\Gamma \fCenter A\LLimp B$}
+\end{prooftree}
+\end{center}
+}
+
+\newcommand{\LLnegRule}{
+\begin{center}
+\begin{prooftree}
+\RightLabel{L$\lneg{(\phantom{l})}$}
+\AxiomC {$\Gamma \fCenter A$}
+\UnaryInfC  {$\Gamma,\lneg{A} \fCenter $}
+	\DisplayProof \hskip 96pt
+\RightLabel{R$\lneg{(\phantom{l})}$}
+\AxiomC {$\Gamma,A \fCenter $}
+\UnaryInfC  {$\Gamma \fCenter \lneg{A}$}
+\end{prooftree}
+\end{center}
+}

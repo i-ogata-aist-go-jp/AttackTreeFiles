@@ -1,0 +1,282 @@
+% Logical Symbols 
+\newcommand{\imp}{\rightarrow}
+\newcommand{\coimp}{\leftarrow}
+\newcommand{\sub}{\mathbin{-}}
+%
+% liner logic
+%
+\newcommand{\lineartop}{\top}
+\newcommand{\linearone}{1}
+\newcommand{\linearbot}{\bot}
+\newcommand{\linearzero}{0}
+
+\newcommand{\linearimply}{\mathop{-\!\circ}}
+\newcommand{\linearimplyAMS}{\multimap}
+\newcommand{\linearaddimp}{\leadsto}
+\newcommand{\limp}{\linearimply}
+\newcommand{\linearnegation}{^\bot}
+\newcommand{\lineartimes}{\otimes}
+\newcommand{\linearpar}{\mathbin{\!\invamp\:}}
+\newcommand{\linearand}{\mathbin{\mbox{\&}}}
+\newcommand{\linearplus}{\oplus}
+\newcommand{\lforall}{\forall_{\scriptstyle l}^{2}}
+\newcommand{\lexists}{\exists_{\scriptstyle l}^{2}}
+
+\newcommand{\oc}{\mathop{!}\!}
+\newcommand{\wn}{\mathop{?}\!}
+\newcommand{\wnoc}{\mathop{?!}\!}
+\newcommand{\ocwn}{\mathop{!?}\!}
+\newcommand{\ocwnoc}{\mathop{!?!}\!}
+\newcommand{\wnocwn}{\mathop{?!?}\!}
+
+%
+% minimal logic
+%
+\newcommand{\itop}{{\top}_{i}}
+\newcommand{\ibot}{{\bot}_{i}}
+\newcommand{\ineg}{\mathop{{\sim}}}
+\newcommand{\inegineg}{\ineg\ineg}
+\newcommand{\iand}{\mathop{{\cap}_{i}}}
+\newcommand{\iexists}{\exists_{\scriptstyle i}^{2}}
+\newcommand{\iforall}{\forall_{\scriptstyle i}^{2}}
+\newcommand{\dineg}{\ineg\!\ineg}
+%
+\newcommand{\iimp}{\mathop{{\supset}_{i}}}
+\newcommand{\ior}{\mathop{{\cup}_{i}}}
+%
+% classical logic
+%
+\newcommand{\ctop}{\top}
+\newcommand{\cbot}{\bot}
+\newcommand{\cneg}{\neg}
+\newcommand{\csub}{\sub}
+\newcommand{\cimp}{\imp}
+\newcommand{\cand}{\wedge}
+\newcommand{\classicalOr}{\vee}
+\newcommand{\cforall}{\forall^{2}}
+\newcommand{\cexists}{\exists^{2}}
+\newcommand{\dcneg}{\neg\neg}
+
+%% formulas for classical logic
+\newcommand{\negA}{\cneg A}
+\newcommand{\AimpB}{A \cimp B}
+\newcommand{\AsubB}{A \csub B}
+\newcommand{\XimpX}{X \cimp X}
+\newcommand{\XimpXimpX}{(X \cimp X)\cimp X}
+\newcommand{\forallXA}{\cforall XA}
+
+%
+% Contexts
+%
+\newcommand{\GammaList}{A_0^{x_0},\ldots,A_{n-1}^{x_{n-1}}}
+
+\newcommand{\GammaZO}{{\scriptstyle \Gamma}}
+\newcommand{\DeltaZO}{{\scriptstyle \Delta}}
+\newcommand{\GammaZOmult}{{\scriptstyle \Gamma_0,\Gamma_1}}
+\newcommand{\DeltaZOmult}{{\scriptstyle \Delta_0,\Delta_1}}
+\newcommand{\GammaZOTmult}{{\scriptstyle \Gamma_0,\Gamma_1,\Gamma_2}}
+\newcommand{\DeltaZOTmult}{{\scriptstyle \Delta_0,\Delta_1,\Delta_2}}
+
+\newcommand{\overlineX}{\overline{X}}
+\newcommand{\overlineY}{\overline{Y}}
+\newcommand{\overlineXlist}{X_0,\ldots,X_{m-1}}
+
+\newcommand{\Xgamma}{\overlineX\mid\Gamma}
+\newcommand{\XZgammaO}{\overlineX,Z\mid\GammaO}
+\newcommand{\XgammaO}{\overlineX\mid\GammaO}
+\newcommand{\YgammaZ}{\overlineY\mid\GammaZ}
+\newcommand{\XYgammaZO}{\overlineX,\overlineY\mid\GammaZO}
+
+\newcommand{\GammaZ}{{\scriptstyle \Gamma_0}}
+\newcommand{\GammaO}{{\scriptstyle \Gamma_1}}
+\newcommand{\GammaOunder}{{\scriptstyle \Gamma_1^{\_}}}
+\newcommand{\GammaOleft}{{\scriptstyle \Gamma_1^{l}}}
+\newcommand{\GammaOright}{{\scriptstyle \Gamma_1^{r}}}
+\newcommand{\GammaT}{{\scriptstyle \Gamma_2}}
+\newcommand{\DeltaZ}{{\scriptstyle \Delta_0}}
+\newcommand{\DeltaO}{{\scriptstyle \Delta_1}}
+\newcommand{\DeltaT}{{\scriptstyle \Delta_2}}
+\newcommand{\PiZO}{{\scriptstyle \Pi}}
+
+\newcommand{\AandB}{A \cand B}
+\newcommand{\AorB}{A \cor B}
+
+% proof tree support
+
+\newcommand{\inferskip}{\hskip 0.7cm}
+\newcommand{\inferskipS}{\hskip 0.4cm}
+\newcommand{\inferskipsmall}{\hskip 0.4cm}
+\newcommand{\inferskipSS}{\hskip 0.1cm}
+\newcommand{\inferskipsmallsmall}{\hskip 0.1cm}
+
+\newcommand{\leadsfromabove}
+{\using \proofdotseparation=1.2ex  \proofdotnumber=3  \leadsto}
+\newcommand{\leadsfromabovePi}
+{\using \pi \proofdotseparation=1.2ex  \proofdotnumber=3  \leadsto}
+
+\newcommand{\leadsfromabovePT}[1]{\prooftree
+\leadsfromabove{#1} \endprooftree}
+
+\def\axiomrule{\mbox{Ax}}\def\cutrule{\mbox{cut}}
+\def\substrule{\mbox{subst}}
+\def\leftrule{\mbox{L}}\def\rightrule{\mbox{R}}
+\def\promorule{\mbox{P}}\def\derelictrule{\mbox{der}}
+\def\weakenrule{\mbox{W}}\def\contractrule{\mbox{C}}
+\def\cutrule{\mbox{cut}}
+\def\tcutrule{\mbox{tail}}\def\mcutrule{\mbox{mid}}\def\hcutrule{\mbox{head}}
+
+\newcommand{\inferrule}[1]{\using#1\thickness.08em\justifies}
+\newcommand{\inferL}[1]{\inferrule{\leftrule{#1}}}
+\newcommand{\inferR}[1]{\inferrule{\rightrule{#1}}}
+\newcommand{\inferI}[1]{\inferrule{{{#1}\introrule}}}
+\newcommand{\inferE}[1]{\inferrule{{{#1}\elimrule}}}
+
+%% derivation rules
+\def\cpsAxRule{\inferrule{{\axiomrule}}}
+\def\cpsCrule{\inferrule{{\mbox{Contraction}}}}
+\def\cpsWrule{\inferrule{{\mbox{Weakening}}}}
+\def\cpsCutRule{\inferrule{\cutrule}}
+\def\cpsSubstRule{\inferrule{\substrule}}
+
+\def\inferLrules{\inferrule{(\mbox{L})\;\mbox{rules}}}
+
+\def\cpsnegI{\inferI{\ineg}}
+\def\cpsnegE{\inferE{\ineg}}
+\def\cpsnegnegI{\inferI{\ineg\ineg}}
+\def\cpsnegnegE{\inferE{\ineg\ineg}}
+\def\cpsandI{\inferI{\iand}}
+\def\cpsandE{\inferE{\iand}}
+\def\cpsexistsI{\inferI{\iexists}}
+\def\cpsexistsE{\inferrule{{{\iexists}\elimrule}^\star}}
+ 
+\def\cpsnegL{\inferL{\ineg}}
+\def\cpsnegR{\inferR{\ineg}}
+\def\cpstopR{\inferR{\itop}}
+\def\cpsandL{\inferL{\iand}}
+\def\cpsandR{\inferR{\iand}}
+\def\cpsexistsL{\inferrule{{\leftrule{\iexists}}^\star}}
+\def\cpsexistsR{\inferR{\iexists}}
+
+\newcommand{\cforallI}{\inferrule{{{\cforall}\introrule}^\ast}}
+\newcommand{\cexistsE}{\inferrule{{{\cexists}\elimrule}^\star}}
+
+% \newcommand{\cforallR}{\inferrule{\rightrule{\cforall}^\ast}}
+% \newcommand{\cexistsL}{\inferrule{{\leftrule{\cexists}}^\star}}
+
+%%%
+%%% Linear Logic
+%%%
+\def\LLax{\inferrule{\axiomrule}}
+\def\LLimpL{{\inferL{\linearimply}}}
+\def\LLimpR{{\inferR{\linearimply}}}
+\def\LLpromL{\inferrule{\promorule{\wn}}}
+\def\LLpromR{\inferrule{\promorule{\oc}}}
+\def\LLderelictL{\inferrule{\derelictrule{\oc}}}
+\def\LLderelictR{\inferrule{\derelictrule{\wn}}}
+\def\LLweakenL{\inferrule{\weakenrule{\oc}}}
+\def\LLweakenR{\inferrule{\weakenrule{\wn}}}
+\def\LLcontractL{\inferrule{\contractrule{\oc}}}
+\def\LLcontractR{\inferrule{\contractrule{\wn}}}
+%%%
+%%% classical logic LK
+%%%
+\def\LKax{\inferrule{\axiomrule}}
+\def\LKbotL{{\inferL{\cbot}}}
+\def\LKbotR{{\inferR{\cbot}}}
+\def\LKtopL{{\inferL{\ctop}}}
+\def\LKtopR{{\inferR{\ctop}}}
+\def\LKnegL{{\inferL{\cneg}}}
+\def\LKnegR{{\inferR{\cneg}}}
+\def\LKcut{\inferrule{\cutrule}}
+\def\LKcutT{\inferrule{\tcutrule}}
+\def\LKcutM{\inferrule{\mcutrule}}
+\def\LKcutH{\inferrule{\hcutrule}}
+\def\LKsubL{{\inferL{\csub}}}
+\def\LKsubR{{\inferR{\csub}}}
+\def\LKimpL{{\inferL{\cimp}}}
+\def\LKimpR{{\inferR{\cimp}}}
+\def\LKandL{{\inferL{\cand}}}
+\def\LKandR{{\inferR{\cand}}}
+\def\LKorL{{\inferL{\cor}}}
+\def\LKorR{{\inferR{\cor}}}
+\def\LKderL{{\inferL{\derelictrule}}}
+\def\LKderR{{\inferR{\derelictrule}}}
+%
+\def\LKforallL{\inferL{\cforall}}
+\def\LKforallR{\inferR{\cforall}^\ast}
+\def\LKexistsL{\inferL{\cexists}^\star}
+\def\LKexistsR{\inferR{\cexists}}
+%
+\def\LKweakenL{{\inferL\weakenrule}}
+\def\LKweakenR{{\inferR\weakenrule}}
+\def\LKcontractL{{\inferL\contractrule}}
+\def\LKcontractR{{\inferR\contractrule}}
+%%%
+\def\FKop{\inferrule{{{\cal K}}}}
+\def\FCop{\inferrule{{{\cal C}}}}
+\def\FEMop{\inferrule{{{\cal EM}}}}
+\def\FWop{\inferrule{{{\cal W}}}}
+\def\FPop{\inferrule{{{\cal P}}}}
+\def\FMUop{\inferrule{{\mu}}}
+%
+\newcommand{\premissPi}
+{\using \pi \proofdotseparation=1.2ex \proofdotnumber=4 \leadsto}
+\newcommand{\premissPiD}
+{\using {\pi}' \proofdotseparation=1.2ex \proofdotnumber=4 \leadsto}
+\newcommand{\premissPiZ}
+{\using \pi_0 \proofdotseparation=1.2ex \proofdotnumber=4 \leadsto}
+\newcommand{\premissPiO}
+{\using \pi_1 \proofdotseparation=1.2ex \proofdotnumber=4 \leadsto}
+\newcommand{\premissPiT}
+{\using \pi_2 \proofdotseparation=1.2ex \proofdotnumber=4 \leadsto}
+
+\newcommand{\premissPiL}
+{\using {\pi}@L \proofdotseparation=1.2ex \proofdotnumber=4 \leadsto}
+\newcommand{\premissPiR}
+{\using {\pi}@R \proofdotseparation=1.2ex \proofdotnumber=4 \leadsto}
+
+% set theory 
+
+\newcommand{\setof}[1]{\{#1\}}
+\newcommand{\setofE}[2]{\setof{#1 \mid #2}}
+
+%
+\newcommand{\imply}{\thickness.08em\justifies}
+\newcommand{\doubleimply}{\thickness.08em\Justifies}
+\newcommand{\implyRule}[1]{\using{#1}\thickness.08em\justifies}
+%
+% separators
+%
+\newcommand{\entails}{\Rightarrow}
+\newcommand{\eqentails}{\Leftrightarrow}
+\newcommand{\semi}{\mathop{;}}
+\newcommand{\semis}{\mathop{;}\;}
+\newcommand{\colons}{\mathop{:}\;}
+\newcommand{\seq}{{,\ldots,}}
+\newcommand{\vbar}{|}
+%
+% use \mid instead
+% \newcommand{\separate}{\;\vbar\;}
+%
+\newcommand{\lpar}{\mbox{\verb+(+}}
+\newcommand{\rpar}{\mbox{\verb+)+}}
+%
+%
+%
+\newcommand{\LKlogic}[2] { #1 \entails #2}
+\newcommand{\LKTlogic}[3] { #1  \semis #2 \entails #3}
+\newcommand{\LKQlogic}[3] { #1 \entails #2 \semis #3}
+%
+% term calculi defs
+%
+\newcommand{\LKterm}[3] {#1 \;\colons\; #2 \entails #3}
+\newcommand{\LKTterm}[4]{ #1 \colons #2 \semis #3 \entails #4}
+\newcommand{\LKTtermNoStoup}[3]{#1 \colons {\emptyset} \semis #2 \entails #3}
+\newcommand{\LKTtermNoMain}[1]{ #1 \colons {\emptyset} \semis {} \entails {}}
+\newcommand{\LKTtermStoup}[2]{ #1 \colons #2 \semis {} \entails {}}
+%
+\newcommand{\LKQterm}[4]{ #1 \colons #2 \entails #3 \semis #4}
+\newcommand{\LKQtermNoStoup}[3]{ #1 \colons #2 \entails #3 \semis {\emptyset}}
+\newcommand{\LKQtermNoMain}[1]{ #1 \colons {} \entails {} \semis {\emptyset}}
+\newcommand{\LKQtermStoup}[2]{ #1 \colons {} \entails {} \semis #2}
+

@@ -1,0 +1,241 @@
+\subsection{Traditional Interpretation}
+
+Traditionally, attack trees are seen as representation of AND ($\wedge$)-OR ($\vee$) formulae. 
+Its algebraic semantics is the two-element (TRUE/FALSE) boolean algebra --- every leaf-node is assigned either TRUE or FALSE. TRUE means a success of attack, and FALSE means a failure. The value of each AND-OR non-leaf node is caluculated according to truth tables. If the root node is calculated as TRUE,  the set of leaf-nodes that are assigned to be TRUE is sufficient to to mount the root. Such collection of possible attacks are called as  {\it intrusion scenario}. 
+
+The main difference can be explained in two points.
+
+\begin{itemize}
+\item idempotency, i.e., $A \vee A = A$,  $A \wedge A = A$
+\item distributivity $\vee$ over $\wedge$, i.e.,  $A \vee ( B \wedge C) =  (A \vee B) \wedge (A \vee C) $
+\end{itemize}
+
+\def\fCenter{\LLvdash}
+
+\begin{table} 
+%%
+%% Axiom and Cut 
+\begin{center}
+\begin{prooftree}
+\AxiomC{} \RightLabel{Ax}\UnaryInfC {$A \fCenter A$}
+%
+\DisplayProof \hskip 48pt
+%
+\AxiomC {$\Gamma_0,A \fCenter D$}
+\AxiomC {$\Gamma_1 \fCenter A$} 
+\RightLabel{cut} \BinaryInfC  {$\Gamma_0,\Gamma_1 \fCenter D$}
+\end{prooftree}
+\end{center}
+%%
+%%  additives
+%%
+\begin{center}
+\begin{prooftree}
+\AxiomC{} \RightLabel{L$\LLzero$}\UnaryInfC {$\Gamma,\LLzero \fCenter D$}
+\DisplayProof \hskip 96pt
+\AxiomC{} \RightLabel{R$\LLtop$}\UnaryInfC {$\Gamma \fCenter \LLtop$}
+\end{prooftree}
+\end{center}
+%
+\begin{center}
+\begin{prooftree}
+\AxiomC {$\Gamma,A_i \fCenter  D$}
+\RightLabel{$\with$L $(i = 1,2)$} \UnaryInfC  {$\Gamma,A_1 \with A_2 \fCenter D$}
+%
+\DisplayProof  \hskip 48pt
+%
+\AxiomC {$\Gamma \fCenter A$} 
+\AxiomC {$\Gamma \fCenter B$}
+\RightLabel{$\with$R} \BinaryInfC  {$\Gamma \fCenter A \with B$}
+%
+\end{prooftree}
+\end{center}
+%%
+\begin{center}
+\begin{prooftree}
+\AxiomC {$\Gamma,B \fCenter D$} 
+\AxiomC {$\Gamma,C \fCenter D$}
+\RightLabel{$\oplus$L} \BinaryInfC  {$\Gamma, B \oplus C  \fCenter D$}
+%
+\DisplayProof \hskip 48pt
+%
+\AxiomC {$\Gamma \fCenter A_i$}
+\RightLabel{$\oplus$R $(i = 1,2)$} \UnaryInfC  {$\Gamma \fCenter A_1 \oplus A_2$}
+%
+\end{prooftree}
+\end{center}
+%
+% multiplicatives
+%
+\begin{center}
+\begin{prooftree}
+\AxiomC{$\Gamma \fCenter D$} \RightLabel{L$\LLone$}
+\UnaryInfC {$\Gamma,\LLone \fCenter D$}
+%
+\DisplayProof \hskip 96pt
+%
+\AxiomC{} \RightLabel{R$\LLone$} \UnaryInfC {$\fCenter \LLone$}
+\end{prooftree}
+\end{center}
+%
+\begin{center}
+\begin{prooftree}
+\AxiomC {$\Gamma,A,B \fCenter D$}
+\RightLabel{$\LLotimes$L} \UnaryInfC  {$\Gamma,A \LLotimes B \fCenter D$}
+%
+\DisplayProof \hskip 32pt
+%
+\AxiomC {$\Gamma_0 \fCenter A$} 
+\AxiomC {$\Gamma_1 \fCenter B$}
+\RightLabel{$\LLotimes$R} \BinaryInfC  {$\Gamma_0,\Gamma_1 \fCenter A\LLotimes B$}
+\end{prooftree}
+\end{center}
+%%
+
+\begin{center}
+\begin{prooftree}
+\AxiomC {$\Gamma_0 \fCenter A$} 
+\AxiomC {$\Gamma_1,B \fCenter D$}
+\RightLabel{$\LLimp$L} \BinaryInfC  {$\Gamma_0,\Gamma_1, A \LLimp B \fCenter D$}
+
+%
+\DisplayProof \hskip 32pt
+%
+\AxiomC {$\Gamma,A \fCenter B$}
+\RightLabel{$\LLimp$R} \UnaryInfC  {$\Gamma \fCenter A \LLimp B$}
+\end{prooftree}
+\end{center}
+
+
+
+\begin{minipage}{\textwidth}      
+\begin{center}
+\begin{prooftree}
+\AxiomC {$\Gamma \fCenter $ A}
+\RightLabel{$\lnegArg$L} \UnaryInfC  {$\Gamma,\lnegA \fCenter \LLbot$}
+%
+\DisplayProof  \hskip 36pt
+%
+\AxiomC {$\Gamma,A \fCenter \LLbot $}
+\RightLabel{$\lnegArg$R} \UnaryInfC  {$\Gamma \fCenter \lnegA$}
+%
+\DisplayProof  \hskip 36pt
+%
+\AxiomC{} \RightLabel{DNE~\footnote{DNS = double negation elimination}} 
+\UnaryInfC {$\dlnegA \fCenter A$}
+%
+\end{prooftree}
+\end{center}
+\end{minipage}
+\caption[Example] 
+ { $\with$$\oplus$$\otimes$$\lnegArg$-fragment of Classical Linear Logic}
+\label{table:inferenceRules}
+\end{table}
+
+
+\subsection{Classical Linear Logic (CLL) without modality}
+
+Classical Linear logic is usually represented by using Gentzen's sequent-style calculus. 
+Gentzen's sequent calculus is a style of formal logical argumentation where every line of a proof is a conditional tautology. 
+Each sequent is inferred from other sequent on earlier lines according to inference rules.
+This concept directly applies to the concepts of attack trees. 
+
+The syntax  is exactly a  Girard's classical linear logic without modality. 
+Hence we start to explain its syntax. 
+%%
+\begin{definition} [formula]
+The formula of linear logic are defined as follows:  
+starting from a set of the variables, named $ \set{\alpha,\beta,\gamma,\bnfsk}$, 
+they are freely build using the binary connectives $\set{\otimes,\oplus}$.
+Formally, the set of formulae is described by the following BNF grammar.
+%
+\begin{bnf*}
+ \bnfprod{variable}{ \alpha,\beta,\gamma,\ldots }  \\
+ \bnfprod{formula}{ \bnfpn{variable} 
+	\bnfor \bnfpn{multiplicative} 
+	\bnfor \bnfpn{additive}}\\
+ \bnfprod{multiplicative}{ {\LLzero} 
+	\bnfor {\LLtop} 
+	\bnfor \bnfpn{formula} \LLoplus \bnfpn{formula}
+	\bnfor \bnfpn{formula} \with \bnfpn{formula}}  \\
+ \bnfprod{additive}{ {\LLbot} 
+	\bnfor {\LLone}
+	\bnfor \bnfpn{formula} \LLotimes \bnfpn{formula}  
+	\bnfor \bnfpn{formula} \LLimp \bnfpn{formula} 
+	\bnfor {\lneg{\bnfpn{formula}}}}
+\end{bnf*}
+\end{definition}
+
+\begin{definition} [sequent] 
+ {\it Sequents}  are of the form:
+%
+\[  \Gamma \LLvdash B \mbox{,} \]
+%
+where $B$ is a formula and  $\Gamma$  is a multiset of formulas.
+$\Gamma$ may be empty.
+If $\Gamma$ is not empty, it is represented  as comma-separated formulas, 
+i.e., $\Gamma = A_1, \ldots , A_n$. 
+A comma to the left of the turnstile should be thought of as an $\otimes$.
+%
+Mutliset is a set-like object in which order is ignored, but multiplicity is explicitly significant. 
+Therefore, contexts $A,B,C$ and $B,C,A$ are equivalent, 
+but $A,A,B,C$ and $A,B,C$ differ.
+\end{definition}
+
+\begin{definition} [proof]
+A (formal) {\it proof} is a sequence of sequents,
+where each of the sequents is derivable from sequents appearing earlier in the sequence
+ by using inference rules described in Table~\ref{table:inferenceRules}. 
+Otherwise said, a proof is arranged in tree form: 
+the tree always starts from Axiom, followed by other inference rules. 
+%
+A sequent is {\it provable} if it has a formal proof, i.e., can be derived by the method above. 
+\end{definition}
+
+\subsection{A Proof-theoretical account }
+
+\begin{definition} [attack scenario and attack tree]
+We interpret in classical linear logic.
+\begin{enumerate}
+\item An {\it attack scenario} is a context $\Gamma = A_1, \ldots , A_n$,
+ identified with a formula $C = A_1 \otimes, \ldots, \otimes A_n$ . 
+\item An {\it attack tree} is a formula $B$.
+\end{enumerate}
+\end{definition}
+
+\begin{theorem} [valid attack scenario]
+$\Gamma$ is a successful attack scenario for an attack tree $B$ 
+if the sequent $\Gamma \LLvdash B$ is provable.  
+\end{theorem}
+
+\begin{proof} 
+By induction of proofs. 
+\begin{description}
+\item[Axiom]
+Trivial. $A$ is an attack scenario of an attack tree $A$. 
+\item[$\otimes$R]
+If $  \Gamma_0$  is an attack scenario of $A$ and $\Gamma_1$ is an attack scenario of $B$, 
+then $\Gamma_0,\Gamma_1$ is an attack scenaio of $A\otimes B$. 
+This means that attacker must try BOTH $\Gamma_0$ AND $\Gamma_1$. 
+Since contexts are multisets, multiplicity is essential: 
+an attack (formula) may occur more than once in an attack scenario (multiset of formulas). 
+\item[$\otimes$L]
+If $  \Gamma,A,B$  is an attack scenario of $D$,  
+then $\Gamma,A\otimes B$ is an attack scenario of $D$. 
+This exactly means that a comma in $\Gamma$ is identified with $\otimes$. 
+Specifically a context $A,A$ is equivalent to $A \otimes A$,  
+however,  it differs a single occurrence of $A$. 
+%
+\item[$\oplus$L]
+If both $\Gamma,A$ and $\Gamma,B$ is an attack scenario of $D$, then $\Gamma,A\oplus B$ is an attack scenario of $D$.  
+This rule says,
+if an attacker can choose EITHER $C \otimes A$ OR $C \otimes B$  in order to attack  an attack tree $D$,
+then $C \otimes (A \oplus B)$ is also an attack scenario for $D$,
+ i.e.,  distributivity of $\otimes$ over $\oplus$ holds. 
+Where we identify $\Gamma = A_1,\ldots, A_n$ with $C = A_1 \otimes,\ldots, \otimes A_n$. 
+%
+\item[$\oplus$R]
+If $  \Gamma$  is an attack scenario of $A_i$ , then $\Gamma$ is an attack scenario of $A_1 \oplus A_2$ ($i = 1,2)$.  An attacker can choose EITHER $A_1$ OR $A_2$ to attack $A_1 \oplus A_2$. 
+\end{description}
+\end{proof}
+

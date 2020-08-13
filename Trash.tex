@@ -1,0 +1,145 @@
+\newcommand{\LTCnegA}{\LTCnegNP{A}}
+\newcommand{\LTCdnegA}{\LTCnegNP{\LTCnegNP{A}}}
+\newcommand{\LTCnegB}{\LTCnegNP{B}}
+\newcommand{\LTCimpAA}{\LTCimpNP{A}{A}}
+\newcommand{\LTCimpAB}{\LTCimpNP{A}{B}}
+\newcommand{\LTCimpAC}{\LTCimpNP{A}{C}}
+\newcommand{\LTCimpAD}{\LTCimpNP{A}{D}}
+\newcommand{\LTCimpBA}{\LTCimpNP{B}{A}}
+\newcommand{\LTCimpBB}{\LTCimpNP{B}{B}}
+\newcommand{\LTCimpBC}{\LTCimpNP{B}{C}}
+\newcommand{\LTCimpBD}{\LTCimpNP{B}{D}}
+\newcommand{\LTCimpCA}{\LTCimpNP{C}{A}}
+\newcommand{\LTCimpCB}{\LTCimpNP{C}{B}}
+\newcommand{\LTCimpCD}{\LTCimpNP{C}{D}}
+\newcommand{\LTCimpABC}{\LTCimpNP{A}{(\LTCimpBC)}}
+\newcommand{\LTCimpBAC}{\LTCimpNP{B}{(\LTCimpAC)}}
+\newcommand{\LTCimpAAA}{\LTCimpNP{A}{(\LTCimpAA)}}
+\newcommand{\LTCimpABA}{\LTCimpNP{A}{(\LTCimpBA)}}
+\newcommand{\LTCimpBAB}{\LTCimpNP{B}{(\LTCimpAB)}}
+\newcommand{\LTCimpOneTwoThree}[3] {\LTCimpNP{#1} {\LTCimpP{#2}{#3}}}
+\newcommand{\LTCimpOneTwoThreeP}[3]{(\LTCimpOneTwoThree{#1}{#2}{#3})}
+\newcommand{\LTCmeetAB}{\LTCmeetNP{A}{B}}
+\newcommand{\LTCmeetAC}{\LTCmeetNP{A}{C}}
+\newcommand{\LTCmeetBD}{\LTCmeetNP{B}{D}}
+\newcommand{\LTCmeetCD}{\LTCmeetNP{C}{D}}
+\newcommand{\LTCjoinAB}{\LTCjoinNP{A}{B}}
+\newcommand{\LTCotimesAB}{\LTCotimesNP{A}{B}}
+\newcommand{\LTCmeetimpOneTwoThree}[3]{\LTCimpNP{\LTCmeetP{#1}{#2}}	{#3}}
+\newcommand{\LTCmeetimpABC}{\LTCmeetimpOneTwoThree{A}{B}{C}}
+\newcommand{\LTCnegNP}[1]{\LTCneg #1}
+
+\newcommand{\LTCimpNP}[2]{#1 \LTCimp #2}
+\newcommand{\LTCimpP}[2]{(\LTCimpNP{#1}{#2})}
+\newcommand{\LTCmeetNP}[2]{#1 \LTCmeet #2}
+\newcommand{\LTCmeetP}[2]{(\LTCmeetNP{#1}{#2})}
+\newcommand{\LTCjoinNP}[2]{#1 \LTCjoin #2}
+\newcommand{\LTCjoinP}[2]{(\LTCjoinNP{#1}{#2})}
+\newcommand{\LTCotimesNP}[2]{#1 \LTCotimes #2}
+\newcommand{\LTCotimesP}[2]{(\LTCotimesNP{#1}{#2})}
+
+
+
+\newcommand{\LTCeqNP}[2]{#1 \LTCeq #2}
+\newcommand{\LTCeqP}[2]{(\LTCeqNP{#1}{#2})}
+
+
+
+\begin{proposition}\label{joinEndomorphism}
+Let $L$ be a join-semilattice. 
+A function $c \vee \QTargument : L \longrightarrow L $
+is a homomorphism (thus order-preserving). 
+\end{proposition}
+\begin{proof}
+\[c \vee (a \vee b) =  (c \vee c) \vee (a \vee b) = (c \vee a) \vee (c \vee b) \]
+\end{proof}
+
+%% IL-algebra  Adjoing Functor Theorem
+
+\begin{proposition} [IL-algebra is distributive]
+$\QTotimes$ distributes over $\vee$. That is,
+for any family $(b_i)_{i \in I}$ of elements of $L$ and any $a \in L$, 
+\[ a \QTotimes \QTlub b_i = \QTlub (a \QTotimes b_i) \]
+holds.
+\end{proposition}
+\begin{proof}
+$(\QTlub b_i) \QTotimes a \leq c $ iff
+$\QTlub b_i \leq a \QTmultimap c$  iff
+$ b_i \leq a \QTmultimap c$  for each $i \in I$ iff
+$ b_i \QTotimes a \leq c$  for each $i \in I$ iff
+$\QTlub (b_i \QTotimes a) \leq c$. 
+Then consider the cases when 
+$c = (\QTlub b_i) \QTotimes a$  and
+$c = \QTlub (b_i \QTotimes a)$. 
+\end{proof}
+
+The propositon exactly says that every IL-algebra is distibutive. It directly follows a complete IL-algebra (i.e. complete as a lattice) is a quantale. 
+
+\begin{proposition} [ Adjoint functor theorem (2) ]
+If $\QTleftAdjoint$ has a right adjoint $\QTrightAdjoint$, 
+it preserves all joins which exist in $Q$. 
+\end{proposition}
+\begin{proof}
+We have to check (1) $a \QTotimes \bigvee X$ is an upper bound, 
+and (2) it is the least one. \\
+(1) 
+Since $\QTleftAdjoint$ is order preserving, 
+$ a \QTotimes \bigvee X$ is clearly an upper bound for
+$\set{a \QTotimes x | x \in X}$. \\
+(2) If $b$ is any upper bound for $X$, 
+then we have $ a \QTotimes x \leq b$ for all $x \in X$,
+it directly follows $x \leq a \QTmultimap b$ for all $x \in X$, 
+$\bigvee X \leq a \QTmultimap b$ and $a \QTotimes \bigvee X \leq b$. 
+\end{proof}
+%
+
+
+\begin{definition} [IL-Algebra] \label{IL-Algebra}
+An {\em IL-Algebra} is a lattice $I$ 
+equipped with two additional binary operations:
+\begin{enumerate}
+\item 
+$\LLotimes$ from $ {\QTargument} { \LLotimes} {\QTargument} : I \times I \longrightarrow I$ and
+\item
+$\LLimp$ from $ {\QTargument} { \LLimp} {\QTargument} : I \times I \longrightarrow I$.
+\end{enumerate}
+Then $\LLotimes$ (called {\em multiplicative and}) and 
+$\LLimp$ (called {\em multiplicative implication}) makes $I$ into an {\em IL-algebra}  
+if, for each pair of elements $(a,b)$, there exists an element $a \LLimp b$
+such that $\LLresiduateLeft$ iff $\LLresiduateRight$.
+%
+This bi-directional inference rule, namely the law of (multiplicative) residuation, is pictorially represented as
+%
+\begin{prooftree}
+	\AxiomC{$\LLresiduateLeft$}
+    \doubleLine
+    \UnaryInfC{$\LLresiduateRight$}
+\end{prooftree}
+\end{definition}
+
+\begin{proposition}
+\label{closureLeast}
+Let $\closureOP$ be a closure operator on a poset $P$.
+For each $x \in P$, $\closure{x}$ is the least element of $\CcapPfilterX$
+(i.e. 
+$\closure{x}$ is the least closed element which includes $x$). 
+\end{proposition}
+\begin{proof}
+\begin{enumerate}
+\item $\closure{x} \in C$ : 
+	$\dclosure{x} = \closure{x} $ by idempotence,
+\item $\closure{x} \in \PfilterX$ : $x \leq \closure{x}$  by extensivity,
+\item $\closure{x}$ is the least one: 
+if $y \in \PfilterX$ ($x \leq y$),
+then $\closure{x} \leq \closure{y}$ by monotonicity.
+If $y \in C$  ($\closure{y} = y$), so $\closure{x} \leq y$.
+\end{enumerate} 
+\end{proof}
+
+Explicitly, for any subset $A$ of $L$, consider the set  $X$ of upper bounds for $A$. 
+Let
+\[ X  =  \set{ x \in L |  \forall a \in A (a \leq x) } \]
+and set
+\[ \bigoplus A = \bigwedge X \mbox{.} \]
+
+There is another construction. 

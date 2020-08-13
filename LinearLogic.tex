@@ -1,0 +1,134 @@
+\newcommand{\LLaddUnitRule}{
+\begin{center}
+\begin{prooftree}
+\RightLabel{L$\LLzero$}
+\AxiomC{}
+\UnaryInfC{${\Gamma,\LLzero} \fCenter {\Delta}$}
+	\DisplayProof \hskip 32pt
+\RightLabel{R$\LLtop$}
+\AxiomC{}
+\UnaryInfC{${\Gamma} \fCenter {\LLtop,\Delta}$}
+\end{prooftree}
+\end{center}
+}
+
+\newcommand{\LLwithRule}{
+\begin{center}
+\begin{prooftree}
+\RightLabel{L$\with$$(i = 1,2)$}
+\AxiomC {$\Gamma,A_i \fCenter \Delta$}
+\UnaryInfC  {$\Gamma,A_1 \with A_2 \fCenter \Delta$}
+	\DisplayProof \hskip 32pt
+\RightLabel{R$\with$}
+\AxiomC {$\Gamma \fCenter A,\Delta$}
+\AxiomC {$\Gamma \fCenter B,\Delta$}
+\BinaryInfC  {$\Gamma \fCenter A \with B, \Delta$}
+\end{prooftree}
+\end{center}
+}
+
+\newcommand{\LLoplusRule}{
+\begin{center}
+\begin{prooftree}
+\RightLabel{L$\oplus$}
+\AxiomC {$\Gamma,A \fCenter \Delta$}
+\AxiomC {$\Gamma,B \fCenter \Delta$}
+\BinaryInfC  {$\Gamma,A\oplus B \fCenter \Delta$}
+	\DisplayProof \hskip 32pt
+\RightLabel{R$\oplus$$(i = 1,2)$}
+\AxiomC {$\Gamma \fCenter A_i,\Delta$}
+\UnaryInfC  {$\Gamma \fCenter A_1 \oplus A_2,\Delta$}
+%
+\end{prooftree}
+\end{center}
+}
+
+\newcommand{\LLmultUnitRule}{
+\begin{center}
+\begin{prooftree}
+\RightLabel{L$\LLone$}
+\AxiomC{$\Gamma\Rightarrow\Delta$}
+\UnaryInfC{$\Gamma,\LLone\Rightarrow\Delta$}
+	\DisplayProof \hskip 16pt
+\RightLabel{R$\LLone$}
+\AxiomC{}
+\UnaryInfC{$ \fCenter \LLone $}
+	\DisplayProof \hskip 16pt
+\RightLabel{L$\LLbot$}
+\AxiomC{}
+\UnaryInfC{$\LLbot \fCenter$}
+	\DisplayProof \hskip 16pt
+\RightLabel{R$\LLbot$}
+\AxiomC{$\Gamma\Rightarrow\Delta$}
+\UnaryInfC{$\Gamma\Rightarrow\LLbot,\Delta$}
+\end{prooftree}
+\end{center}
+}
+
+\newcommand{\LLotimesRule}{
+\begin{center}
+\begin{prooftree}
+\RightLabel{L$\LLotimes$}
+\AxiomC {$\Gamma,A,B \fCenter \Delta$}
+\UnaryInfC  {$\Gamma,A \LLotimes B \fCenter \Delta$}
+	\DisplayProof \hskip 64pt
+\RightLabel{R$\LLotimes$}
+\AxiomC {$\Gamma_0 \fCenter A,\Delta_0$}
+\AxiomC {$\Gamma_1 \fCenter B,\Delta_1$}
+\BinaryInfC  {$\Gamma_0,\Gamma_1 \fCenter A\LLotimes B,\Delta_0,\Delta_1$}
+\end{prooftree}
+\end{center}
+}
+
+\newcommand{\LLimpRule} {
+\begin{center}
+\begin{prooftree}
+\RightLabel{L$\LLimp$}
+\AxiomC {$\Gamma_0 \fCenter A,\Delta_0$}
+\AxiomC {$\Gamma_1,B \fCenter \Delta_1$}
+\BinaryInfC  {$\Gamma_0,\Gamma_1,A\LLimp B \fCenter \Delta_0,\Delta_1$}
+	\DisplayProof \hskip 32pt
+\RightLabel{R$\LLimp$}
+\AxiomC {$\Gamma,A \fCenter B,\Delta$}
+\UnaryInfC  {$\Gamma \fCenter A\LLimp B,\Delta$}
+\end{prooftree}
+\end{center}
+}
+
+\newcommand{\LLnegRule}{
+\begin{center}
+\begin{prooftree}
+\RightLabel{L$\lneg{(\phantom{l})}$}
+\AxiomC {$\Gamma \fCenter A,\Delta$}
+\UnaryInfC  {$\Gamma,\lneg{A} \fCenter \Delta$}
+	\DisplayProof \hskip 96pt
+\RightLabel{R$\lneg{(\phantom{l})}$}
+\AxiomC {$\Gamma,A \fCenter \Delta$}
+\UnaryInfC  {$\Gamma \fCenter \lneg{A},\Delta$}
+\end{prooftree}
+\end{center}
+}
+
+\begin{table}
+\begin{center}
+\begin{prooftree}
+\RightLabel{Ax}\AxiomC{} \UnaryInfC {$A \fCenter A$}
+	\DisplayProof \hskip 48pt
+\RightLabel{Cut}
+\AxiomC {$\Gamma_0 \fCenter A,\Delta_0$}
+\AxiomC {$\Gamma_1,A \fCenter \Delta_1$}
+\BinaryInfC  {$\Gamma_0,\Gamma_1 \fCenter \Delta_0,\Delta_1$}
+\end{prooftree}
+\end{center}
+%%
+\LLaddUnitRule
+\LLwithRule
+\LLoplusRule
+%%
+\LLmultUnitRule
+\LLotimesRule
+\LLimpRule
+\LLnegRule
+
+\caption{Multiplicative Additive Linear Logic}
+\end{table}

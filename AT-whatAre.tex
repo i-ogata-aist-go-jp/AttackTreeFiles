@@ -1,0 +1,48 @@
+Attack trees are conceptual diagrams showing how a target might be attacked. 
+
+
+Some of the earliest descriptions of attack trees are found in papers articles by Bruce Schneier. 
+
+
+
+Attack trees have been used in a variety of applications. In the field of information technology, they have been used to describe threats on computer systems and possible attacks to realize those threats. However, their use is not restricted to the analysis of conventional information systems. They are widely used in the fields of defense and aerospace for the analysis of threats against tamper resistant electronics systems (e.g., avionics on military aircraft).[1] Attack trees are increasingly being applied to computer control systems (especially relating to the electric power grid ).[2] Attack trees have also been used to understand threats to physical systems.
+
+We integrate the above concepts of attack trees into (intuitionistic) linear logic.  
+
+Attack Trees are multi-leveled diagrams consisting of one Root, Non-Leaf nodes and Leaf-nodes.
+
+\subsection{original}
+
+Attack trees are hierarchical, graphical diagrams that show how low level hostile activities interact and combine to achieve an adversary's objectives - usually with negative consequences for the victim of the attack.
+
+Similar to many other types of trees (e.g., decision trees), the diagrams are usually drawn inverted, with the root node at the top of the tree and branches descending from the root. The top or root node represents the attacker's overall goal. The nodes at the lowest levels of the tree (leaf nodes) represent the activities performed by the attacker. Nodes between the leaf nodes and the root node depict intermediate states or attacker sub-goals. Although the attacker may gain benefits (and the victim suffer impacts) at any level of the tree, the impacts usually increase at higher levels of the tree.
+
+Non-leaf nodes in an attack tree are designated as either AND or OR nodes, and usually represented by the familiar Boolean Algebra AND/OR shapes. 
+AND nodes represent processes or procedures. All of the activities or states represented by the nodes immediately beneath an AND node must be achieved to attain the goal or state represented by the AND node. 
+OR nodes represent alternatives. If any of the nodes directly beneath an OR are attained then the OR state is also attained.
+
+An example of a tree describing attacks on a hypothetical nuclear plant's cooling systems is shown.
+
+Certain combinations of leaf level events will satisfy the tree's AND/OR logic and result in one or more paths leading to the root goal of the tree. These sets of events are known as attack scenarios.
+
+\subsection{What is linear logic?}
+
+\subsection{How linear logic can be applied ?}
+
+An attack tree is a formula of linear logic. 
+Leaf nodes are propositional  variables. 
+Non-Leaf nodes are designated as either $\otimes$ or $\oplus$ nodes. 
+$\otimes$ nodes represent parallel processes.
+All of the activities by the nodes represented by the nodes immediately beneath an $\otimes$ node must be achieved to attain the goal by the $\otimes$ nodes. 
+$\oplus$ nodes represent alternatives (choices). If any of the nodes immediately beneath an $\oplus$ node are attained then the the goal by the $\oplus$ nodes are achieved. 
+
+Attack Scenarios
+
+An attack tree shows a linear-logical breakdown of the various options available to an adversary.
+By using proof search technique, the attacker can achieve the root level goal. 
+
+Given a context $A$ which represent an attack tree, a context $\Gamma$ which validates the sequent  $\Gamma \Rightarrow A$ are called as {\it attack senarios} for the attack tree $A$. 
+An attack scenario shows the paths leading to the root goal of the tree. 
+
+Associated with each attack scenario is the proof. Each step (i.e, inference)  of the the sequent proof exactly shows  how the attacker achieve the root goal. 
+

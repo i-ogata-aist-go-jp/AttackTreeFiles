@@ -1,0 +1,273 @@
+\newcommand{\xA}{\iterm{x}{A}}
+\newcommand{\xzA}{\iterm{x_0}{A}}
+\newcommand{\xoA}{\iterm{x_1}{A}}
+\newcommand{\xzDA}{\iterm{{x_0}'}{A}}
+\newcommand{\xoDA}{\iterm{{x_1}'}{A}}
+\newcommand{\xAD}{\iterm{x'}{A}}
+\newcommand{\xzxoA}{\iterm{{x_0}@{x_1}}{A}}
+\newcommand{\xzxoAPT}{\iterm{\PT{x_0}{x_1}}{(A\iand A)}}
+\newcommand{\xzxoDAPT}{\iterm{\PT{{x'}_0}{{x'}_1}}{(A\iand A)}}
+\newcommand{\underA}{\iterm{\_}{A}}
+%
+\newcommand{\Ax}{\oterm{x}{A}}
+\newcommand{\Axz}{\oterm{x_{0}}{A}}
+\newcommand{\Axo}{\oterm{x_{1}}{A}}
+\newcommand{\AxzD}{\oterm{{x_{0}}'}{A}}
+\newcommand{\AxoD}{\oterm{{x_{1}}'}{A}}
+\newcommand{\Axzxo}{\oterm{({x_0}@{x_1})}{A}}
+\newcommand{\AxzxoPT}{\oterm{\PT{x_0}{x_1}}{A\iand A}}
+\newcommand{\AxzxoDPT}{\oterm{\PT{{x'}_0}{{x'}_1}}{A\iand A}}
+\newcommand{\Aunder}{\oterm{\_}{A}}
+%
+\newcommand{\xDA}{\iterm{x'}{A}}
+\newcommand{\yDB}{\iterm{y'}{B}}
+%
+\newcommand{\AxD}{\oterm{x'}{A}}
+\newcommand{\yB}{\iterm{y}{B}}
+\newcommand{\yBD}{\iterm{y'}{B}}
+\newcommand{\By}{\oterm{y}{B}}
+\newcommand{\ByD}{\oterm{y'}{B}}
+\newcommand{\zC}{\iterm{z}{C}}
+\newcommand{\Cz}{\oterm{z}{C}}
+\newcommand{\alphaA}{\iterm{\alpha}{A}}
+\newcommand{\Aalpha}{\oterm{\alpha}{A}}
+\newcommand{\betaB}{\iterm{\beta}{B}}
+\newcommand{\Bbeta}{\oterm{\beta}{B}}
+\newcommand{\BbetaD}{\oterm{\beta'}{B}}
+\newcommand{\gammaA}{\iterm{\gamma}{A}}
+\newcommand{\Agamma}{\oterm{\gamma}{A}}
+\newcommand{\gammaC}{\iterm{\gamma}{C}}
+\newcommand{\Cgamma}{\oterm{\gamma}{C}}
+\newcommand{\deltaD}{\iterm{\delta}{D}}
+\newcommand{\Ddelta}{\oterm{\delta}{D}}
+
+\newcommand{\alphaNegA}{\iterm{\alpha}{\negA}}
+\newcommand{\epsilonNegA}{\iterm{\epsilon}{\negA}}
+\newcommand{\negAalpha}{\oterm{\alpha}{\negA}}
+\newcommand{\negAepsilon}{\oterm{\epsilon}{\negA}}
+\newcommand{\negAalphaD}{\oterm{\alpha'}{\negA}}
+\newcommand{\negAalphaDD}{\oterm{\alpha''}{\negA}}
+\newcommand{\betaNegB}{\iterm{\beta}{\negB}}
+\newcommand{\negBbeta}{\oterm{\beta}{\negB}}
+\newcommand{\negBbetaD}{\oterm{\beta'}{\negB}}
+\newcommand{\negAdelta}{\oterm{\delta}{\negA}}
+\newcommand{\negBdelta}{\oterm{\delta}{\negB}}
+
+\newcommand{\gammaAimpB}{\iterm{\gamma}{(\AimpB)}}
+\newcommand{\AimpBgamma}{\oterm{\gamma}{\AimpB}}
+\newcommand{\AimpBgammaD}{\oterm{\gamma'}{\AimpB}}
+\newcommand{\gammaForallXA}{\iterm{\gamma}{(\forallXA)}}
+\newcommand{\forallXAgamma}{\oterm{\gamma}{\forallXA}}
+\newcommand{\forallXAgammaD}{\oterm{\gamma'}{\forallXA}}
+
+\newcommand{\gammaNegAimpB}{\iterm{\gamma}{(\negAimpB)}}
+\newcommand{\negAimpBgamma}{\oterm{\gamma}{(\negAimpB)}}
+\newcommand{\gammaNegForallXA}{\iterm{\gamma}{(\negforallXA)}}
+\newcommand{\negforallXAgamma}{\oterm{\gamma}{(\negforallXA)}}
+
+\newcommand{\gammaXimpX}{\iterm{\gamma}{(\XimpX)}}
+\newcommand{\XimpXgamma}{\oterm{\gamma}{\XimpX}}
+\newcommand{\negXimpXgamma}{\oterm{\gamma}{\cneg (\XimpX)}}
+
+\newcommand{\alphaForallXXimpX}{\iterm{\alpha}{(\cforall X \XimpX)}}
+\newcommand{\forallXXimpXalpha}{\oterm{\alpha}{\cforall X \XimpX}}
+
+\newcommand{\zNegA}{\iterm{z}{(\negA)}}
+\newcommand{\negAz}{\oterm{z}{\negA}}
+\newcommand{\zNegAimpA}{\iterm{z}{(\negA\cimp A)}}
+\newcommand{\negAimpAz}{\oterm{z}{\negA\cimp A}}
+
+\newcommand{\AandBz}{\oterm{z}{\AandB}}
+\newcommand{\existsXAz}{\oterm{z}{\existsXA}}
+
+\newcommand{\xX}{\iterm{x}{X}}
+\newcommand{\Xx}{\oterm{x}{X}}
+\newcommand{\Xxd}{\oterm{x'}{X}}
+\newcommand{\yXimpX}{\iterm{y}{\XimpX}}
+\newcommand{\XimpXy}{\oterm{y}{\XimpX}}
+\newcommand{\XimpXyd}{\oterm{y'}{\XimpX}}
+\newcommand{\XimpXydd}{\oterm{y''}{\XimpX}}
+\newcommand{\XimpXimpXz}{\oterm{z}{\XimpXimpX}}
+\newcommand{\intm}{\oterm{m}{{\sf int}}}
+\newcommand{\intn}{\oterm{n}{{\sf int}}}
+
+\newcommand{\betaX}{\iterm{\beta}{X}}
+\newcommand{\Xbeta}{\oterm{\beta}{X}}
+
+\newcommand{\xAXZ}{\iterm{x}{(A[X := Z])}}
+\newcommand{\xAXB}{\iterm{x}{(A[X := B])}}
+\newcommand{\alphaAXZ}{\iterm{\alpha}{(A[X := Z])}}
+\newcommand{\alphaAXB}{\iterm{\alpha}{(A[X := B])}}
+
+%% term 
+
+\newcommand{\gammaInegAiandB}{\iterm{\gamma}{(\ineg(\AiandB))}}
+\newcommand{\inegAiandBgamma}{\oterm{\gamma}{\ineg(\AiandB)}}
+
+\newcommand{\iexistsXAgamma}{\oterm{\gamma}{\iexistsXA}}
+\newcommand{\inegAiandinegBgamma}{\oterm{\gamma}{\inegAiandinegB}}
+\newcommand{\inegiexistsXinegAgamma}{\oterm{\gamma}{\inegiexistsXinegA}}
+
+\newcommand{\zAiandB}{\iterm{z}{(\AiandB)}}
+\newcommand{\xyAiandB}{\iterm{\PTxy}{(\AiandB)}}
+
+\newcommand{\zAiandBD}{\iterm{z'}{(\AiandB)}}
+\newcommand{\AiandBz}{\oterm{z}{\AiandB}}
+\newcommand{\AiandBxy}{\oterm{\PTxy}{\AiandB}}
+\newcommand{\AiandBzD}{\oterm{z'}{\AiandB}}
+
+\newcommand{\zIexistsXX}{\iterm{z}{(\iexistsXX)}}
+\newcommand{\XAXxiexists}{\iterm{\PTXx}{(\iexistsXA)}}
+\newcommand{\zIexistsXA}{\iterm{z}{(\iexistsXA)}}
+\newcommand{\xXIexistsXA}{\iterm{\PTXx}{(\iexistsXA)}}
+\newcommand{\xXDIexistsXA}{\iterm{\PTXxD}{(\iexistsXAD)}}
+
+\newcommand{\iexistsXXz}{\oterm{z}{\iexistsXX}}
+\newcommand{\iexistsXAz}{\oterm{z}{\iexistsXA}}
+
+\newcommand{\XxiexistsXA}{\iterm{\PTXx}{(\iexists XA)}}
+\newcommand{\iexistsXAXx}{\oterm{\PTXx}{\iexistsXA}}
+\newcommand{\iexistsXAzD}{\oterm{z'}{\iexistsXAD}}
+
+\newcommand{\sigmaIbot}{\iterm{\sigma}{\ibot}}
+\newcommand{\ibotSigma}{\oterm{\sigma}{\ibot}}
+
+\newcommand{\alphaCpsnegA}{\iterm{\alpha}{(\cpsLKneg A)}}
+\newcommand{\zCpsnegA}{\iterm{z}{(\cpsLKneg A)}}
+\newcommand{\gammaCpsnegA}{\iterm{\gamma}{(\cpsLKneg A)}}
+\newcommand{\gammaAcpsandB}{\iterm{\gamma}{(\AcpsandB)}}
+\newcommand{\xyAcpsandB}{\iterm{\PTxy}{(\AcpsandB)}}
+\newcommand{\gammaAcpsorB}{\iterm{\gamma}{(\AcpsorB)}}
+\newcommand{\alphaBetaAcpsorB}{\iterm{\PT{\alpha}{\beta}}{(\AcpsorB)}}
+\newcommand{\gammaAcpssubB}{\iterm{\gamma}{(\AcpssubB)}}
+\newcommand{\gammaAcpsimpB}{\iterm{\gamma}{(\AcpsimpB)}}
+\newcommand{\xBetaAcpsimpB}{\iterm{\PTxBeta}{(\AcpsimpB)}}
+\newcommand{\gammaCpsexistsXA}{\iterm{\gamma}{(\cpsexistsXA)}}
+\newcommand{\gammaCpsforallXA}{\iterm{\gamma}{(\cpsforallXA)}}
+\newcommand{\XalphaCpsforallXA}{\iterm{\PT{X}{\alpha}}{(\cpsforallXA)}}
+
+\newcommand{\zAcpsandB}{\iterm{z}{(\AcpsandB)}}
+\newcommand{\zAcpsorB}{\iterm{z}{(\AcpsorB)}}
+\newcommand{\zAcpssubB}{\iterm{z}{(\AcpssubB)}}
+\newcommand{\zAcpsimpB}{\iterm{z}{(\AcpsimpB)}}
+\newcommand{\zCpsexistsXA}{\iterm{z}{(\cpsexistsXA)}}
+\newcommand{\XxCpsexistsXA}{\iterm{\PT{X}{x}}{(\cpsexistsXA)}}
+\newcommand{\zCpsforallXA}{\iterm{z}{(\cpsforallXA)}}
+
+\newcommand{\xInegA}{\iterm{x}{(\ineg A)}}
+\newcommand{\inegAx}{\oterm{x}{\ineg A}}
+\newcommand{\yInegB}{\iterm{y}{(\ineg B)}}
+\newcommand{\inegBy}{\oterm{y}{\ineg B}}
+\newcommand{\zInegA}{\iterm{z}{(\ineg A)}}
+\newcommand{\inegAz}{\oterm{z}{\ineg A}}
+\newcommand{\alphaInegA}{\iterm{\alpha}{(\inegA)}}
+\newcommand{\inegAalpha}{\oterm{\alpha}{\inegA}}
+\newcommand{\inegAalphaD}{\oterm{\alpha'}{\inegA}}
+\newcommand{\betaInegB}{\iterm{\beta}{(\ineg B)}}
+\newcommand{\inegBbeta}{\oterm{\beta}{\ineg B}}
+\newcommand{\inegAgamma}{\oterm{\gamma}{\inegA}}
+
+\newcommand{\yInegAiandA}{\iterm{y}{(\inegA \iand A)}}
+
+% \newcommand{\gammaInegExistsXA}{\iterm{\gamma}{\ineg(\iexistsXA)}}
+% \newcommand{\inegExistsXAgamma}{\oterm{\gamma}{\ineg(\iexistsXA)}}
+% \newcommand{\gammancpsAimpB}{\iterm{\gamma}{(\inegAiandB)}}
+\newcommand{\ncpsAimpBgamma}{\oterm{\gamma}{(\inegAiandB)}}
+% \newcommand{\gammavcpsAimpB}{\iterm{\gamma}{\inegAiandinegB)}}
+% \newcommand{\vcpsAimpBgamma}{\oterm{\gamma}{\inegAiandinegB)}}
+\newcommand{\vcpsAimpBz}{\oterm{z}{A\iand\ineg{B}}}
+\newcommand{\vcpsforallXAz}{\oterm{z}{\iexists X\inegA}}
+%%
+
+\newcommand{\PT}[2] {\langle {#1},{#2} \rangle}
+
+% imp n
+
+\newcommand{\PTAxBbeta}{\PT{\Ax}{\Bbeta}}
+\newcommand{\PTXAalpha}{\PT{X}{\Aalpha}}
+\newcommand{\PTXxXbeta}{\PT{\Xx}{\Xbeta}}
+\newcommand{\PTXXimpXgamma}{\PT{X}{\XimpXgamma}}
+\newcommand{\PTXXx}{\PT{X}{\Xx}}
+
+% imp v
+
+\newcommand{\PTAxNegBbeta}{\PT{\Ax}{\negBbeta}}
+\newcommand{\PTAxNegBbetaD}{\PT{\AxD}{\negBbetaD}}
+\newcommand{\PTXnegAalpha}{\PT{X}{\negAalpha}}
+\newcommand{\PTXnegAalphaD}{\PT{X'}{\negAalphaD}}
+\newcommand{\PTXxnegXbeta}{\PT{\Xx}{\negXbeta}}
+\newcommand{\PTXnegXimpXgamma}{\PT{X}{\negXimpXgamma}}
+
+%% iand
+\newcommand{\PTxy}{\PT{x}{y}}
+\newcommand{\PTyx}{\PT{y}{x}}
+\newcommand{\PTxyD}{\PT{x'}{y'}}
+\newcommand{\PTxDy}{\PT{x'}{y}}
+\newcommand{\PTxDDy}{\PT{x''}{y}}
+\newcommand{\PTAxBy}{\PT{\Ax}{\By}}
+\newcommand{\PTByAx}{\PT{\By}{\Ax}}
+\newcommand{\PTAxByD}{\PT{\AxD}{\ByD}}
+\newcommand{\PTvzvo}{\PT{v_0}{v_1}}
+\newcommand{\PTvzvoD}{\PT{v_0'}{v_1'}}
+\newcommand{\PTvzvoC}{\PT{\compDvz}{\compDvo}}
+
+\newcommand{\PTxzxo}{\PT{x_0}{x_1}}
+\newcommand{\PTxzxoD}{\PT{{x'}_0}{{x'}_1}}
+
+\newcommand{\PTxBeta}{\PT{x}{\beta}}
+
+\newcommand{\PTinegAzAx}{\PT{\inegAz}{\Ax}}
+
+\newcommand{\PTalphaBeta}{\PT{\alpha}{\beta}}
+\newcommand{\PTAalphaBbeta}{\PT{\Aalpha}{\Bbeta}}
+
+\newcommand{\PTxbeta}{\PT{x}{\beta}}
+\newcommand{\PTinegAxBbeta}{\PT{\inegAx}{\Bbeta}}
+\newcommand{\PTAxinegBbeta}{\PT{\Ax}{\inegBbeta}}
+\newcommand{\PTXinegAalpha}{\PT{X}{\inegAalpha}}
+
+\newcommand{\PTinegAxInegBy}{\PT{\inegAx}{\inegBy}}
+\newcommand{\PTinegAalphaInegBbeta}{\PT{\inegAalpha}{\inegBbeta}}
+\newcommand{\PTAxInegBbeta}{\PT{\Ax}{\inegBbeta}}
+\newcommand{\PTXInegAalpha}{\PT{X}{\inegAalpha}}
+\newcommand{\PTXinegAz}{\PT{X}{\inegAz}}
+
+%% iexists
+
+% n
+\newcommand{\PTBalpha}{\PT{B}{\alpha}}
+\newcommand{\PTXalpha}{\PT{X}{\alpha}}
+\newcommand{\PTXinegAgamma}{\PT{X}{\inegAgamma}}
+% v
+\newcommand{\PTXx}{\PT{X}{x}}
+\newcommand{\PTXAx}{\PT{X}{\Ax}}
+\newcommand{\PTXxD}{\PT{X'}{x'}}
+\newcommand{\PTXAxD}{\PT{X'}{\AxD}}
+\newcommand{\PTBx}{\PT{B}{x}}
+\newcommand{\PTBv}{\PT{B}{v}}
+\newcommand{\PTBvD}{\PT{B}{v'}}
+\newcommand{\PTBvC}{\PT{B}{\compDv}}
+
+% substitution
+% n
+\newcommand{\substAalphav}{\subst{\Aalpha}{v}}
+\newcommand{\substBbetav}{\subst{\Bbeta}{v}}
+\newcommand{\substinegAxw}{\subst{\inegAx}{w}}
+% v
+\newcommand{\cpsSubstAxv}{\cpsSubst{\Ax}{v}}
+\newcommand{\cpsSubstAxvD}{\cpsSubst{\Ax}{v'}}
+\newcommand{\cpsSubstAxvz}{\cpsSubst{\Ax}{v_0}}
+\newcommand{\cpsSubstByvo}{\cpsSubst{\By}{v_1}}
+\newcommand{\cpsSubstAxvzByvo}{\cpsSubst{\Ax}{v_0}\cpsSubst{\By}{v_1}}
+\newcommand{\cpsSubstAxvzByvoD}{\cpsSubst{\Ax}{v_0'}\cpsSubst{\By}{v_1'}}
+\newcommand{\cpsSubstAxvzByvoC}
+ {\cpsSubst{\Ax}{\compDvz}\cpsSubst{\By}{\compDvz}}
+\newcommand{\cpsSubstAxvC}{\cpsSubst{\Ax}{\compDv}}
+
+\newcommand{\substinegAalphaw}{\subst{\inegAalpha}{w}}
+\newcommand{\substinegBbetaw}{\subst{\inegBbeta}{w}}
+\newcommand{\substzPTxy}{\subst{\AiandBz}{\PTxy}}
+\newcommand{\substzPTXx}{\subst{\iexistsXAz}{\PTXx}}
+
+\newcommand{\callccTerm}[1]{\mbox{\sf callcc}\; {#1}}
+\newcommand{\returnTerm}[2]{\mbox{\sf return}\; {#1}\; {#2}}

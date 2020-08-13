@@ -1,0 +1,31 @@
+\begin{table}[t]
+\begin{center}
+%
+\begin{forest} 
+[\ovalbox{ $\wedge$ } 
+ [\ovalbox{ hammer } ]
+ [\ovalbox{ $\vee$ }
+  [\ovalbox{ hammer }]
+  [\ovalbox { combo } ] ] ]
+\end{forest}
+%
+\hskip 24pt
+%
+\begin{forest} 
+[\ATrootbox{cut open a bank safe}
+	[ $\wedge$
+		[\ATnonleafbox{break into a vault}
+			[\ATleafbox{use a hammer} ]]
+		[\ATnonleafbox{cut open a safe}
+			[ $\vee$ 
+				[\ATleafbox{use a hammer}]
+				[\ATleafbox{open a safe with combination}] ] ] ] ]
+\end{forest}
+%
+\end{center} 
+\caption{attack tree and its abstract form}
+\end{table}
+
+%for tree={
+    % edge path={\noexpand\path[\forestoption{edge}] (\forestOve{\forestove{@parent}}{name}.parent anchor) -- +(0,-12pt)-| (\forestove{name}.child anchor)\forestoption{edge label};}
+%}

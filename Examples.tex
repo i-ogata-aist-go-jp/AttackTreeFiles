@@ -1,0 +1,363 @@
+%%
+
+\subsection{A concrete example --- de morgan lattice}
+
+
+\begin{table}[hbt]
+\begin{center}
+   \begin{tabular}{c|ccc}
+  $\oplus$ & F &  M  & T \\ \hline
+  F   &  F & M  & T   \\
+  M  &     & M  & T   \\
+  T   &     &     & T   \\
+  \end{tabular}
+%
+\hskip 18pt\begin{tabular}{c|ccc}
+  $\with$ & F  & M & T \\ \hline
+        F   & F & F & F \\
+        M   &   & M & M \\
+        T   &   &     & T \\
+  \end{tabular}
+%
+\hskip 18pt\begin{tabular}{c|ccc}
+  $\otimes$ & F  & M & T \\ \hline
+        F   & F & F & F \\
+        M   &   & M & T \\
+        T   &   &     & T \\
+  \end{tabular}
+%
+\hskip 18pt
+ \begin{tabular}{c|c}
+ $\lnegP{\_}$ &  \\ \hline
+F & T \\
+M & M \\
+T & F \\
+ \end{tabular}
+\end{center}
+\caption{multiplication tables for phase space operators}
+\label{table:interpretation5}
+\end{table}
+
+
+\subsection{A concrete example}
+
+\newcommand{\PSsetT}{\set{0,a,a^2,a^3,\PSidentity}}
+\newcommand{\PSsetH}{\set{0,a,a^2,a^3}}
+\newcommand{\PSsetM}{\set{0,a^2,a^3}}
+\newcommand{\PSsetL}{\set{0,a^3}}
+\newcommand{\PSsetF}{\set{0}}
+
+\begin{table}[hbt]
+\begin{center}
+  \begin{tabular}{c|ccccc}
+  $\cdot$ & 0 & $a$ & $a^2$ & $a^3$ & $\PSidentity$ \\ \hline
+0 & 0 & 0 & 0 & 0 & 0 \\
+$a$ & & $a^2$ & $a^3$ & 0 & $a$ \\
+$a^2$ & &  & 0 & 0 & $a^2$ \\
+$a^3$ & &  &   & 0 & $a^3$ \\
+$\PSidentity$ & & & & & $\PSidentity$ \\
+\end{tabular}
+\end{center}
+\caption{five-elements commutative monoid subject to $x \cdot 0 = 0$ and $a^4 = 0$}
+\label{multTable}
+\end{table}
+
+\begin{table}[t]
+\begin{center}
+   \begin{tabular}{c|ccccc}
+  $\oplus$ & F & L & M & H & T \\ \hline
+  F   & F & L & M & H & T   \\
+  L   &  & L & M & H & T   \\
+ M   &  & & M  & H & T   \\
+ H   &  & &  & H & T   \\
+ T   &   &   &      &    & T \\
+  \end{tabular}
+\hskip 36pt\begin{tabular}{c|ccccc}
+  $\otimes$ & F & L & M & H & T \\ \hline
+        F       & F & F & F & F & F \\
+        L       &   & F & F & F & L \\
+        M      &   &    &  F & L & M \\
+        H      &   &   &      & M & H \\
+        T      &   &   &      &    & T \\
+  \end{tabular}
+\hskip 36pt
+ \begin{tabular}{c|c}
+ $\lnegP{\_}$ &  \\ \hline
+F & T \\
+L & H \\
+M & M \\
+H & L \\
+T & F \\
+ \end{tabular}
+\end{center}
+\caption{multiplication tables for phase space operators}
+\label{interpretationTable}
+\end{table}
+
+Some of the earliest descriptions of attack trees are found in papers and articles by Bruce Schneier. He gave a various leaf-node values assignment methods. 
+Among them, the simplest of these values are boolean:  possible / impossible for example. 
+This means that the any attack  is categorized either critical or safe in a model based on classical logic. 
+%
+However, in a practical world  where zero risk is impossible, 
+we assign a discrete risk score  to a threat.
+Each threat is given a score of  False,  Low/Medium/High risk or True with True means the threat is critical and an attack to the treat is fully effective. 
+%
+In our framework, we could give a five-valued model to express the above risk score method.
+Consider a phase space  $(M , \cdot , \PSidentity,\PSzero)$.
+$M = \PSsetT$ is a five-element monoid and ${\cdot}$ is defined in the obvious way subject to $a^4 = 0$.
+We also give an explicit multiplication table in Table~\ref{multTable}.
+%
+We define  $\PSzero = \set{0}$. 
+%
+Now, we seek for all the facts in the phase space.
+
+\begin{proposition} 
+We have exactly  5 facts in the phase space in question as follows:
+%
+\begin{eqnarray*}
+\mbox{True} &=& \PSunit = \lneg{\PSsetF}  = M = \PStrue = \lneg{\mbox{False}} \\
+\mbox{High} &=& \dlneg{\set{a}} = \lneg{\PSsetL} = \PSsetH  = \lneg{\mbox{Low}} \\
+\mbox{Medium} &=& \dlneg{\set{a^2}} = \lneg{\PSsetM} = \PSsetM = \lneg{\mbox{Medium}} \\
+\mbox{Low} &=& \dlneg{\set{a^3}} = \lneg{\PSsetH} = \PSsetL = \lneg{\mbox{High}} \\
+\mbox{False} &=& \PSfalse = \lneg{M} =  \PSsetF = \PSzero  = \lneg{\mbox{True}} \\
+\end{eqnarray*}
+%
+Note that the five facts are totally ordered by strict inclusion: 
+ $ \mbox{False} \subset \mbox{Low} \subset \mbox{Medium} \subset \mbox{High} \subset \mbox{True}$. 
+\end{proposition}
+
+\begin{proof}
+The fact which we designate ``True'' and ``False''  is the collapsed units appeared 
+in example~\ref{example:collapsedUnits}). Thus the set of these two facts, 
+$(\set{\PSEfalse,\PSEtrue},\oplus,\otimes,\lnegP{\cdot},\PSEfalse,\PSEtrue)$,
+ is a two-valued Boolean algebra. 
+%
+``High'' is the smallest fact that includes $a$, 
+but there is no larger fact because $\mbox{High} = \mbox{True} \setminus \set{\PSidentity}$. Identical argument for the rest: 
+ $\mbox{Medium} = \mbox{High} \setminus \set{a}$ and
+ $\mbox{Low} = \mbox{Medium} \setminus \set{a^2}$. Therefore we exactly have 5 facts described above in this phase space. 
+\end{proof}
+%
+We  give  explicit multiplication tables for the set of five facts
+in Table~\ref{interpretationTable}.
+%
+
+\begin{remark}
+ If  both $A \LLvdash B$ and $B \LLvdash A$ are valid sequent, then $A$ and $B$ are said to be equivalent. 
+Thanks to the soundness theorem,  the interpretation of equivalent formulas are equal in phase space for any assignment for variables. 
+For example the following equality holds regardless of assignment values $\PSintA$,$\PSintB$ and $\PSintC$. 
+%
+$\interpretP{ \alpha  \otimes (\beta  \oplus \gamma)}
+ = \interpretP{ (\alpha \otimes \beta) \oplus ( \alpha \otimes \gamma)}$. 
+\end{remark}
+
+
+
+
+
+
+\subsection{A concrete example --- three elements monoid}
+
+
+\newcommand{\PSt}{\set{0,a,\PSidentity}}
+\newcommand{\PSm}{\set{0,\PSidentity}}
+\newcommand{\PSf}{\set{0}}
+
+\begin{table}[hbt]
+\begin{center}
+ \begin{tabular}{c|ccc}
+  $\cdot$ & 0 & $\PSidentity$ & $a$ \\ \hline
+0 & 0 & 0 & 0 \\
+$\PSidentity$ &  & $\PSidentity$ & $a$ \\
+$a$ & & & $a$ \\
+  \end{tabular}
+\hskip 36pt\begin{tabular}{c|ccc}
+  $\cdot$ & 0 & $\PSidentity$ & $a$ \\ \hline
+0 & 0 & 0 & 0 \\
+$\PSidentity$ &  & $\PSidentity$ & $a$ \\
+$a$ & & & $a$ \\
+  \end{tabular}
+\hskip 36pt\begin{tabular}{c|ccc}
+  $\cdot$ & 0 & $\PSidentity$ & $a$ \\ \hline
+0 & 0 & 0 & 0 \\
+$\PSidentity$ &  & $\PSidentity$ & $a$ \\
+$a$ & & & $a$ \\
+\end{tabular}
+\end{center}
+\caption{three-elements commutative monoid}
+\label{table:mult3}
+\end{table}
+
+\begin{table}[hbt]
+\begin{center}
+   \begin{tabular}{c|ccc}
+  $\oplus$ & F &  M  & T \\ \hline
+  F   &  F & M  & T   \\
+  M  &     & M  & T   \\
+  T   &     &     & T   \\
+  \end{tabular}
+\hskip 36pt\begin{tabular}{c|ccc}
+  $\otimes$ & F  & M & T \\ \hline
+        F   & F & F & F \\
+        M   &   & M & T \\
+        T   &   &     & T \\
+  \end{tabular}
+\hskip 36pt
+ \begin{tabular}{c|c}
+ $\lnegP{\_}$ &  \\ \hline
+F & T \\
+M & M \\
+T & F \\
+ \end{tabular}
+\end{center}
+\caption{multiplication tables for phase space operators}
+\label{table:interpretation3}
+\end{table}
+
+
+
+
+
+
+
+
+\subsection{basic examples}
+%%%
+\begin{example} [Boolean algebra] 
+%
+Let $(M, \cdot, \PSidentity, \PSzero = \PSemptyset)$
+be a phase space.  
+Then $M$ and $\PSemptyset$ are the only facts and we get a two-valued Boolean algebra
+( $\PSunit = \lnegP{\PSzero} = \lneg{\PSemptyset} = M = \PStrue$ and
+$\PSfalse = \lnegP{\PStrue} = \lneg{M} = \PSemptyset$). 
+For any non-empty $X \subset M$, $X$ is not a fact($\dlneg{X} = \lneg{\PSemptyset} = M$).
+The set of all facts of this phase space, 
+$(\set{\PSemptyset,M},\oplus,\otimes,\lneg{\PSargument},\PSemptyset,M)$,  is a two-valued Boolean algebra. 
+\end{example}
+%%
+\begin{example}
+Let $(\set{a,\PSidentity}, \cdot, \PSidentity,\set{a})$ be a phase space subject to $a \cdot a = a$. 
+Then
+$\PSunit = \lneg{\set{a}} = M = \PStrue$ and $\PSfalse = \lneg{M} = \set{a} = \PSzero$ are the only facts. 
+Neither $\set{\PSidentity}$ nor $\PSemptyset$ is a fact. 
+\end{example}
+%%
+%%
+\begin{example} \label{example:collapsedUnits}
+Consider a commutative monoid that has an element $0$ 
+such that for every  $a \in M$  we have $0 \cdot a = 0$.
+%
+Let $(M, \cdot, \PSidentity, \PSzero = \set{0})$
+be a phase space. Again, $M$ and $\set{0}$ are the ``collapsed'' phase space units (
+$\PSunit =  \lneg{\set{0}} = M = \PStrue$
+and 
+$\PSfalse = \lneg{M} = \set{0} = \PSzero$). 
+Neither $\set{\PSidentity}$ nor $\PSemptyset$ is a fact, 
+because $\dlneg{\set{\PSidentity}} = \lnegP{\PSzero} = \PSunit = M$ and 
+$\dlneg{\PSemptyset} = \lnegP{\PStrue} = \PSfalse = \set{0}$. However there may be other facts in this phase space. 
+\end{example}
+%%
+\begin{example}
+Let $(\set{a,\PSidentity}, \cdot, \PSidentity)$ be a commutative monoid subject to $a \cdot a = \PSidentity$ (i.e., it is a cyclic group of order 2). 
+\\
+(1)  Let $(\set{a,\PSidentity}, \cdot, \PSidentity, \set{a} )$
+ be a phase space.  Then 
+$\PStrue = \set{a,\PSidentity}$,
+$\PSunit = \lneg{\set{a}} = \set{\PSidentity}$,
+$\PSzero = \set{a} = \lneg{\set{\PSidentity}}$,
+$\PSfalse = \lneg{\set{a,\PSidentity}} = \PSemptyset$.
+\\
+(2)  Let $(\set{a,\PSidentity}, \cdot, \PSidentity, \set{\PSidentity} )$
+ be a phase space. Then we also have four facts as follows: 
+$\PStrue = \set{a,\PSidentity}$, 
+$\PSunit = \lneg{\set{\PSidentity}} = \set{\PSidentity} = \PSzero$,
+$\set{a} = \lneg{\set{a}}$ ,
+$\PSfalse = \lneg{\set{a,\PSidentity}} = \PSemptyset$.
+%
+\end{example}
+
+
+\begin{example}
+Let $M = \PSsetofintegers$ (the set of integers) with addition and $\PSzero = \set{0}$. 
+That is, let $(\PSsetofintegers,+,0,\set{0})$ be a phase space. 
+In this case, the set of facts consists of $\PSsetofintegers$, $\PSemptyset$ and all singleton sets: 
+$\PStrue = \PSsetofintegers$, 
+$\PSunit = \lneg{\set{0}} = \set{0} = \PSzero$,
+$\PSfalse = \lneg{\PSsetofintegers} = \PSemptyset$ and
+$\set{a} = \lneg{\set{-a}}  \mbox{ for any } a \in \PSsetofintegers$.
+%
+There is no other facts, $\dlneg{\set{0,1}} = \lneg{\PSemptyset} = \PSsetofintegers$ for instance.  
+If we identify singleton sets with its only respective element, 
+then $\otimes$ are identified with addition, i.e., $\set{1} \otimes \set{2} = \dlneg{\set{1+2}} = \set{3}$.  
+Moreover $\PSfalse \oplus \PSfalse = \PSfalse$  and 
+$X \oplus Y = \PStrue \mbox{ (otherwise) }$.  
+For instance, 
+$\dlnegP{\set{0} \cup \set{1}} = \dlneg{\set{0,1}} = \PSsetofintegers$. 
+\end{example}
+
+
+
+
+
+
+%%
+\subsection{Examples based on Frames}
+A complete Heyting algebra is a complete lattice 
+where $\QTleftAdjoint$ has a right adjoint $\QTrightAdjoint$. 
+Hence Adjoint functor Theorem says that frames and complete Heyting algebras amount to the same thing.
+%
+In that case, soundness theorem says that the set of inference rules for intuitionistic linear logic is also valid as inference rules for intuitionistic logic. 
+%%
+\begin{proposition}
+The set of integers ($\PSsetofintegers$) 
+in their usual order form a distributive lattice, 
+under the operations of $\min{\QTargumentT}$ (meet) 
+and $\max{\QTargumentT}$ (join). 
+\end{proposition}
+\begin{proof}
+Without loss of generosity, we can assume $b \leq c$, 
+then it follows $\min(b,c) = b$ and $\max(b,c) = c$. 
+\begin{eqnarray*}
+\min(a,\max(b,c)) &= \min(a,b) =& \max(\min(a,b),\min(a,c)) \\
+\max(a,\min(b,c)) &= \max(a,b) =& \min(\max(a,b),\max(a,c)) 
+\end{eqnarray*}
+In general, if the distributivity law holds in a lattice, then so its dual:
+$ (a \vee b) \wedge (a \vee c) 
+= (a \wedge a) \vee (a \wedge b) \vee (a \wedge c) \vee ( b \wedge c) 
+= (a \vee ( a \wedge b)) \vee  (a \vee ( a \wedge c)) \vee ( b \wedge c)
+=  a \vee ( b \wedge c)$.
+\end{proof}
+%
+Any non-empty finite lattice is trivially complete,
+and,  in a real world,  it suffices to consider finite values. 
+Therefor we consider the finite subset of integers which forms a complete distributive lattice. 
+%
+
+\begin{example}
+$(\set{0,1},\min{},0,\max{})$ is a complete Boolean algebra. 
+We interpret 0 as ``impossible'' and 1 as ``possible''.
+The valuation could be understood as ``is the attack possible''. 
+\end{example}
+%%
+\begin{example}
+$(\set{0,1,2,3,4},\min{},0,\max{})$ is a complete Heyting algebra.
+We interpret integers as a degree of skill levels ( $0$ is the highest skill level). 
+The valuation could be understood as ``minimum skill level required to perform attack''. 
+\end{example}
+%%
+\subsection{Examples based on Quantales }
+Next, we consider a quantale, 
+in which the monoid  is ``additive'' operation on $\PSsetofnnint$.
+%%
+\begin{example}
+$(\set{0, \ldots, 100},+,0,\max{})$ is a quantale. 
+We interpret integers as damages to the information system. 
+The valuation could be understood as ``maximal damage''. 
+\end{example}
+%%
+\begin{example}
+Similarly, $(\set{0, \ldots, 10000},+,0,\min{})$ is a quantale with reverse order. 
+We interpret integers as costs  required to perform attack. 
+The valuation could be understood as ``cost of the cheapest attack''.
+\end{example}
+

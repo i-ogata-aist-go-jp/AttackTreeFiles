@@ -1,0 +1,230 @@
+\subsection{Concrete Examples of Finite residual lattices}
+
+We describe some small finite examples of residual lattices. 
+Hasse diagram is enough to describe the structure of finite lattices. 
+We arrange all the possible commutative monoid
+of all the elements $L$ in a Cayley table.
+Since it is cumbersome to test 
+whether the monoid ($\RLotimes$) satisfies the associativity.
+
+\begin{definition} [Light's associativity test]
+Choosing some element a in A, and set two new binary operations are defined in $L$. 
+\[ x \triangleright  y \defeq  x \RLotimes ( a \RLotimes y) \hskip 72pt
+ x \triangleleft y \defeq  (x \RLotimes a) \RLotimes y \]
+ The Cayley tables of these operations are constructed and compared. 
+If the tables coincide then associativity holds for an element $a \in L$. 
+This is repeated for every element of the set $L$. 
+ \end{definition}
+ 
+The followings are two obvious cases for Light's associativity test.
+\begin {enumerate}
+\item 
+{\em $a = \LTCbot$}:
+since $a \RLotimes \LTCbot = \LTCbot$ for all $a$ (Proposition~\ref{RL:anihilation}), 
+$x \triangleright  y  = x \triangleleft  y = \LTCbot$.
+\item  
+{\em $a = \RLone$}:  $x \triangleright  y  = x \triangleleft  y = x \RLotimes y$.  
+\end{enumerate}
+
+Let $(L,\vee,\LTCbot,\wedge,\LTCtop,\RLimp,\RLotimes,\RLone,\RLzero)$ be a small finite
+residuated lattice with zero. 
+
+There are some useful facts to determine the concrete structure of residuated lattices. 
+
+\begin{fact}
+\begin{enumerate}
+\item {\em We can't set $\RLone = \LTCbot$ because of residual law}: 
+By residual law  $a \RLotimes \QTargument$ has a right adjoint $a \RLimp \QTargument$.
+Thus it preserves all joins including $\LTCbot$;
+$a \RLotimes \LTCbot = \LTCbot$ for every $a \in L$(Proposition~\ref{RL:anihilation}.
+However $a \RLotimes \RLone = a$ (for all $a \in L$)  by definition.
+Hence $\RLone$ can't be equal to $\LTCbot$. 
+\item  {\em $\RLzero = \LTCtop$ does not seems to be interesting}:
+$ a \RLimp \LTCtop = \LTCbot \RLimp a = \LTCtop$ for each $a \in L$. 
+Specifically to set $\RLzero = \LTCtop$ dose not seems to be interesting;
+in this case, $\RLneg{a} = \LTCtop$ for all $a \in L$.
+This exactly means that
+the only $\dRLneg{\QTargument}$-closed element is $\LTCtop$ in $L$. 
+\begin{prooftree}
+\AxiomC{$ a \RLotimes \LTCtop \fCenter \LTCtop$}
+\UnaryInfC{$\LTCtop \fCenter a \RLimp \LTCtop$}
+\DisplayProof \hskip 48pt
+\AxiomC{$ \LTCbot \RLotimes \LTCtop \fCenter a$}
+\UnaryInfC{$\LTCtop \fCenter \LTCbot \RLimp a$}
+\end{prooftree}
+\item 
+$ \RLone \RLimp a = a$ 
+\begin{prooftree}
+\AxiomC{$\RLone \fCenter \RLone$}
+\AxiomC{$a \fCenter a$}
+\BinaryInfC{$ \RLone \RLotimes (\RLone \RLimp a) \fCenter a$}
+\DisplayProof \hskip 24pt
+\AxiomC{$\RLone \RLotimes a \fCenter a$}
+\UnaryInfC{$a \fCenter \RLone \RLimp a$}
+\end{prooftree}
+\end{enumerate}
+\end{fact}
+
+\begin{example} [a one-element residual lattice with zero is a Boolean algebra]
+Since it is a one-element lattice, $L = \set{\LTCtop}$, $\LTCbot = \LTCtop$ and $\LTCjoin = \LTCmeet$. 
+We also have $\RLone = \LTCtop$ (weakening) and $\LTCtop \RLotimes \LTCtop = \LTCtop$ (contraction),
+it actually is a one-element Heyting algebra. 
+$\LTCtop \RLotimes \LTCtop \leq \LTCtop$ implies $\LTCtop \leq \LTCtop \RLimp \LTCtop$. 
+Cleary $\RLzero = \LTCtop$ is the only choise and $\RLneg{\LTCtop} = \LTCtop$(self-dual),
+concluding  one-element residual lattices with zero 
+$(\set{\LTCtop}, \LTCmeet,\LTCtop,\LTCmeet,\LTCtop,\LTCmeet,\LTCmeet,\LTCtop,\LTCtop)$ 
+are (one-element) Boolean Algebras 
+$(\set{\LTCtop}, \LTCmeet,\LTCtop,\LTCmeet,\LTCtop,\RLneg{\QTargument})$.
+\end{example}
+
+\begin{table}[hbt]
+\begin{center}
+  \begin{tabular}{c|cc}
+  $\RLimp$ & $\LTCbot$ &  $\LTCtop$  \\ \hline
+  $\LTCbot$  & $\LTCtop$ &  $\LTCtop$ \\
+  $\LTCtop$  & $\LTCbot$ &  $\LTCtop$ \\
+  \end{tabular}
+\hskip 18pt
+  \begin{tabular}{c|c}
+  $\RLneg{\QTargument}$ 
+      & $\RLzero = \LTCbot$   \\ \hline
+  $\LTCbot$  & $\LTCtop$ \\
+  $\LTCtop$  & $\LTCbot$  \\
+  \end{tabular}
+  \caption{Carley Tables for $\RLimp$ and $\RLneg{\QTargument}$ ($\RLzero = \LTCbot$)}
+  \end{center}
+\end{table}
+
+\begin{example} [two elements residual lattices]
+$(\set{\LTCbot,\LTCtop},\vee,\LTCbot,\wedge,\LTCtop,\RLimp,\RLotimes,\RLone)$.
+$\RLone$ and $\LTCbot$ are required to be distinct because of residual law: 
+we have $\LTCtop \RLotimes \RLone = \LTCtop$  whereas residual law forces 
+$\LTCtop \RLotimes \LTCbot = \LTCbot$. 
+So the only possibility is to set $\RLone = \LTCtop$;  i.e. weakening law holds.
+We also have $\LTCtop \RLotimes \LTCtop = \LTCtop$ and $\LTCbot \RLotimes \LTCbot = \LTCbot$;
+i.e. contraction law holds. 
+Hence this is a Heyting algebra(Proposition~\ref{RL:WeakeningContraction}).
+If we add linear negation, there are two cases. 
+\begin{enumerate}
+\item {\em $\RLzero = \LTCbot$}: In this case, the linear negation is the standard definition 
+of negation ($\RLneg{a} = a \RLimp \LTCbot$) in Heyting algebras. 
+Since  $\RLneg{\LTCtop} = \LTCbot$ and $\RLneg{\LTCbot} = \LTCtop$, 
+both elements satisfies $a = \dRLneg{a}$. 
+That is, this is a well known two elements boolean algebra. 
+\item {\em $\RLzero = \LTCtop$}: 
+This is a two element lattice with $\RLneg{\LTCtop} = \RLneg{\LTCbot} = \LTCtop$.
+\end{enumerate}
+\end{example}
+
+\begin{example} [three elements residual lattices]
+
+There are two cases according to the choice of $\RLone$. 
+\begin{enumerate}
+\item {\em $m = \RLone$}:
+\begin{center}
+   \begin{tabular}{c|ccc}
+  $\RLotimes$ & $\LTCbot$ &  $\RLone$  & $\LTCtop$ \\ \hline
+  $\LTCbot$  &  $\LTCbot$ & $\LTCbot$  & $\LTCbot$   \\
+  $\RLone$  &     & $\RLone$  & $\LTCtop$  \\
+  $\LTCtop$   &     &     & $\LTCtop$  \\
+\end{tabular}
+\hskip 48pt
+\begin{tabular}{c|ccc}
+  $\RLimp$   & $\LTCbot$ & $\RLone$ & $\LTCtop$  \\ \hline
+  $\LTCbot$  & $\LTCtop$ & $\LTCtop$ & $\LTCtop$ \\
+  $\RLone$   & $\LTCbot$ & $\RLone$ & $\LTCtop$ \\
+  $\LTCtop$  & $\LTCbot$ & $\LTCbot$ & $\LTCtop$ \\
+\end{tabular}
+\end{center}
+%%
+\item {\em $\RLone = \LTCtop$}:  i.e. weakening law holds.
+\begin{center}
+\begin{tabular}{c|ccc}
+  $\RLotimes$ & $\LTCbot$ &  $m$  & $\RLone$ \\ \hline
+  $\LTCbot$  &  $\LTCbot$ & $\LTCbot$  & $\LTCbot$   \\
+  $m$  &     & ?  & $m$  \\
+  $\RLone$   &     &     & $\RLone$  \\
+\end{tabular}
+\end{center}
+$m \leq \RLone$ (weakening) means $m \RLotimes m \leq m$, hence there are two sub-cases;
+\begin{enumerate}
+%
+\item {\em $m \RLotimes m = \LTCbot$}:
+\begin{tabular}{c|ccc}
+  $\RLotimes$ & $\LTCbot$ &  $m$  & $\RLone$ \\ \hline
+  $\LTCbot$  &  $\LTCbot$ & $\LTCbot$  & $\LTCbot$   \\
+  $m$  &     & $\LTCbot$  & $m$  \\
+  $\RLone$   &     &     & $\RLone$  \\
+\end{tabular}
+\hskip 48pt
+\begin{tabular}{c|ccc}
+  $\RLimp$   & $\LTCbot$ & $m$ & $\RLone$  \\ \hline
+  $\LTCbot$  & $\RLone$ & $\RLone$ & $\RLone$ \\
+  $m$        & $m$ & $\RLone$ & $\RLone$ \\
+  $\RLone$  & $\LTCbot$ & $m$ & $\RLone$ \\
+\end{tabular}
+%
+\item {\em $m \RLotimes m = m$}: i.e. contraction law holds.
+This is a three element Heyting algebra.
+\begin{tabular}{c|ccc}
+  $\RLotimes$ & $\LTCbot$ &  $m$  & $\RLone$ \\ \hline
+  $\LTCbot$  &  $\LTCbot$ & $\LTCbot$  & $\LTCbot$   \\
+  $m$  &     & $m$  & $m$  \\
+  $\RLone$   &     &     & $\RLone$  \\
+\end{tabular}
+\hskip 48pt 
+\begin{tabular}{c|ccc}
+  $\RLimp$   & $\LTCbot$ & $m$ & $\RLone$  \\ \hline
+  $\LTCbot$  & $\RLone$ & $\RLone$ & $\RLone$ \\
+  $m$        & $\LTCbot$ & $\RLone$ & $\RLone$ \\
+  $\RLone$  & $\LTCbot$ & $m$ & $\RLone$ \\
+\end{tabular}
+\end{enumerate}
+\end{enumerate}
+\end{example}
+
+\begin{example} [four elements residual lattice with weakening]
+\begin{enumerate}
+\item {\em with contraction, i.e., 4-elemnents Heyting Algebra}
+There are two cases; one is  total order and the other is not. 
+\begin{figure}[ht]
+\begin{tikzpicture}[description/.style={fill=white,inner sep=2pt}]
+\matrix (m) [matrix of math nodes, row sep=1.5em,
+column sep=0.3em, text height=1.5ex, text depth=0.25ex]
+{ 
+& \top &\\
+a & & b  \\
+& \bot &\\
+};
+\path[-] 
+(m-2-1) edge (m-1-2)
+		edge (m-3-2)
+(m-2-3) edge (m-1-2)
+		edge (m-3-2) ;
+\end{tikzpicture}
+
+\begin{tikzpicture}[description/.style={fill=white,inner sep=2pt}]
+\matrix (m) [matrix of math nodes, row sep=1.5em,
+column sep=0.3em, text height=1.5ex, text depth=0.25ex]
+{ 
+& \top  \\
+& a \\
+& b \\
+& \bot \\
+};
+\path[-] 
+(m-3-2) edge (m-4-2)
+(m-2-2) edge (m-1-2) edge (m-3-2) ;
+\end{tikzpicture}
+
+\caption{Example: four elemnts Heyting Algebras}
+\label{RL:EX01}
+\end{figure}
+
+
+\item 
+\end{enumerate}
+\end{example}
+
+\begin{example} [four elements residual lattice with weakening]
+\end{example}

@@ -1,0 +1,271 @@
+\def\fCenter{\subseteq}
+
+\section{Phase Space}
+
+\begin{definition}[power set] 
+Given a set $M$,
+the power set of  $M$ is the set of all subsets of $M$
+including the $\emptyset$ (empty set) and $M$ itself.
+\end{definition}
+The power set of $M$ is denoted by $\PSpowerset{M}$.
+%%
+Recall that 
+$(\PSpowerset{M},\cup,\emptyset,\cap,M,{\PSargument}^{\complement}) $ 
+is always a complete boolean algebra, 
+where $\cup$(set union), $\emptyset$(empty set),
+$\cap$(set intersection) and ${\PSargument}^{\complement}$(set complement) 
+are the usual set-theoretic operations. It is ordered by $\subseteq$(set inclusion).
+%
+\begin{definition}
+Let $(M,\PScdot,\PSidentity)$ be a commutative monoid. A binary function
+%
+$ {\PSargument} { \PScdot} {\PSargument} : M \times M \longrightarrow M$ 
+%
+is naturally extended to binary operations on $\PSpowerset{M}$:
+ \begin{eqnarray*}
+ Z \otimes X  &=&  \bigcup \set{ z \PScdot x | z \in Z,  x \in X} \\
+ X \multimap Y  &=&  \bigcup \set{ z  | \forall x \in X (z \PScdot x \in Y)} 
+ \end{eqnarray*}
+ for any subset $X$,$Y$ of $M$.
+That is, 
+$ Z \otimes X$ contains all the possible interactions 
+between one element of $z \in Z$ and one element of $x \in X$. 
+$ X \multimap Y$ contains all the possible elements $z \in Z$
+such that $\forall x \in X (z \PScdot x \in Y)$.
+\end{definition}
+%%
+\begin{proposition}
+Let $(M,\cdot,\PSidentity) $ be a commutative monoid.
+$(\PSpowerset{M},\cup,\emptyset,\cap,M,\multimap,\otimes,\set{\PSidentity}) $ 
+is an IL-algebra.
+\end{proposition}
+\begin{proof}
+\begin{enumerate}
+%
+\item {\em lattice}: $(\PSpowerset{M},\cup,\emptyset,\cap,M)$ 
+is a lattice. 
+%
+\item {\em commutative monoid}:
+The extension of $\PScdot$ to $\PSpowerset{M}$  induces  a commutative monoid $(\PSpowerset{M},\otimes,\set{\PSidentity}) $. 
+%
+\item {\em residual law}: 
+for each pair of elements $(X,Y)$, 
+there exists an element $X \QTmultimap Y$  
+such that residual law holds: \hskip -7cm
+\begin{prooftree}
+	\AxiomC{$ Z \otimes X \fCenter Y$}
+	\doubleLine
+	\UnaryInfC{$ Z \fCenter X \multimap Y$}
+\end{prooftree}
+\end{enumerate}
+\end{proof}
+
+%%%
+
+\begin{definition}[phase space]
+A phase space is a quadruple $(\PSpowerset{M},\cdot,\set{\PSidentity},\PSzero)$ 
+where
+\begin{enumerate}
+\item {\em commutative monoid}:$(\PSpowerset{M},{\otimes},\set{\PSidentity}) $ 
+is a commutative monoid.
+\item {\em multiplicative zero}: ${\PSzero}$ 
+is a designated subset of $M$ ($ \PSzero \subseteq M$) 
+called {\it multiplicative zero}. 
+\end{enumerate}
+\end{definition}
+%%
+The elements of $\PSpowerset{M}$ are called phases. 
+
+%
+\begin{definition}[relation]
+A relation is any subset of a Cartesian product.  A subset of  $X \times Y$, called a binary relation from $X$ to $Y$,
+is a collection of ordered pairs $(x,y)$ with first components from $X$ and second components from $Y$.
+\end{definition}
+%%
+\begin{definition}[linear negation]
+We write $\bot$ for the relation  $\set{ (x,y) | x \cdot y \in \PSzero}$.
+We define the linear negation operator  $\lneg{\PSargument} : X \longrightarrow Y$ as  $y \in \lneg{X}  \mbox{ iff for every }  x \in X \mbox{  we have  }  (x,y) \in \bot $.
+\end{definition}
+%
+%\begin{definition}[linear negation]
+%We define the linear negation operator  
+%$\lneg{\PSargument} : X \longrightarrow Y$ as follows:
+%
+% \[ y \in \lneg{X}  \mbox{ iff for every }  x \in X \mbox{  we have  }  (x,y) \in \bot \]
+%
+%\end{definition}
+An easy consequence of the above definition is that 
+$\lneg{\PSemptyset} = M$,
+$\lneg{\set{\PSidentity}} = \PSzero$
+  and $X \otimes \lneg{X} \subseteq \PSzero$. 
+%
+\begin{proposition} For any subset $X,Y,Z$ of $M$, we have the following property. 
+\begin{enumerate}
+\item $Z \subseteq X$  implies  $Z \otimes \lneg{X} \subseteq \PSzero$. 
+\item $X \otimes Y \subseteq \PSzero$  iff $Y \subseteq \lneg{X}$.
+\end{enumerate}
+\end{proposition}
+\begin{proof}
+(1) For every $z \in Z \subseteq X$ and $y \in \lneg{X}$ we have $(z,y) \in \bot$. 
+(2) From assumption, for every $x \in X$  and $y \in Y$  we have $(x,y) \in \bot$. Hence $Y \subseteq \lneg{X}$ by definition. Conversely, if $ y \in Y \subseteq \lneg{X}$, we have $(x,y) \in \bot$ for every $x \in X$ and $y \in Y$. 
+\end{proof}
+%
+%
+\begin{proposition} [closure operator]
+For any subset $X,Y$ of $M$, $\dlneg{\PSargument}$ is the closure operator on $X,Y$. 
+Explicitly, $\dlneg{\PSargument} : X \longrightarrow X$ is a closure operator if the following conditions hold:
+%
+\begin{enumerate}
+\item $X \subseteq \dlneg{X}$.
+\item If $X \subseteq Y$ then $\dlneg{X} \subseteq \dlneg{Y}$.
+\item $\dlneg{(\dlneg{X})} \subseteq \dlneg{X}$.
+\item $\dlneg{X} \otimes \dlneg{Y} \subseteq \dlneg{(X \otimes Y)}$.
+\end{enumerate}
+\end{proposition}
+%
+\begin{proof}
+\begin{prooftree}
+\AxiomC {$ X \fCenter X$}
+\RightLabel{(1)} \UnaryInfC  {$X \otimes \lneg{X} \fCenter \PSzero$}
+\RightLabel{(2)} \UnaryInfC  {$X \fCenter \dlneg{X}$}
+\DisplayProof \hskip 24pt
+%
+\AxiomC {$ X \fCenter Y $}
+\RightLabel{(1)} \UnaryInfC  {$X \otimes \lneg{Y} \fCenter \PSzero$}
+\RightLabel{(2)} \UnaryInfC  {$\lneg{Y} \fCenter \lneg{X}$}
+\RightLabel{(1)(2)} \UnaryInfC  {$\dlneg{X} \fCenter \dlneg{Y}$}
+\DisplayProof \hskip 24pt
+%
+\AxiomC {$\lneg{X} \fCenter \dlneg{(\lneg{X})}$}
+\RightLabel{(1)(2)} \UnaryInfC  {$\dlneg{(\dlneg{X})} \fCenter \dlneg{X}$}
+\end{prooftree}
+%
+\begin{prooftree}
+\AxiomC {$ X \otimes Y \fCenter X \otimes Y$}
+\RightLabel{(1)}
+ \UnaryInfC {$ X \otimes Y \otimes \lneg{( X \otimes Y)} \fCenter \PSzero$}
+\RightLabel{(2)(1)(2)(1)}
+\UnaryInfC {$ \dlneg{X} \otimes \dlneg{Y}  \otimes \lneg{( X \otimes Y)} 
+                \fCenter \PSzero$}
+\RightLabel{(2)}
+\UnaryInfC  {$\dlneg{X} \otimes \dlneg{Y} \fCenter \dlneg{(X \otimes Y)}$}
+\end{prooftree}
+\end{proof}
+
+\begin{definition} [fact] 
+A fact in a phase space is a fixed point for the closure operator. Explicitly, for any subset $X$ of $M$, $X$ is a fact if $X = \dlneg{X}$. 
+\end{definition}
+
+\begin{proposition}  \label{propOfFact}
+We have the following property about facts:
+\begin{enumerate}
+\item $\lneg{X}$ is a fact. 
+\item $\dlneg{X}$ is the smallest fact that includes $X$. 
+\end{enumerate}
+\end{proposition}
+%
+\begin{proof}
+(1) $\lneg{X}$ is a fact because of $\lneg{X} = \dlneg{(\lneg{X})}$. 
+(2) Suppose $Y$ is any fact that includes $X$  (i.e., $Y = \dlneg{Y}$ and $X \subseteq Y$) .
+Then $X \subseteq Y$ implies $\dlneg{X} \subseteq \dlneg{Y} = Y$.
+It directly follows that $\dlneg{X}$ is the smallest among those facts. 
+
+\end{proof}
+%
+\begin{proposition}
+The set of facts of a phase space is a complete lattice. 
+\end{proposition}
+\begin{proof}
+We define phase space operators, 
+$\PSlub$ (least upper bound, lub) and $\PSglb$ (greatest lower bound, glb),  
+for $(X_i)_{i \in I} \subseteq \PSpowerset{M}$, a family of subsets of $M$,  as follows:
+%
+\[
+\PSlub = \dlnegP{\bigcup_{ i \in I}  X_i} 
+\hskip 24pt \mbox{and} \hskip 24pt
+\PSglb = \bigcap_{ i \in I}  X_i \mbox{.}
+\]
+%
+$\PSlub$ is obviously a fact, it suffices to prove it is indeed a lub.
+%%
+$\PSlub$ is an upper bound 
+because $X_i \subseteq \bigcup X_i$ implies $X_i = \dlneg{X_i} \subseteq \PSlub$.
+%%
+If $Y$ is an upper bound, i.e., $X_i \subseteq Y$ for all $i$, 
+then $\cup X_i \subseteq Y$,  $\PSlub \subseteq \dlneg{Y} = Y $, 
+so $\PSlub$ is indeed a lub within the set of facts. \\
+%%
+$\PSglb$ is obviously a glb, it suffices to prove it is indeed a fact. 
+$\PSglb \subseteq X_i$ implies $\dlnegP{\PSglb} \subseteq \dlneg{X_i} = X_i$ for each $i$, 
+hence $\dlnegP{\PSglb} \subseteq \PSglb$. \\
+\end{proof}
+
+%%%
+\subsection{phase space semantics}
+
+\begin{proposition} [phase space units]
+According to the corresponding logical units of linear logic, we designate four facts as follows:
+\begin{itemize}
+\item $\PSzero$ (multiplicative zero) and  $\PSunit = \lnegP{\PSzero} $ (multiplicative unit).
+\item $ \PStrue = M$ (additive true) and $\PSfalse = \lneg{M}$ (additive false). 
+\end{itemize}
+\end{proposition}
+\begin{proof}
+$\PStrue = M = \lneg{\PSemptyset}$ and $\PSzero = \lneg{\set{\PSidentity}}$ are facts from proposition~\ref{propOfFact}.
+\end{proof}
+%
+Notice also that $\PSfalse = \dlneg{\PSemptyset}$ is the smallest fact 
+out of all facts in a phase space.
+$\PSunit = \dlneg{\set{\PSidentity}}$ is the smallest fact containing $\PSidentity$. 
+
+\begin{definition} [phase space operators]
+We define the phase space operators as follows:
+\begin{eqnarray*}
+X \with Y =  X \cap Y,
+ &\phantom{XXXXX}&  X \oplus  Y  = \dlnegP{X \cup Y}, \\ 
+X \parr  Y  = \lnegP{\lneg{X} \otimes \lneg{Y}} ,
+ &\phantom{XXXXX}& X \otimes Y = \dlnegP{X \otimes Y},\\
+\wn X = \lnegP{\lneg{X} \cap \PSexpStandard},
+ &\phantom{XXXXX}& \oc X = \dlnegP{X \cap \PSexpStandard},
+\end{eqnarray*}
+where $\PSexpStandard = \set{ x \in \PSunit | x = x^2 }$. 
+\end{definition}
+%%%
+\begin{proposition}
+$\otimes$ distributes over $\bigoplus$. 
+\end{proposition}
+\begin{proof}
+$ Y \cdot X_i \subseteq Y \cdot (\PSlub)$ implies 
+$Y \otimes X_i \subseteq \PSdist$ for each $i$, 
+and therefore $\bigcup (Y \otimes X_i) \subseteq \PSdist$. 
+This implies $ \PSsrc  \subseteq \PSdist $.
+Conversely,  $\PSdist = \dlnegP{\dlneg{Y} \cdot \dlnegP{\bigcup X_i}}
+= \dlnegP{Y \cdot \bigcup X_i} = \dlnegP{ \bigcup (Y \cdot X_i)} =  \PSpre$. 
+But $\PSpre \subseteq \PSsrc$, this completes the proof. 
+\end{proof}
+%%
+\begin{definition} [phase space model]
+Given a formula $A$ of linear logic and an assignation that associate a fact $\alpha^{M}$ to any variable $\alpha$. 
+A phase space model is a phase space together with a fact  for each (propositional) variables. 
+We define a interpretation $\interpret{\PSargument}$ of a formula  $A$ in a phase space$(M,\cdot,\PSidentity,\PSzero)$  by structural induction as follows:
+\begin{itemize}
+\item $\interpretP{X \otimes Y} = \interpret{X} \otimes \interpret{Y}$.
+\item $\interpretP{X \oplus  Y}   = \interpret{X} \oplus \interpret{Y}$.
+\end{itemize}
+$\interpret{\PSargument}$ is lifted to contexts (multiset of formulas)  as  
+%
+$\interpretP{A_1,\ldots,A_n} 
+   = \interpretP{A_1} \otimes \ldots \otimes \interpretP{A_n}$.
+%
+\end{definition}
+
+
+\begin{theorem}[Soundness]
+Let $\Gamma \LLvdash B$ be a provable sequent in linear logic.
+Then $ \interpret{\Gamma} \subseteq \interpret{B}$ for any assignment for variables. 
+\end{theorem}
+\begin{proof}
+By induction  on proofs.
+\end{proof}
+
+

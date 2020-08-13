@@ -1,0 +1,190 @@
+
+
+
+\subsection{Quotient Algebra}
+
+\begin{definition}[equivalence relation]
+Let $A$ be a set. 
+A {\em equivalence relation} on $A$ is a binary relation $\sim$ which is
+\begin{enumerate}
+\item {\em reflexive}: for all $a \in A$,  $a \sim a$,
+\item {\em transitive}:  if $a \sim b$ and $b \sim c$, then $a \sim c$, and
+\item {\em symmetric}:  $a \sim b$ iff  $b \sim a$.
+\end{enumerate}
+\end{definition}
+
+
+\begin{definition}[equivalence class]
+Let $A$ be a set with an equivalence relation $\sim$ on $A$.
+The {\em equivalence class}, denoted by $[a]$ of an element $a \in A$ 
+is the set  of elements which are equivalent to a. 
+We call $a$ the {\em representative} of $[a]$.
+Formally,
+\[ 
+[a] = \set{ x \in A | x \sim a}
+\]
+\end{definition}
+
+\begin{proposition}
+Let $A$ be a set and $\sim$ an equivalence relation on $A$. 
+For any $a \in A$, $a \in [a]$.
+\end{proposition}
+
+\begin{proof}
+\begin{prooftree}
+\AxiomC{$ a \sim a$}
+\UnaryInfC{$ a \in [a] $}
+\end{prooftree}
+\end{proof}
+
+\begin{lemma}
+Let $A$ be a set and $\sim$ an equivalence relation on $A$. 
+These statements are equivalent:
+\begin{enumerate}
+\item $[a] \cap [b] \neq \emptyset$
+\item $a \sim b$
+\item $ [a] = [b]$
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+(1)  $\Rightarrow$ (2)
+There exists an $x \in A$ such that $x \in [a]$ and $x \in [b]$. 
+This means $x \sim a$ and $x \sim b$, implying $a \sim b$ by transitivity. \\
+%%
+(2) $\Rightarrow$ (3)
+Let $a \sim b$. 
+For any $x \in [a]$ we have $x \sim a$. 
+From $x \sim a$ and $a \sim b$, we have $x \sim b$ by transitivity,
+i.e. $x \in [b]$. 
+Hence $[a] \subseteq [b]$. 
+Similarly we have $[b] \subseteq [a]$  because $b \sim a$ by symmetricity.
+Hence [a]=[b]. \\
+%%
+(3) $\Rightarrow$ (1)
+If $[a] = [b]$ then $[a] \cap [b] = [a] \neq \emptyset$. 
+\begin{prooftree}
+\AxiomC{$ x \in [a] $}
+\UnaryInfC{$ x \sim  a $}
+\AxiomC{$ x \in [b] $}
+\UnaryInfC{$ x \sim  b $}
+\BinaryInfC{$a \sim b$}
+	\DisplayProof  \hskip 48pt
+\AxiomC{$ x \in [a] $}
+\UnaryInfC{$ x \sim  a $}
+\AxiomC{$ a \sim b$}
+\BinaryInfC{$ x \sim b$}
+\UnaryInfC{$x \in [b] $}
+\end{prooftree}
+\end{proof}
+
+
+
+
+\begin{proposition}
+Let $A$ be a set and $\sim$ an equivalence relation on $A$. 
+For an equivalence class $S$, 
+any element $a \in S$ can be used as a representative of S, 
+guaranteeing $[a] = S$.
+\end{proposition}
+
+In other words, the equivalence classes form a partition of $A$. 
+This partition (i.e., the set of equivalence classes)
+is called "the quotient set of $A$ by $\sim$"
+and is denoted by $A / \sim$. 
+
+\begin{definition}[compatible relation]
+Let $A$ be a set with an equivalence relation $\sim$ on $A$.
+The equivalence relation $\sim$ is said to be compatible with 
+(or have the substitution property with respect to)
+\item a binary operation $\QTargument \cdot \QTargument$
+if for all $a_1,a_2,b_1,b_2 \in A$ 
+whenever $a_1 \sim b_1$ and $a_2 \sim b_2$ implies 
+$a_1 \cdot b_1 \sim  a_2 \cdot b_2$.
+\end{definition}
+
+\begin{definition}[congruence]
+A {\em congruence} is an equivalence relation on an algebraic structure 
+that is compatible with all the operations of an algebra.
+\end{definition}
+
+A {\em quotient algebra} is obtained 
+by partitioning the elements of an algebra into equivalence classes 
+given by a congruence relation.
+It is straightforward to define the operations induced on $A/\sim$.
+
+\begin{definition} [quotient algebra]
+Let $(A,\cdot)$ be an algebra, where $\cdot$ are each operations in $A$.
+Let $\sim$ be a a congruence relation on $A$. 
+Define an operation on $A / \sim$ such that
+\[ [A] \cdot [B]  = [A \cdot B] \]
+Then  $ (A / \sim, \cdot)$ is called the {\em quotient algebra}. 
+\end{definition}
+
+\subsection{Soundness}
+
+\begin{definition} [CRL mode]
+A {\em CRL model} consists of a CRL 
+with an interpretation $\interpret{\QTargument}$.
+\end{definition}
+
+
+
+\begin{definition} [interpretation]
+Let $(M,
+\interpret{\LLoplus},\interpret{\LLzero},
+\interpret{\with},\interpret{\LLtop},
+\interpret{\LLimp},\interpret{\LLotimes},\interpret{\LLone})$ be a CRL. 
+%%
+The base of an interpretation $\interpret{\QTargument}$  
+is an assignation $\sigma$ 
+that associate an element of CRL to any propositional variable.
+%%
+$\interpret{\QTargument}$ is extended to arbitrary formulas by
+\[ \interpretP{A \cdot B}  =  \interpret{A} \interpret{\cdot} \interpret{B} \] 
+%%
+$\interpret{\QTargument}$ is extended to multisets by
+\[
+\interpret{\Lambda} = \interpret{\LLone}
+\]
+\[
+\interpret{\Gamma} = 
+\interpret{A_1} \interpret{\LLotimes}, \ldots, \interpret{\LLotimes}
+\interpret{A_n} 
+\]
+\end{definition}
+
+
+\begin{theorem} [soundness]
+If $\Gamma \entails D$ is provable in {\MALLsystem}, 
+then $\interpret{\Gamma} \leq \interpret{D}$. 
+\end{theorem}
+\begin{proof}
+By induction on the length of derivations. 
+\end{proof}
+
+\begin{theorem} [completeness]
+Let $F$ be a set of formulas of {\MALLsystem}. 
+Let $\sim$ be a congruence relation defined as follows:
+\[  A \sim B  
+\hskip 12pt \text{iff} 
+\hskip 12pt \text{both} \hskip 12pt A \entails B 
+\hskip 12pt \text{and}  \hskip 12pt B \entails A 
+\hskip 12pt \text{are provable in {\MALLsystem}.} \]
+
+Let $ F / \sim $ be a quotient algebra. 
+Then $ F / \sim $ is a CRL.
+
+$ [A] \leq [B]$  is defined by  $A \with B \sim A$.
+
+\[ [A] \with [B] = [ A \with B ] =  [A] 
+\hskip 12pt \text{iff} \hskip 12pt A \with B \sim A\]
+
+Then
+\[
+A \entails B  \hskip 12pt \text{iff}  \hskip 12pt  [A]  \leq [B] 
+\]
+\end{theorem}
+
+
+

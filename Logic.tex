@@ -1,0 +1,85 @@
+\def\fCenter{\entails}
+
+In this subsection, we recall necessary definitions and
+notations. 
+%
+% Formulas
+%
+\begin{definition}[formulas]
+{\em Formulas} ranged over by $A,B,C,\ldots$ are built up by the
+constructor from a set of propositional variables. 
+%%%
+The formulas are inductively defined as follows:
+\begin{enumerate}
+\item Each propositional variable ranged over $P,Q,R,\ldots$ is a formula.
+\item Each constant $\LLbot$, $\LLtop$, $\LLone$, $\LLzero$ is a formula. 
+\item If $A$ is a formula, then $\lneg{A}$ is a formula.
+\item If $A$ and $B$ are formulas, 
+and $\cdot$  is any binary connective, then $(A \cdot B)$ is a formula.
+\end{enumerate}
+\end{definition}
+
+Here $\cdot$  are  
+$\LLoplus$, $\with$, $\LLotimes$ or $\parr$. 
+%%%
+Here is a definition by Backus-Naur Form;
+\begin{bnf*}
+	\bnfprod{propositional variable}  
+    	{P,Q,R,\ldots} \\
+    \bnfprod{constant}  
+    	{\LLbot,\LLtop,\LLone,\LLzero} \\
+    \bnfprod{formula} {
+		\bnfpn{propositional variable} \bnfor
+		\bnfpn{constant} \bnfor
+		\lneg{\bnfpn{formula}} \bnfor
+		\bnfpn{formula} \bnfsp \cdot \bnfsp \bnfpn{formula}
+	}
+\end{bnf*}
+
+%
+% Context
+%
+\begin{definition}[context]
+{\em Contexts} ranged over by $\Gamma,\Delta$ are {\bf multisets} of  formulas. 
+Comma means taking union as multisets. Thus, the set $\Gamma_0
+\cup \Gamma_1$ is denoted by ``$\Gamma_0,\Gamma_1$''.
+\end{definition}
+%
+% Sequents
+%
+\begin{definition}[sequents]
+A Gentzen-style {\em Sequents} are of the form:
+\[{\Gamma} \Rightarrow {D} \]
+where $\Rightarrow$ is the {\bf entailment sign} of the calculus.
+\end{definition}
+%
+% Multiplicative
+% 
+The use of multisets of formulas in the interpretation of the sequent 
+eliminates the need for an explicit permutation rule. 
+This corresponds to shifting associativity and commutativity 
+outside the sequent calculus.
+
+The use of multisets also implies 
+that we have to handle multiplicative and additive rules differently. 
+It also means that we have to include contraction rules explicitly. 
+This corresponds to including idempotency inside the sequent calculus. 
+The name multiplicative and additive is from Girard's linear logic\cite{Girard87tcs}.
+It is the most common nowadays. 
+%
+In classical logic, one can use structural rules of weakening and contraction for free.
+Hence these distinct formulations of the sequent calculi are interderivable, 
+and the two styles of the binary connectives are provably equivalent. 
+Because of this, the distinction is often overlooked
+in the previous literature. For example, in Gentzen's original
+definition of {\sf LK}, the conjunction and the
+disjunction is defined as additive, while the implication is defined
+as multiplicative. In multiplicative style, divided contexts in the
+conclusion is the union of divided contexts in the premises.
+
+Surprisingly, some small changes in the rules of {\sf LK} ({\sf CLL}) suffice 
+to turn it into a proof system for {\sf LJ} ({\sf ILL} respectively). 
+One has to restrict to sequents with exactly one formula on the right-hand side, 
+and modify the rules to maintain this invariant. 
+
+\input{MALL}

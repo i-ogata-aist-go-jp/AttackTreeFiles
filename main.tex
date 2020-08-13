@@ -1,0 +1,72 @@
+% !TEX TS-program = xelatex
+
+% This is a simple template for a LaTeX document using the "article" class.
+% See "book", "report", "letter" for other types of document.
+
+\documentclass[11pt]{article} % use larger type; default would be 10pt
+\bibliographystyle{plain} 
+
+\input{packages}
+\input{preamble}
+
+%%% The "real" document content comes below...
+
+% \title{A Propositional Linear Logic semantics \\
+ %  for Attack Tree Analysis}
+ \title{Multiplicative Additive Linear Logic (MALL)  \\
+ is complete  with respect to the class of \\
+ Commutative Residuated Lattice (CRL)}
+\author{Ichiro Ogata}
+%\date{} % Activate to display a given date or no date (if empty),
+         % otherwise the current date is printed 
+
+\begin{document}
+\maketitle
+
+\input{abs}
+
+\section{Introduction}
+\input{intro}
+
+\section{CLL Sequent Semantics}
+\input{Archive/CLLsequent}
+
+\section{CLL-algebra Semantics}
+\input{Lindenbaum-Tarski-Algebra}
+\input{Archive/CLLalgebra}
+
+\input{ClassicalLogic}
+\input{LinearLogic}
+
+
+
+\section{Logic}
+\input{Logic}
+
+\section{Algebras}
+\input{Algebra}
+
+\section{Soundness and Completeness}
+\input{SoundAndComplete}
+
+\section{Phase Spaces and Boolean Algebras}
+\input{PSandBA}
+\section{Concrete Examples of Residuated Lattices}
+\input{ConcreteExamples}
+
+\appendix
+\section{appendices}
+
+\input{Examples}
+\input{HAasAnExample}
+\input{PSasAnExample}
+
+\input{QuantifiedValuation}
+
+\section{further work}
+\input{FutureWork}
+
+\appendix 
+
+\bibliography{BiB/LinearLogicPfenning,BiB/AttackTree,BiB/algebra} 
+\end{document}

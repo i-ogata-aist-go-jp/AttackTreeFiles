@@ -1,0 +1,102 @@
+%%
+%% HBT Hilbert
+%%
+% HBT combinators
+\newcommand{\HBTcombI}{\mbox{\boldmath{I}}}
+\newcommand{\HBTcombB}{\mbox{\boldmath{B}}}
+\newcommand{\HBTcombC}{\mbox{\boldmath{C}}}
+\newcommand{\HBTcombK}{\mbox{\boldmath{K}}}
+\newcommand{\HBTcombW}{\mbox{\boldmath{W}}}
+\newcommand{\HBTcombINL}{\mbox{\sf\boldmath{inl}}}
+\newcommand{\HBTcombINR}{\mbox{\sf\boldmath{inr}}}
+\newcommand{\HBTcombCOMP}{\mbox{\sf\boldmath{comp}}}
+\newcommand{\HBTcombIMPORT}{\mbox{\sf\boldmath{import}}}
+\newcommand{\HBTcombTOP}{\mbox{\sf\boldmath{top}}}
+%
+\newcommand{\HBTcombBtype}[3]{\HBTcombB_{{#1},{#2},{#3}}}
+\newcommand{\HBTcombCtype}[3]{\HBTcombC_{{#1},{#2},{#3}}}
+\newcommand{\HBTcombKtype}[2]{\HBTcombK_{{#1},{#2}}}
+\newcommand{\HBTcombWtype}[2]{\HBTcombW_{{#1},{#2}}}
+\newcommand{\HBTcombCOMPtype}[3]{\HBTcombCOMP_{{#1},{#2},{#3}}}
+\newcommand{\HBTcombIMPORTtype}[3]{\HBTcombIMPORT_{{#1},{#2},{#3}}}
+%
+\newcommand{\HBTtermI}[1]{
+	\HBTterm
+		{\HBTcombI_{#1}}
+		{\LTCimpNP{#1}{#1}}}
+\newcommand{\HBTtermB}[3]{
+	\HBTterm
+		{\HBTcombB_{{#1},{#2},{#3}}}
+		{\LTCimpNP
+			{\LTCimpP{#1}{#2}}
+			{\LTCimpP
+				{\LTCimpP{#2}{#3}}
+				{\LTCimpP{#1}{#3}}}}}
+\newcommand{\HBTtermC}[3]{
+	\HBTterm
+		{\HBTcombC_{{#1},{#2},{#3}}}
+		{\LTCimpNP
+			{\LTCimpOneTwoThreeP{#1}{#2}{#3}}
+			{\LTCimpOneTwoThreeP{#2}{#1}{#3}}}}
+\newcommand{\HBTtermK}[2]{
+	\HBTterm
+		{\HBTcombK_{{#1},{#2}}}
+		{\LTCimpOneTwoThree{#2}{#1}{#2}}}
+\newcommand{\HBTtermCK}[2]{
+	\HBTterm
+		{\HBTcombC\HBTcombK_{{#1},{#2}}}
+		{\LTCimpOneTwoThree{#1}{#2}{#2}}}
+\newcommand{\HBTtermW}[2]{
+	\HBTterm
+		{\HBTcombW_{{#1},{#2}}}
+		{\LTCimpNP
+			{\LTCimpOneTwoThreeP{#1}{#1}{#2}}
+			{\LTCimpP{#1}{#2}}}}
+\newcommand{\HBTtermINL}[2]{
+	\HBTterm
+		{\HBTcombINL_{{#1},{#2}}}
+		{\LTCimpNP	{\LTCmeetP{#1}{#2}}	{#1}}}
+\newcommand{\HBTtermINR}[2]{
+	\HBTterm
+		{\HBTcombINR_{{#1},{#2}}}
+		{\LTCimpNP	{\LTCmeetP{#1}{#2}}	{#2}}}
+\newcommand{\HBTtermCOMP}[3]{
+	\HBTterm
+		{\HBTcombCOMPtype{#1}{#2}{#3}}
+		{\LTCimpNP 
+			{\LTCmeetP
+				{\LTCimpP{#3}{#1}}  {\LTCimpP{#3}{#2}}}
+			{\LTCimpP{#3}{\LTCmeetP{#1}{#2}}}}}
+\newcommand{\HBTtermIMPORT}[3]{
+	\HBTterm{\HBTcombIMPORTtype{#1}{#2}{#3}}
+	{\LTCimpNP
+		{(\LTCimpOneTwoThree{#1}{#2}{#3})}	
+		{(\LTCmeetimpOneTwoThree{#1}{#2}{#3})}}}
+\newcommand{\HBTtermTOP}{
+	\HBTterm{\HBTcombTOP}{\LTCtrue}}
+%
+% HBT  Curry-Howard term calculus 
+\newcommand{\HBTterm}[2]{ {#1}  :   {#2} }
+\newcommand{\HBTmp}[3] 
+	{\RightLabel{Modus Ponens}  \AxiomC {$#1$}   \AxiomC {$#2$}   \BinaryInfC  {$#3$}  }
+\newcommand{\HBTadj}[3] 
+	{\RightLabel{Adjunction}  \AxiomC {$#1$}   \AxiomC {$#2$}   \BinaryInfC  {$#3$}  }
+%
+\newcommand{\HBTpair}[2]{\langle{#1},{#2} \rangle}
+\newcommand{\HBTtermMP}[4] {
+	\RightLabel{Modus Ponens}  
+		\AxiomC {$\HBTterm{#4}{#1}$}   
+		\AxiomC {$\HBTterm{#3}{\LTCimpNP{#1}{#2}}$}
+	\BinaryInfC {$\HBTterm {{#3}{#4}} {#2}$}
+}
+\newcommand{\HBTtermADJ}[4] {
+	\RightLabel{Adjunction}  
+		\AxiomC {$\HBTterm{#3}{#1}$} 
+		\AxiomC {$\HBTterm{#4}{#2}$}     
+	\BinaryInfC {$\HBTterm {\HBTpair{#3}{#4}} {\LTCmeetNP{#1}{#2}}$}
+}
+\newcommand{\HBTwea}[2] 
+{\RightLabel{Weakening}  \AxiomC  {$#1$} \UnaryInfC {$#2$} }
+\newcommand{\HBTcon}[2] 
+{\RightLabel{Contraction}  \AxiomC  {$#1$} \UnaryInfC {$#2$} }
+

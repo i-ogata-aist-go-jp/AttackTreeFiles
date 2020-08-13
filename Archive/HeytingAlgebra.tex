@@ -1,0 +1,511 @@
+\subsection{Heyting Algebras and Frames}
+
+The following proposition says that a Heyting algebra is a distributive lattice. 
+%
+\begin{proposition} [A Heyting algebra is distributive]
+\label{HeytingPreservation}
+A function $ c \LTCmeet \QTargument$ preserves joins.
+Similarly, a function $ c \LTCimp \QTargument$ preserves meets.
+\[ a \wedge  (b \vee c) =  (a \wedge b) \vee (a \wedge c)
+\hskip 2cm 
+ c \LTCimp (a \wedge b) =  (\LTCimpca) \wedge (\LTCimpcb) \]
+\end{proposition}
+\begin{proof}
+Pictorially
+\begin{prooftree}
+		\AxiomC{$c \fCenter c$}
+		\AxiomC{$a \fCenter \LTCjoinab$}
+	\BinaryInfC{$\LTCmeetca \fCenter c \LTCmeet (\LTCjoinab)$}
+		\AxiomC{$c \fCenter c$}
+		\AxiomC{$b \fCenter \LTCjoinab$}
+	\BinaryInfC{$\LTCmeetcb \fCenter c \LTCmeet (\LTCjoinab)$}
+	\BinaryInfC{$\LTCjoincacb \fCenter c \LTCmeet (\LTCjoinab)$}	
+\end{prooftree}
+\begin{prooftree}
+\AxiomC{$ \LTCmeetca \fCenter \LTCjoincacb$}
+\UnaryInfC{$ a \fCenter c \LTCimp (\LTCjoincacb)$}
+\AxiomC{$ \LTCmeetcb \fCenter \LTCjoincacb$}
+\UnaryInfC{$ b \fCenter c \LTCimp (\LTCjoincacb)$}
+\BinaryInfC{$ \LTCjoinab \fCenter c \LTCimp (\LTCjoincacb)$}
+\UnaryInfC{$ c \LTCmeet (\LTCjoinab) \fCenter \LTCjoincacb$}
+\end{prooftree}
+%
+\begin{prooftree}
+		\AxiomC{$c \fCenter c$}  \AxiomC{$ \LTCmeetab \fCenter a$}
+    \BinaryInfC{$c \LTCimp (\LTCmeetab) \fCenter c \LTCimp a$}
+    	\AxiomC{$c \fCenter c$}  \AxiomC{$ \LTCmeetab \fCenter b$}
+    \BinaryInfC{$c \LTCimp (\LTCmeetab) \fCenter c \LTCimp b$}
+   	\BinaryInfC{$c \LTCimp (\LTCmeetab) \fCenter \LTCimpcacb$}
+\end{prooftree}
+\begin{prooftree}
+		\AxiomC{$\LTCimpcacb \fCenter \LTCimpca$}
+	\UnaryInfC{$c \LTCmeet \LTCimpcacb \fCenter a$}
+		\AxiomC{$\LTCimpcacb \fCenter \LTCimpcb$}
+	\UnaryInfC{$c \LTCmeet \LTCimpcacb \fCenter b$}
+	\BinaryInfC{$c \LTCmeet \LTCimpcacb \fCenter \LTCmeetab$}
+	\UnaryInfC{$\LTCimpcacb \fCenter c \LTCimp (\LTCmeetab)$}
+\end{prooftree}
+\end{proof}
+
+%
+%  infinite case
+%
+The Adjoint functor theorem tells us that 
+the right adjoint $a \LTCimp \QTargument$ preserves all meets which exists in $H$
+as well as the left adjoint $ a \LTCmeet \QTargument$ preserves all joins. 
+
+\newcommand{\LTCbigwedge}{\bigvee ( a \LTCmeet B) }
+\newcommand{\LTCbigimp}{\bigwedge ( a \LTCimp B )}
+
+We use the notation to represent the subsets in lattice $L$
+for all $a \in L$ and $B \subseteq L$. 
+
+ \[ \LTCmeetaB = \set{a \LTCmeet b |  b \in B}
+ \hskip 2cm 
+     \LTCimpaB = \set{a \LTCimp b |  b \in B}
+\]
+
+\begin{proposition} [Adjoint Functor Theorem]\label{HeytingAFT}
+Let $H$ be a Heyting algebra. 
+\begin{enumerate}
+\item $a \wedge \QTargument$ preserves all joins which exist in $H$. 
+\item $a \LTCimp \QTargument$ preserves all meets which exist in $H$. 
+\end{enumerate}
+%
+\[ 
+a \LTCmeet \bigvee B  = \LTCbigwedge
+\hskip 3cm
+a \LTCimp  \bigwedge B = \LTCbigimp
+\]
+%
+\end{proposition}
+
+%
+\begin{lemma} [an equational representation of a Heyting algebra]
+Let $H$ be a lattice, $\LTCimp$ a binary operation on $H$. 
+Then $\LTCimp$ makes $H$ into a Heyting algebra
+iff the following equations hold for all $a,b,c \in H$. 
+\begin{eqnarray}
+a\LTCimp a &=& \top \\
+a\wedge(a\LTCimp b) &=& a\wedge b \\
+b\wedge(a\LTCimp b) &=& b \\
+c\LTCimp (a\wedge b) &=& (c\LTCimp a)\wedge (c\LTCimp b) 
+\end{eqnarray}
+\end{lemma}
+%
+\begin{proof}
+$(\Leftarrow)$ Suppose the equations hold. 
+Recall that the last equation says that 
+$c \LTCimp \QTargument$ preserves meets (i.e., be an endomorphism), 
+hence order preserving. 
+\begin{prooftree}
+	\AxiomC{$ c \fCenter \LTCimpab$}
+    \UnaryInfC{$ \LTCmeetac \fCenter a \wedge (\LTCimpab)$}
+    \AxiomC{$a \wedge (\LTCimpab) = \LTCmeetab$}
+    \AxiomC{$\LTCmeetab \fCenter b$}
+    \TrinaryInfC{$\LTCmeetca \fCenter b$}
+ \end{prooftree}
+\begin{prooftree}
+	\AxiomC{$\LTCimpaa = \top$}
+    	\UnaryInfC{$ \top \fCenter \LTCimpaa$}
+    \AxiomC{$c \LTCmeet (\LTCimpac) = c$}
+    	\UnaryInfC{$c \fCenter \LTCimpac$} 
+    \BinaryInfC{$c \fCenter (\LTCimpaa) \LTCmeet (\LTCimpac)$}
+    \AxiomC{$(\LTCimpaa) \LTCmeet (\LTCimpac) = a \LTCimp (\LTCmeetac)$}
+    \AxiomC{$\LTCmeetca \fCenter b$}
+    	\UnaryInfC{$a \LTCimp (\LTCmeetac) \fCenter \LTCimpab$}
+    \TrinaryInfC{$c \fCenter \LTCimpab$}
+\end{prooftree}
+%
+$(\Rightarrow)$ Suppose $H$ is a Heyting algebra.
+\begin{enumerate}
+\item \hskip -5cm
+\begin{prooftree}
+	\AxiomC{$ a \wedge \top \fCenter a$}
+    \UnaryInfC{$ \top \fCenter a \LTCimp a$}
+    \AxiomC{$ a \LTCimp a \fCenter \top$}
+    \BinaryInfC{$ a \LTCimp a = \top$}
+\end{prooftree}
+\item \hskip -5cm
+\begin{prooftree}
+	\LTCaxiom{a}
+    \AxiomC{$ b \wedge a \fCenter b$}
+	\UnaryInfC{$ b \fCenter \LTCimpab$}
+    \BinaryInfC{$a \wedge b \fCenter  a \wedge (\LTCimpab)$}
+    \DisplayProof \hskip 2cm
+    \AxiomC{$ a \wedge (\LTCimpab) \fCenter a$}
+    \LTCaxiom{\LTCimpab}
+    	\UnaryInfC{$a \wedge (\LTCimpab) \fCenter b$}
+    \BinaryInfC{$ a \wedge (\LTCimpab) \fCenter \LTCmeetab $}
+\end{prooftree}
+\item \hskip -5cm
+\begin{prooftree}
+	\AxiomC{$ b \wedge a \fCenter b$}
+    \UnaryInfC{$b \fCenter \LTCimpab$}
+    \UnaryInfC{$b \wedge (\LTCimpab) = b$}
+\end{prooftree}
+\item Proposition~\ref{HeytingPreservation}.
+\end{enumerate}
+\end{proof}
+
+ % frames
+\begin{definition} [frames]
+An {\em Frame} is a double $(L,\bigvee)$.
+The following conditions hold:
+\begin{enumerate}
+\item {\em join-semilattice }: $(L,\bigvee)$ is a join-semilattice,
+\item {\em infinite distributive law}:  
+$a \LTCmeet \QTargument$ preserves all joins in $L$. 
+\[ a \LTCmeet \bigvee C = \bigvee (a \LTCmeet C)\]
+\end{enumerate}
+\end{definition}
+%%
+\begin{proposition} [Adjoint Functor Theorem]
+If $L$ has all joins and $ a \LTCmeet \QTargument$ preserves them, 
+then it has a right adjoint, say $a \LTCimp \QTargument$. 
+\end{proposition}
+%%
+\begin{corollary}
+A frame is a complete Heyting algebra.
+Specifically, a finite distributive lattice is a (finite) Heyting algebra. 
+\end{corollary}
+%%
+%%  Boolean algebras
+%%
+\subsection{Complements, Negations and Boolean Algebras}
+
+\begin{definition}[complement]\label{complement}
+Let $L$ be a lattice. A {\em complement}  of $a$ ($a \in L$) is an element $ x \in A$ satisfying the following conditions.
+\begin{enumerate}
+\item $a \vee x = \top$
+\item $a \wedge x = \bot$ 
+\end{enumerate}
+\end{definition}
+
+\begin{proposition}[uniqueness of complements] \label{complementIsUnique}
+In disributive lattices, complements are unique when they exists.
+\end{proposition}
+\begin{proof}
+Let $L$ be a distributive lattice. 
+Suppose $x \in L$ and $y \in L$ both satisfy the conditions. Then
+%
+\[
+x = x \wedge \top
+= x \wedge ( y \vee a )
+= (x \wedge y)  \vee ( x \wedge a)
+= (x \wedge y) \vee \bot
+=  x \wedge y  \mbox{,}
+\]
+%
+\[ x = x \vee \bot 
+= x \vee ( y \wedge a) = (x \vee y) \wedge (x \vee a) 
+= (x \vee y) \wedge \top
+= x \vee y \mbox{,}
+\]
+showing $x \leq y$ and $y \leq x$, concluding $x = y$. 
+\end{proof}
+
+% Boolean Algebras
+\begin{definition} [Boolean Algebra]
+A {\em Boolean algebra} is a sextuple  
+$(L,\LTCjoin,\bot,\LTCmeet,\top,\LTCneg)$.
+The following conditions hold:
+\begin{enumerate}
+\item {\em distributive lattice}: 
+$(L,\LTCjoin,\bot,\LTCmeet,\top)$ is a  distributive lattice
+ (Definition~\ref{distributiveLattice}),
+\item {\em complement}:
+ $\LTCneg{a}$ is a complement of $a$ (Definition~\ref{complementIsUnique}).
+\end{enumerate}
+\end{definition}
+
+\begin{proposition} [Every Boolean algebra is a Heyting algebra]
+Every Boolean algebra is a Heyting algebra.
+\end{proposition}
+\begin{proof}
+Let  $L$ be a boolean algebra and $a,b \in L$. Set $a \LTCimp b = \LTCneg a \LTCjoin b$. Then residual law holds.
+\begin{prooftree}
+	\AxiomC{$c  \fCenter \LTCneg a \LTCjoin b$}
+    \UnaryInfC{$a \LTCmeet c \fCenter a \LTCmeet (\LTCneg a \LTCjoin b) $}
+    \AxiomC{$ a \LTCmeet (\LTCneg a \LTCjoin b)
+    = (a \LTCmeet \LTCneg a) \LTCjoin (a \LTCmeet b)
+    =  \bot \LTCjoin  (a \LTCmeet b)
+    = a \LTCmeet b 
+    \fCenter b$}
+    \BinaryInfC{ $ c \LTCmeet a \fCenter b$}
+\end{prooftree}
+\begin{prooftree}
+    \AxiomC{$ c \fCenter \LTCneg a \LTCjoin c
+    = (\LTCneg a \LTCjoin c) \LTCmeet \top
+    = (\LTCneg a \LTCjoin c) \LTCmeet (\LTCneg a \LTCjoin a)
+    = \LTCneg a \LTCjoin (c \LTCmeet a) $}
+    \AxiomC{$c  \LTCmeet a \fCenter  b$}
+      \UnaryInfC{$ \LTCneg a \LTCjoin (\LTCmeetca) \fCenter \LTCneg a \LTCjoin b$}
+    \BinaryInfC{$c \fCenter \LTCneg a \LTCjoin b$}
+\end{prooftree}
+\end{proof}
+
+\begin{proposition}\label{doubleNegationElimination}
+Let $L$ be a Boolean algebra. Then every $a \in L$ we have $a = \LTCneg\LTCneg a$. 
+\end{proposition}
+\begin{proof}
+Since $\LTCneg a$ is a complement of $a$, 
+$a \LTCmeet \LTCneg a = \LTCbot$ and $a \LTCjoin \LTCneg a = \LTCtop$ hold. 
+Simlarly  $\LTCneg\LTCneg a$ is a complement of $\LTCneg a$, 
+$\LTCneg\LTCneg a \LTCmeet \LTCneg a = \LTCbot$ and $\LTCneg\LTCneg a \LTCjoin \LTCneg a = \LTCtop$ hold.
+From the uniqueness of complement (Proposition~\ref{complement}) we conclude $ a = \LTCneg\LTCneg a$. 
+\end{proof}
+
+Since $\LTCneg a = \LTCneg a \LTCjoin \LTCbot = a \LTCimp \LTCbot$, we can recover the unary operation $\LTCneg$ from the binary operation $\LTCimp$.
+In a general Heyting algebra, we use this as the definition of $\LTCneg$.
+
+\begin{definition} [negation] \label{HeytingNegation}
+Let $H$ be a Heyting algebra. 
+We set 
+\[ \LTCneg a \defeq a \LTCimp \LTCbot  \] 
+to produce an operation, called {\em negation} 
+$ \LTCneg{\QTargument}  : H  \rightarrow H$.
+\end{definition}
+
+\begin{proposition} \label{HeytingComplement}
+In a Heyting algebra, $\LTCneg a$ is the unique largest element $x$ satisfying 
+$a \LTCmeet x = \LTCbot$.
+\end{proposition}
+\begin{proof} \hskip -7cm
+\begin{prooftree}
+\AxiomC{$\LTCneg{a} \fCenter \LTCneg{a}$}
+\UnaryInfC{$a \LTCmeet \LTCneg{a} \fCenter \LTCbot$}
+\DisplayProof \hskip 3cm 
+\AxiomC{$a \LTCmeet x \fCenter \LTCbot$}
+\UnaryInfC{$x \fCenter \LTCneg{a}$}
+\end{prooftree}
+\end{proof}
+
+
+\newcommand{\LTCdeMorganMeet}{\LTCnegP{\LTCnega \LTCmeet \LTCnegb}}
+\newcommand{\LTCdeMorganJoin}{\LTCnegP{\LTCnega \LTCjoin \LTCnegb}}
+\newcommand{\LTCdeMorganJoinD}{\LTCneg\LTCnegP{\LTCnega \LTCjoin \LTCnegb}}
+
+
+\begin{proposition}
+The law $\LTCneg{\LTCbot} = \LTCtop$ and $\LTCneg(\LTCjoinab) = \LTCnega \LTCmeet \LTCnegb$ holds in any Heyting algebra.
+\end{proposition}
+\begin{proof}
+\hskip -4cm
+\begin{prooftree}
+\AxiomC{$\LTCtop \LTCmeet \LTCbot =   \LTCbot  \fCenter \LTCbot$}
+\UnaryInfC{$\LTCtop \fCenter \LTCneg\LTCbot$}
+\end{prooftree}
+%
+\begin{prooftree}
+\AxiomC{$a \fCenter a \LTCjoin b$} 
+ \UnaryInfC {$\LTCnegP{a \LTCjoin b} \fCenter \LTCnega $} 
+\AxiomC{$b \fCenter a \LTCjoin b$} 
+ \UnaryInfC {$\LTCnegP{a \LTCjoin b} \fCenter \LTCnegb $} 
+  \BinaryInfC  {$\LTCnegP{a \LTCjoin b} \fCenter \LTCnega \LTCmeet \LTCnegb $}
+%
+\DisplayProof \hskip 12pt
+%
+\AxiomC {$\LTCnega \LTCmeet \LTCnegb  \fCenter  \LTCnega$}
+ \UnaryInfC{$a \fCenter \LTCdeMorganMeet$}
+\AxiomC {$\LTCnega \LTCmeet \LTCnegb  \fCenter  \LTCnegb$}
+ \UnaryInfC{$b \fCenter \LTCdeMorganMeet$}
+ \BinaryInfC  {$a \LTCjoin b\fCenter \LTCdeMorganMeet$}
+ \UnaryInfC {$ \LTCnega \LTCmeet \LTCnegb \fCenter \LTCnegP{a \LTCjoin b} $}
+\end{prooftree}
+
+\end{proof}
+
+Howerver we do not have $a \LTCjoin \LTCnega = \LTCtop$ , $\LTCneg\LTCtop  = \LTCbot$ and $\LTCneg(\LTCmeetab) = \LTCnega \LTCjoin \LTCnegb$ in a Heyting algebra in general. 
+
+\begin{proposition}
+The law $\LTCdneg\LTCtop = \LTCtop$ and $\LTCdneg(\LTCmeetab) = \LTCneg\LTCnega \LTCmeet \LTCneg\LTCnegb$ holds in any Heyting algebra.
+\end{proposition}
+
+\begin{proof}
+\begin{prooftree}
+\AxiomC{$ \LTCtop \fCenter \LTCtop$}
+\UnaryInfC{$\LTCtop \fCenter \LTCdneg\LTCtop$}
+\end{prooftree}
+% \hskip -4cm
+\begin{prooftree}
+\AxiomC{$ \LTCmeetab \leq a$}
+\UnaryInfC{$ \LTCdneg(\LTCmeetab)  \fCenter \LTCdnega$}
+\AxiomC{$ \LTCmeetab \leq b$}
+\UnaryInfC{$ \LTCdneg(\LTCmeetab)  \fCenter \LTCdnegb$}
+\BinaryInfC{$ \LTCdneg(\LTCmeetab) \fCenter \LTCdnega \LTCmeet \LTCdnegb$}
+\DisplayProof \hskip  12pt 
+\AxiomC{$ \LTCneg(\LTCmeetab) \fCenter \LTCneg(\LTCmeetab)$}
+\UnaryInfC{$ a \LTCmeet b \LTCmeet \LTCneg(\LTCmeetab) \fCenter \LTCbot$}
+\UnaryInfC{$ a \LTCmeet \LTCneg(\LTCmeetab) \fCenter \LTCnegb$}
+\UnaryInfC{$ a \LTCmeet \LTCdnegb \LTCmeet \LTCneg(\LTCmeetab) \fCenter \LTCbot$}
+\UnaryInfC{$ \LTCdnegb \LTCmeet \LTCneg(\LTCmeetab) \fCenter \LTCnega$}
+\UnaryInfC{$ \LTCdnega \LTCmeet \LTCdnegb \LTCmeet \LTCneg(\LTCmeetab) \fCenter \LTCbot$}
+\UnaryInfC{$ \LTCdnega \LTCmeet \LTCdnegb  \fCenter \LTCdneg(\LTCmeetab)$}
+\end{prooftree}
+\end{proof}
+
+
+\newcommand{\LTCcomplementJ}{a \LTCjoin \LTCneg a}
+
+\begin{proposition}
+A Heyting algebra $H$ is a Boolean algebra if $\LTCneg\LTCneg a = a$ for all $a \in H$. 
+\end{proposition}
+\begin{proof}
+We know that a Heyting algebra is distributive (Proposition~\ref{HeytingPreservation}).
+We also know $a \LTCmeet \LTCnega = \LTCbot$ holds  (Proposition~\ref{HeytingComplement}).
+Hence we need only verify the identity $\LTCcomplementJ = \LTCtop$. 
+\begin{prooftree}
+\AxiomC{$\LTCneg a \fCenter \LTCcomplementJ$}
+	\UnaryInfC{$\LTCneg(\LTCcomplementJ) \fCenter \LTCneg\LTCneg a = a$}
+\AxiomC{$a \fCenter \LTCcomplementJ$}
+	\UnaryInfC{$\LTCneg(\LTCcomplementJ) \fCenter \LTCneg a$}
+\BinaryInfC{$\LTCneg(\LTCcomplementJ) \fCenter a \LTCmeet \LTCneg a = \LTCbot$}
+\UnaryInfC{$\LTCtop \fCenter \LTCneg\LTCneg(\LTCcomplementJ) = \LTCcomplementJ$}
+\end{prooftree}
+\end{proof}
+
+%  A bijection \theta between lattices is an isomorphism 
+%  iff both \theta and \theta^{-1} are order preserving; (= order-embedding)
+% then \theta^{-1} is also an isomorphism.   (Abstract Algebra  P.542  Pierre Antoine Grillet)
+
+%  order isomorphism = bijective + order-embedding 
+%  1) order-embedding = order-preserving + order-reflecting
+%  2)  bijective =  injective (one-to-one) + surjective (onto)
+
+%
+%  lattice isomorphism = bijective + lattice homomorphism 
+%
+
+%
+%  order-isomorphism  iff   lattice isomorphism 
+
+
+
+
+%
+\begin{proposition} [De Morgan Law]
+De Morgan Law holds in Boolean algebras. Note that it exactly says that $\LTCneg$ is a lattice isomorphisim. 
+\[ 
+ \LTCneg\LTCbot = \LTCtop \hskip 48pt
+  \LTCnegP{a \LTCjoin b} =  \LTCneg a \LTCmeet \LTCneg b  
+ \]
+  \[
+    \LTCneg\LTCtop = \LTCbot
+  \hskip  48pt 
+   \LTCnegP{a \LTCmeet b} =  \LTCneg a \LTCjoin \LTCneg b
+   \] 
+\end{proposition}
+\begin{proof}
+The condition $\LTCneg\LTCneg a = a$ (Proiposition~\ref{doubleNegationElimination}) implies 
+that $\LTCneg$ is a bijection. 
+Moreover, both $\LTCneg \QTargument : A \longrightarrow A^{\sf op}$ and 
+$\LTCneg \QTargument : A^{\sf op} \longrightarrow A$ are order-preserving maps,
+because $\LTCneg a = \LTCneg a \LTCjoin \LTCbot = a \LTCimp \LTCbot$ is order reversing.
+%
+This means $\LTCneg$ is an order-isomorphism thus a lattice isomorphism(Proposition~\ref{latticeIsomorphism}).
+%
+Concrete proof can also be shown. 
+\[ \LTCneg\LTCtop = \LTCneg\LTCneg\LTCbot = \LTCbot \]
+%
+\begin{prooftree}
+\AxiomC{$a \LTCmeet b  \fCenter a$} 
+ \UnaryInfC {$ \LTCnega \fCenter \LTCnegP{a \LTCmeet b} $} 
+\AxiomC{$a \LTCmeet b \fCenter b$} 
+  \UnaryInfC {$ \LTCnegb \fCenter \LTCnegP{a \LTCmeet b} $} 
+  \BinaryInfC  {$\LTCneg a \LTCjoin \LTCnegb \fCenter \LTCnegP{a \LTCmeet b} $}
+%
+\DisplayProof \hskip 6pt
+%
+\AxiomC {$\LTCnega  \fCenter  \LTCnega \LTCjoin \LTCnegb $}
+ \UnaryInfC{$\LTCdeMorganJoin \fCenter \LTCdnega $}
+ \UnaryInfC{$\LTCdeMorganJoin \fCenter a $}
+\AxiomC {$\LTCnegb  \fCenter  \LTCnega \LTCjoin \LTCnegb $}
+  \UnaryInfC{$\LTCdeMorganJoin \fCenter \LTCdnegb $}
+  \UnaryInfC{$\LTCdeMorganJoin \fCenter b $}
+ \BinaryInfC  {$\LTCdeMorganJoin \fCenter a \LTCmeet b$}
+ \UnaryInfC {$ \LTCnegP{ a \LTCmeet b }  \fCenter \LTCdeMorganJoinD$}
+ \UnaryInfC {$ \LTCnegP{ a \LTCmeet b }  \fCenter \LTCnega \LTCjoin \LTCnegb$}
+\end{prooftree}
+\end{proof}
+
+
+
+
+
+\subsection{De Morgan Algebra}
+
+\begin{definition} [De Morgan Algebra]
+A {\em De Morgan algebra} is a sextuple  
+$(L,\LTCjoin,\bot,\LTCmeet,\top,\LTCneg)$.
+The following conditions hold:
+\begin{enumerate}
+\item {\em distributive lattice:}
+ $(L,\LTCjoin,\bot,\LTCmeet,\top)$ is a  distributive lattice (Definition~\ref{distributiveLattice}),
+\item {\em De Morgan Laws:}
+$\LTCneg(a \LTCmeet b) = \LTCneg a \LTCjoin \LTCneg b$,
+\item {\em involution:}  $\LTCneg\LTCneg a = a$. 
+\end{enumerate}
+\end{definition}
+
+\begin{proposition}
+Let $(A,\leq)$ be a poset and  $(A^{\sf op},\geq)$ its opposite. 
+Then $ \LTCneg\QTargument : A \longrightarrow A^{\sf op}$ 
+is a bijective lattice homomorphism,
+thus order isomorphisms(Proposition~\ref{latticeIsomorphism}).
+\end{proposition}
+\begin{proof}
+
+\[  \LTCneg ( a \LTCjoin b) 
+= \LTCneg ( \LTCdneg a \LTCjoin \LTCdneg b)
+= \LTCdneg ( \LTCneg a \LTCmeet \LTCneg b)
+= \LTCneg a \LTCmeet \LTCneg b
+\]
+
+\[ \LTCneg\LTCtop
+= \LTCneg\LTCtop \LTCjoin \LTCbot
+= \LTCneg\LTCtop \LTCjoin \LTCdneg\LTCbot
+= \LTCneg (\LTCtop \LTCmeet \LTCneg\LTCbot)
+= \LTCdneg\LTCbot
+= \LTCbot
+\]
+
+\[ \LTCneg\LTCbot
+= \LTCneg\LTCbot \LTCmeet \LTCtop
+= \LTCneg\LTCbot \LTCmeet \LTCdneg\LTCtop
+= \LTCneg (\LTCbot \LTCjoin \LTCneg\LTCtop)
+= \LTCdneg\LTCtop
+= \LTCtop
+\]
+
+\end{proof}
+
+\subsection{algebraic semantics}
+ % What is algebraic semantics
+
+In mathematical logic, algebraic semantics is a formal semantics based on algebras. In classical logic, the values are chosen from a Boolean algebra.
+The meet and join operations in the Boolean algebra are identified 
+with the $wedge$ (conjunction) and $vee$ (disjunction) logical connectives.
+That is, the value of a formula of the form$ A \wedge B$ is the meet 
+of the value of $A$ and the value of $B$ in the Boolean algebra. 
+%%
+In intuitionistic logic, one uses values from a Heyting algebra.
+%%
+In general, an algebraic semantics for logical formulas can be obtained by the following way:
+\begin{enumerate}
+\item Choose an algebraic structure $Q$,
+\item then assign to each variable $\alpha$ 
+a value $\QTinterpret{\alpha}$ in $Q$.
+\item A value (in $Q$)  for a formula is calculated by induction. 
+\end{enumerate}
+%%
+A suitable choice of algebraic structure $Q$ ensures that 
+such a semantics is { \it sound } in the sense:
+%%
+\[   \Gamma \LLvdash A \phantom{XXX} \mbox{is provable} 
+\phantom{XXXX}\mbox{implies}\phantom{XXXX}
+\QTinterpret{\Gamma} \leq \QTinterpret{A}.
+\]
+%
+%  $\PSsetofnn$  $\PSsetofnnint$  $\PSsetofpint$ $\PSsetofnint$
+%

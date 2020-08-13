@@ -1,0 +1,29 @@
+\begin{figure}[t]
+\begin{center}
+%
+\begin{forest} 
+[\ATrootbox{Gain Privileged access to Web Server}  [ $\otimes$
+[ \ATleafbox{Attack Firewall} ]
+[\ATnonleafbox{Identify Web Server's OS} [ $\oplus$ 
+[\ATleafbox{Use Forensic}]
+[\ATleafbox {Get Banner}] ] ] ] ]
+\end{forest}
+%
+\hskip 24pt
+%
+\begin{forest} 
+[\ovalbox{ $\otimes$ } 
+ [\ovalbox{ $\alpha$ } ]
+ [\ovalbox{ $\oplus$ }
+  [\ovalbox{ $\beta$}]
+  [\ovalbox { $\gamma$ } ] ] ]
+\end{forest}
+%
+\end{center} 
+\caption{attack tree and its abstract form}
+\label{absorptive}
+\end{figure}
+
+%for tree={
+    % edge path={\noexpand\path[\forestoption{edge}] (\forestOve{\forestove{@parent}}{name}.parent anchor) -- +(0,-12pt)-| (\forestove{name}.child anchor)\forestoption{edge label};}
+%}

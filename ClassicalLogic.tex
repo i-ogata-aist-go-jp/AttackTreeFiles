@@ -1,0 +1,156 @@
+\newcommand{\CLexcludedMiddle}{A \vee \neg A}
+\newcommand{\CLaxiom}[1]{\AxiomC {$#1 \fCenter #1$}}
+\newcommand{\CLconj}{\wedge}
+\newcommand{\CLdisj}{\vee}
+\newcommand{\CLimp}{\to}
+
+\def\fCenter{\LLvdash}
+
+\newcommand{\CLnegRule}{
+\begin{center}
+\begin{prooftree}
+\RightLabel{L$\neg$}
+\AxiomC {$\Gamma \fCenter A,\Delta$}
+\UnaryInfC  {$\Gamma,\neg{A} \fCenter \Delta$}
+	\DisplayProof \hskip 96pt
+\RightLabel{R$\neg$}
+\AxiomC {$\Gamma,A \fCenter \Delta$}
+\UnaryInfC  {$\Gamma \fCenter \neg{A},\Delta$}
+\end{prooftree}
+\end{center}
+}
+
+\begin{table}
+\begin{center}
+\begin{prooftree}
+\RightLabel{Ax}\AxiomC{} \UnaryInfC {$A \fCenter A$}
+	\DisplayProof \hskip 48pt
+\RightLabel{Cut}
+\AxiomC {$\Gamma_0 \fCenter A,\Delta_0$}
+\AxiomC {$\Gamma_1,A \fCenter \Delta_1$}
+\BinaryInfC  {$\Gamma_0,\Gamma_1 \fCenter \Delta_0,\Delta_1$}
+\end{prooftree}
+\end{center}
+%%
+
+\begin{center}
+\begin{prooftree}
+\AxiomC {$\Gamma,A,A\fCenter\Delta$} \RightLabel{LC} \UnaryInfC {$\Gamma,A\fCenter\Delta$}
+	\DisplayProof \hskip 18pt
+\AxiomC {$\Gamma\fCenter A,A,\Delta$}
+\RightLabel{RC} \UnaryInfC {$\Gamma\fCenter A,\Delta$}
+	\DisplayProof \hskip 18pt\AxiomC {$\Gamma\fCenter\Delta$} \RightLabel{LW} \UnaryInfC {$\Gamma,A\fCenter\Delta$}
+	\DisplayProof \hskip 18pt
+\AxiomC {$\Gamma\fCenter\Delta$} 
+\RightLabel{RW} \UnaryInfC {$\Gamma\fCenter A,\Delta$}
+\end{prooftree}
+\end{center}
+%%
+\begin{center}
+\begin{prooftree}
+\AxiomC {$\Gamma\fCenter\Delta$} \RightLabel{L$\top$} 
+\UnaryInfC {$\Gamma,\top\fCenter\Delta$}
+	\DisplayProof \hskip 18pt
+\RightLabel{R$\top$} \AxiomC{} \UnaryInfC {$\Gamma\fCenter \top,\Delta$}
+	\DisplayProof \hskip 18pt
+\RightLabel{L$\bot$} \AxiomC{}\UnaryInfC {$\Gamma,\bot\fCenter\Delta$} 
+	\DisplayProof \hskip 18pt
+\AxiomC {$\Gamma\fCenter\Delta$} \RightLabel{R$\bot$} 
+\UnaryInfC {$\Gamma\fCenter \bot,\Delta$}
+\end{prooftree}
+\end{center}
+%%
+\CLnegRule
+%%
+\begin{center}
+\begin{prooftree}
+\RightLabel{L$\CLimp$}
+\AxiomC {$\Gamma_0 \fCenter A,\Delta_0$}
+\AxiomC {$\Gamma_1,B \fCenter \Delta_1$}
+\BinaryInfC  {$\Gamma_0,\Gamma_1,A\CLimp B \fCenter \Delta_0,\Delta_1$}
+%
+\DisplayProof \hskip 48pt
+%
+\RightLabel{R$\CLimp$}
+\AxiomC {$\Gamma,A \fCenter B,\Delta$}
+\UnaryInfC  {$\Gamma \fCenter A\CLimp B,\Delta$}
+\end{prooftree}
+\end{center}
+%%
+%%
+\begin{center}
+\begin{prooftree}
+\RightLabel{L$\CLconj$ $(i = 1,2)$}
+\AxiomC {$\Gamma,A_i \fCenter \Delta$}
+\UnaryInfC  {$\Gamma,A_1 \CLconj A_2 \fCenter \Delta$}
+%
+\DisplayProof \hskip 64pt
+%
+\RightLabel{R$\CLconj$}
+\AxiomC {$\Gamma \fCenter A,\Delta$}
+\AxiomC {$\Gamma \fCenter B,\Delta$}
+\BinaryInfC  {$\Gamma \fCenter A\CLconj B,\Delta$}
+\end{prooftree}
+\end{center}
+%%
+\begin{center}
+\begin{prooftree}
+\RightLabel{L$\CLdisj$}
+\AxiomC {$\Gamma,A \fCenter \Delta$}
+\AxiomC {$\Gamma,B \fCenter \Delta$}
+\BinaryInfC  {$\Gamma,A\CLdisj B, \fCenter \Delta$}
+%
+\DisplayProof
+\hskip 64pt
+%
+\RightLabel{R$\CLdisj$ $(i = 1,2)$}
+\AxiomC {$\Gamma \fCenter A_i,\Delta$}
+\UnaryInfC  {$\Gamma \fCenter A_1 \CLdisj A_2,\Delta$}
+%
+\end{prooftree}
+\end{center}
+%%
+\caption{Classical Logic}
+\end{table}
+
+\begin{table}
+\begin{center}
+\begin{prooftree}
+\CLaxiom{A}  
+\RightLabel{Weakening} \UnaryInfC  {$A \fCenter B,A$}
+\UnaryInfC  {$ \fCenter A \to B,A$}
+\CLaxiom{A}
+\BinaryInfC{$ (A \to B) \to A \fCenter A,A$}
+\RightLabel{Contraction}  \UnaryInfC{$ (A \to B) \to A \fCenter A$}
+\UnaryInfC{$  \fCenter ((A \to B) \to A) \to A$}
+%
+\DisplayProof
+\hskip 48pt
+%
+\CLaxiom{A}
+\UnaryInfC  {$A \fCenter \CLexcludedMiddle$}
+\UnaryInfC  { $\fCenter \neg A,\CLexcludedMiddle$}
+\UnaryInfC  {$ \fCenter \CLexcludedMiddle, \CLexcludedMiddle$}
+\UnaryInfC  {$ \fCenter \CLexcludedMiddle$}
+\end{prooftree}
+\end{center}
+\caption{pierce's law  and excluded middle}
+\end{table}
+
+\begin{table}
+\begin{center}\begin{prooftree}
+\AxiomC{[$A$] \scriptsize{1}} \AxiomC{[$\neg A$] \scriptsize{2}}
+\BinaryInfC {$\bot$}
+\UnaryInfC{$B$}
+\RightLabel{$\to$ (1)} \UnaryInfC {$A \to B$}
+\AxiomC {[$(A \to B) \to A$] \scriptsize{3}}
+\BinaryInfC {$A$}
+\AxiomC{[$\neg A$] \scriptsize{2}}
+\BinaryInfC{$\bot$}
+\RightLabel{$\to$ (2)} \UnaryInfC{$\neg\neg A$}
+\UnaryInfC{$A$}
+\RightLabel{$\to$ (3)} \UnaryInfC {$((A \to B) \to A) \to A$}
+\end{prooftree}\end{center}
+\caption{pierce's law in natural deduction style}
+\end{table}
+

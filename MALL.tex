@@ -1,0 +1,25 @@
+
+
+\begin{table}
+\begin{center}
+\begin{prooftree}
+\RightLabel{Ax}\AxiomC{} \UnaryInfC {$A \fCenter A$}
+	\DisplayProof \hskip 48pt
+\RightLabel{Cut}
+\AxiomC {$\Gamma_0 \fCenter A$}
+\AxiomC {$\Gamma_1,A \fCenter D$}
+\BinaryInfC  {$\Gamma_0,\Gamma_1 \fCenter D$}
+\end{prooftree}
+\end{center}
+%%
+\LLaddUnitRule
+\LLwithRule
+\LLoplusRule
+%%
+\LLmultUnitRule
+\LLotimesRule
+\LLimpRule
+\LLnegRule
+
+\caption{Multiplicative Additive Linear Logic}
+\end{table}

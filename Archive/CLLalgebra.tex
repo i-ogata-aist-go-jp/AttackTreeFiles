@@ -1,0 +1,121 @@
+% Names for tuples of specific lengths  1 single  2 double  3 triple/treble  4 quadruple
+% 5 quintuple pentadruple   6 sextuple hexatruple  7 septuple  8 octuple  
+%  9 nonuple  10 decuple  11 undecuple hendecuple  12 duodecuple  13 tredecuple 100 centuple
+
+\subsection{IL- and CL-algebras}
+%%
+\begin{definition}[IL-algebra]
+An  {\it IL-algebra} is an octuple
+$(R,\LLoplus,\with,\LLzero,\LLtop,\LLotimes,\LLimp,\LLone)$.
+The following conditions hold for any $a,b,c \in R$:
+\begin{description}
+\item [lattice]
+$(R,\oplus,\with,\LLzero,\LLtop)$ is a lattice, where
+$(R,\oplus,\LLzero)$ is a join semilattice and 
+$(R,\with,\LLtop)$ is a  meet semilattice,
+\item [commutative monoid] 
+$(R,{\LLotimes},\LLone)$ is a commutative monoid, 
+% \item [distributive law]
+% for any $a,b,c \in R$, 
+% $ a \LLotimes (b \LLoplus c)  =   (a \LLotimes b) \LLoplus (a \LLotimes c)$ holds.
+\item [distributibity]
+$c \LLotimes (a \LLoplus b) = (c \LLotimes a) \LLoplus (c \LLotimes b)$ and
+%
+% stability
+% if $a \leq a'$,$b \leq b'$, then $a \LLotimes b \leq a' \LLotimes b'$
+%and $a' \LLimp b \leq a \LLimp b'$ for any $a,a',b,b' \in R$,
+%
+% \item [adjunction]  $c \LLotimes a \leq b$ iff $ c \leq a \LLimp b$.
+%
+\end{description}
+\end{definition}
+%%
+\begin{proposition}  [stability of $\LLotimes$] In any IL-algebra,
+if $a \leq a'$ and $b \leq b'$, then $a \LLotimes b \leq a' \LLotimes b'$.
+\end{proposition}
+\begin{proof}
+Recall that $c \leq c'$ iff  $c \LLoplus c' = c'$.
+So the assumption is $a \LLoplus a' = a'$ and $b \LLoplus b' = b'$,
+whereas the claim is 
+$ (a \QTotimes b) \LLoplus (a' \QTotimes b') = a' \QTotimes b'$. 
+But this claim can be proved easily by distributivity: 
+ $ (a \QTotimes b) \LLoplus (a' \QTotimes b')
+\leq (a \QTotimes b) \LLoplus (a \QTotimes b') \LLoplus (a' \QTotimes b) \LLoplus (a' \QTotimes b')
+= (a \LLoplus a') \QTotimes (b \LLoplus b')
+= a' \QTotimes b'$. 
+\end{proof}
+%%
+\begin{definition} [implication]
+Consider the join of all elements of $c$ satisfying $c \LLotimes a \leq b$.
+Let $X = \set{ x \in R | x \LLotimes a \leq b}$,
+and we set $ a \LLimp b \defeq \bigvee X$ to produce an operation, namely {\em implication}, 
+$ {\QTargument} { \LLimp } {\QTargument} : Q \times Q \rightarrow Q$.
+\end{definition}
+%%
+\begin{proposition}
+In any IL-algebra,
+$ (a \LLimp b)  \LLotimes a  \leq b$.
+\end{proposition}
+\begin{proof}
+All elements $x_i \in X$ 
+satisfy the equation $ a \QTotimes x_i  \leq b$.
+Thus it directly follows $\bigvee a \QTotimes x_i \leq b$, then
+$a \QTotimes \bigvee X \leq b$ by distributivity. 
+\end{proof}
+%%
+\begin{proposition}  [an instance of the adjoint functor theorem] In any IL-algebra,
+$c \LLotimes a \leq b$ iff $ c \leq a \LLimp b$.
+\end{proposition}
+\begin{proof}
+$(\Rightarrow)$  
+Since $a \LLimp b = \bigvee X$ is an upper bound for $X$, 
+it is obvious that any $x \in X$ is smaller than $\bigvee X$. \\
+%%
+$(\Leftarrow)$  
+We already know that  $ (a \LLimp b) \QTotimes a  \leq b$.
+It directly follows $x \leq a \LLimp b$ implies $x \LLotimes a \leq b$ 
+by stability of $\LLotimes$. 
+\end{proof}
+%%
+\begin{proposition} In any IL-algebra, 
+$a \LLotimes \LLzero = \LLzero$ and $  \LLzero \LLimp \LLzero = \LLtop$. 
+\end{proposition}
+\begin{proof}
+$ \LLzero \leq a \LLimp \LLzero$ iff $\LLzero \LLotimes a \leq \LLzero$
+iff $a \leq \LLzero \LLimp \LLzero$. 
+\end{proof}
+%%
+\begin{definition}[CL-algebra]
+An  {\it CL-algebra} is a nonuple 
+$(R,\LLoplus,\with,\LLzero,\LLtop,\LLotimes,\LLimp,\LLone,\LLbot)$, 
+which is an IL-algebra with an additional constant $\LLbot$. 
+We set $\lneg{a} \defeq a \LLimp \LLbot$. 
+The following condition hold for any $a \in R$:
+\begin{description} 
+\item [double negation eliminaion] $ \dlneg{a} = a$.
+\end{description}
+\end{definition}
+%
+% \begin{proposition}
+%The distributive law; 
+%$a \LLotimes (b \LLoplus c)  =   (a \LLotimes b) \LLoplus (a \LLotimes c)$ %holds.
+%\end{proposition}
+%%
+%\begin{proof}
+%($\geq$) Since $ \LLleftAdjoint :  Q \rightarrow Q$ is an order-preserving map, 
+%we have 
+%$\LLatimesbS \leq \LLsrcFormS$ and
+%$\LLatimescS \leq \LLsrcFormS$, hence
+%$\LLdistFormS \leq \LLsrcFormS$. \\
+%($\leq$)
+%$a \LLotimes b \leq \LLdistFormS$ implies $b \leq a \LLimp (\LLdistFormS)$
+%and similarly $c \leq a \LLimp (\LLdistFormS)$. Thus
+%$b \oplus c \leq a \LLimp (\LLdistFormS)$ and we conclude
+%$\LLsrcFormS \leq \LLdistFormS)$
+%\end{proof}
+%
+%
+%
+%
+%
+%

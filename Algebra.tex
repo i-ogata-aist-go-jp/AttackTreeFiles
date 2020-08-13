@@ -1,0 +1,1249 @@
+\def\fCenter{\leq}
+\subsection{Order Theory}
+
+\begin{definition}[partial order]
+Let $A$ be a set. A {\em partial order} on $A$ is a binary relation $\leq$ which is
+\begin{enumerate}
+\item {\em reflexive}: for all $a \in A$,  $a \leq a$,
+\item {\em transitive}:  if $a \leq b$ and $b \leq c$, then $a \leq c$, and
+\item {\em antisymmetric}: if $a \leq b$ and $b \leq a$, then $a = b$.
+\end{enumerate}
+\end{definition}
+
+The reflexive rule is axiom, while the transitive and the antisymmetrc rules are inference rules. In this article, these axioms and inference rules are represented as; 
+\begin{center}
+\begin{prooftree}
+	\AxiomC{} \UnaryInfC{$a \leq a$}
+\DisplayProof  \hskip 2cm
+	\AxiomC{$a \leq b$} \AxiomC{$b \leq c$}
+    \BinaryInfC{$a \leq c$}
+\DisplayProof  \hskip 2cm
+	\AxiomC{$a \leq b$} \AxiomC{$b \leq a$}
+    \BinaryInfC{$a = b$}
+\end{prooftree}
+\end{center}
+
+\begin{definition} [poset and its opposite]
+Let $A$ be a set and $\leq$ be a partial order. 
+A {\em poset} (short for partially ordered set) is a double  $(A,\leq)$.
+%
+Its {\em opposite}, denoted $(A^{\sf op},\geq)$, 
+is the poset with the same underlying set, with $a \geq b$ in $A^{\sf op}$ 
+iff $a \leq b$ in $A$. 
+\end{definition}
+
+\begin{definition}[upper bound]
+Let $(A,\leq)$ be a poset, $S$ a subset of $A$. 
+We say an element $a$ is an {\em upper bound} for $S$
+if $s \leq a$  for all $s \in S$, and write $S \leq a$.
+Similarly, $a$ is a lower bound for S, and write $a \leq S$. 
+\end{definition}
+
+\begin{definition}[join]
+Let $(A,\leq)$ be a poset, $S$ a subset of $A$. 
+We say an element $a \in A$ is a {\em join} (or {\em least upper bound})  
+for $S$, and write $a = \bigvee S$. The following conditions hold. 
+\begin{enumerate}
+\item {\em upper bound }:  $S \leq \bigvee S$, i.e. $\bigvee S$ is an upper bound for $S$.
+\item {\em least upper bound }: $\bigvee S$ is the least upper bound, 
+i.e. $\bigvee S \leq b$  for every upper bound $b$ for $S$. 
+Otherwise said, if $S \leq b$ then $\bigvee S \leq b$. 
+\end{enumerate}
+\end{definition}
+
+The antisymmetry axiom ensures that the join of $S$, if it exists, is unique. 
+If $S$ is a two-element set $\set{s,t}$, we write $s \vee t$ for $\bigvee\set{s,t}$. 
+If $S$ is the empty set $\emptyset$, we write $\bot$ for $\bigvee\emptyset$. 
+$\bot$ is just the least element of $A$,
+because every $c \in A$ is an upper bound for $\emptyset$, i.e. $\bot \leq c$. 
+
+\begin{definition}[bounded join-semilattice-ordered poset]
+A bounded join-semilattice-ordered poset is a poset $(L,\leq)$ such that;
+\begin{enumerate}
+\item  each two-element subset {a,b} has a join $a \vee b$, and
+\item  the empty set $\emptyset$  has a join, and write $\bot = \bigvee\emptyset$.
+\end{enumerate}
+\end{definition}
+
+The axioms and the inference rule for join-semilattice-ordered poset are pictorially represented as;
+\begin{center}
+\begin{prooftree}
+    \AxiomC{}  \UnaryInfC{$ S \fCenter \bigvee S$}
+  \DisplayProof \hskip .5cm
+		\AxiomC{$S \fCenter c$} \UnaryInfC{$\bigvee S \fCenter c$}
+  \DisplayProof \hskip .5cm
+	\AxiomC{}  \UnaryInfC{$ a \fCenter a \vee b$}
+  \DisplayProof \hskip .5cm
+    \AxiomC{}  \UnaryInfC{$ b \fCenter a \vee b$} 
+  \DisplayProof \hskip .5cm
+		\AxiomC{$a \fCenter c$}
+    	\AxiomC{$b \fCenter c$}
+    \BinaryInfC{$a \vee b \fCenter c$}
+  \DisplayProof \hskip .5cm
+  		\AxiomC{}  \UnaryInfC{$\bot \fCenter c$}
+\end{prooftree}
+\end{center}
+
+Dually, in any poset we can consider the notion of {\em meet} (greater lower bound)
+and meet-semilattice-ordered poset. 
+We write $\bigwedge S, a \wedge b, \top = \bigwedge\emptyset$ 
+for the analogues of $\bigvee S, a \vee b, \bot$. 
+Specifically, $\top$ is the greatest element of $L$. 
+The rules for meet are represented as;
+\begin{center}
+\begin{prooftree}
+  \AxiomC{}  \UnaryInfC{$ \bigwedge S \fCenter S$}
+   \DisplayProof \hskip .5cm
+		\AxiomC{$c \fCenter S$} \UnaryInfC{$c \fCenter \bigwedge S $}
+   \DisplayProof \hskip .5cm	
+	\AxiomC{}  \UnaryInfC{$ a \wedge b \leq a$}
+   \DisplayProof \hskip .5cm
+	\AxiomC{}  \UnaryInfC{$ a \wedge b \leq b$}
+   \DisplayProof \hskip .5cm
+	\AxiomC{$c \leq a$ \hskip .5cm  $c \leq b$}
+    \UnaryInfC{$c \leq a \wedge b$}
+   \DisplayProof \hskip .5cm
+     \AxiomC{}  \UnaryInfC{$ c \leq \top$}
+\end{prooftree}
+\end{center}
+
+\subsection{algebraic structure}
+
+An algebraic structure is a set (called carrier set or underlying set) 
+with one or more finitary operations defined on it 
+that satisfies a list of axioms.
+
+% magma
+\begin{definition} [magma]
+A magma is a basic kind of algebraic structure. 
+It consists of a underlying set $M$ 
+accompanied with a binary operation "$\cdotbin$" which is a map: 
+$ {\QTargument} { \cdotbin} {\QTargument} : M \times M \longrightarrow M$.  That is, it sends any two elements $a,b \in M$ to another element $a \cdotbin b$ .
+%
+In set theoretic notation:
+\[ \forall a,b \in M    ,      a \cdot b \in M \]
+\end{definition}
+
+In this article, we only handle commutative binary operation; 
+i.e., $ a \cdot b = b \cdot a$. 
+
+\begin{definition}[commutative monoid]
+A commutative {\it monoid} is a triple 
+$(M,\cdotbin,\RLone) $  where $\RLone \in M$. 
+The following conditions hold:
+%
+\begin{enumerate} 
+\item {\em neutrality law}:  for all  $a \in M$  we have $\RLone \cdotbin a = a$,
+\item {\em associative law}:  for every $a,b,c \in M$,
+we have $a \cdotbin ( b \cdotbin c) =  (a \cdotbin b) \cdotbin c$,
+\item {\em commutative law}:  for every $a,b \in M$ we have $a \cdotbin b = b \cdotbin a$.
+\end{enumerate}
+\end{definition} 
+%
+A semilattices is a commutative monoid in which every element is idempotent. 
+%
+\begin{definition}[semilattice]
+A {\it semilattice} is a triple $(M,\cdotbin,\RLone) $.
+The following conditions hold:
+%
+\begin{enumerate} 
+\item {\em commutative monoid}:  $(M,\cdotbin,\RLone)$ is a commutative monoid,
+\item {\em idempotent law}:  for every $a \in M$  we have $a \cdotbin a = a$.
+\end{enumerate}
+\end{definition}
+
+\begin{proposition}
+A bounded join- and meet-semilattice-ordered poset is a semilattice.
+\end{proposition}
+\begin{proof}
+Let $(L,\leq)$ be a join-semilattice-ordered poset.
+\begin{enumerate}
+\item The nutrality law holds because $\bot$ is the least element of $L$. 
+\item It is obvious that the associative, commutative and idempotent law hold.
+\end{enumerate}
+Similarly, a bounded meet-semilattice-ordered poset is also a semilattice.
+\end{proof}
+%
+The converse also holds; we can induce a partial order on a semilattice.
+%
+\begin{theorem} [A semilattice and its induced partial order]
+\label{basicTheorem}
+Let $(L,\vee,\bot)$   be a semillatice. 
+Then there exists a unique partial order on $L$ 
+such that $a \vee b$ is the join of $\set{a,b}$, and
+$\bot$ is the least element of $L$. 
+\end{theorem}
+%
+\begin{proof}
+Clearly, if such a partial order exists, we must have $a \leq b$ iff $a \vee b = b$. 
+So we take this as a definition of $\leq$. 
+The definition is pictorially represented as;
+%
+\begin{prooftree}
+	\AxiomC{$a \leq b$}
+    \doubleLine
+    \UnaryInfC{$a \vee b = b$}
+\end{prooftree}
+%
+\begin{enumerate}
+\item {\em $\leq$ is a partial order on $L$} ---
+We deduce reflexiveness 
+from idempotency: i.e. $a \vee a = a$, and 
+antisymmetry  from $a = a \vee b = b$. 
+To show transitivity, suppose $a \leq b$ and $b \leq c$;
+i.e. $a \vee b = b$ and $b \vee c = c$. 
+Then we have $a \leq c$ as follows: 
+\[ a \vee c = a \vee (b \vee c) = (a \vee b) \vee c = b \vee c = c \mbox{.}\]
+%
+Pictorially,
+\begin{prooftree}
+	\AxiomC{$a \vee a = a$} \UnaryInfC{$a \leq a$}
+\DisplayProof \hskip 1.5cm
+	\AxiomC{$a \leq b$} \UnaryInfC{$a \vee b = b$}
+    \AxiomC{$b \leq a$} \UnaryInfC{$b \vee a = a$}
+    \BinaryInfC{$a = b$}
+\DisplayProof \hskip 1.5cm
+	\AxiomC{$a \leq b$} \UnaryInfC{$a \vee b = b$}
+    \AxiomC{$b \leq c$} \UnaryInfC{$b \vee c = c$}
+    \BinaryInfC{$a \vee c = c$}
+    \UnaryInfC{$a \leq c$}
+\end{prooftree}
+%
+\item {\em $a \vee b$ is the join of $\set{a,b}$} ---
+%
+We deduce $a \vee b$ is an upper bound for both $a$ and $b$ as follows: 
+$a \vee (a \vee b) = (a \vee a) \vee b = a \vee b$; i.e.  $a \leq a \vee b$, and 
+similarly  $b \leq a \vee b$ by commutative law. 
+%
+To show it is the least upper bound,
+suppose $a \leq c$ and $b \leq c$: i.e. $a \vee c = c$ and $b \vee c = c$. 
+Then we have $a \vee b \leq c$ as follows. 
+\[  (a \vee b) \vee c = a \vee (b \vee c) = a \vee c = c \mbox{.}\]
+\item {\em $\bot$ is the least element} --- 
+Neutrality law:  $a \vee \bot = a$ says immediately $\bot \leq a$ for all $a \in L$. 
+\end{enumerate}
+\end{proof}
+
+The theorem says 
+that the two definitions of a semilattice are equivalent. 
+One may freely use both style in constructing proofs.
+
+\begin{proposition}\label{joinStability}
+In a join-semilattice-ordered poset, 
+if $a \leq b$ and $c \leq d$ then $\LTCjoinac \leq \LTCjoinbd$.
+\end{proposition}
+\begin{proof}
+We show two different proofs according to the Theorem~\ref{basicTheorem}.
+
+(1)  A equationally presentable proof.
+We have  $\LTCjoinab = b$ and $\LTCjoincd = d$
+then
+$(\LTCjoinac) \LTCjoin (\LTCjoinbd) 
+= (\LTCjoinab) \LTCjoin (\LTCjoincd) 
+= \LTCjoinbd $ showing $\LTCjoinac \leq \LTCjoinbd$. 
+
+(2) A proof in join-semilattice-ordered poset. 
+\begin{prooftree}
+			\AxiomC{$a \fCenter b$}  \AxiomC{$b \fCenter \LTCjoinbd$}
+    	\BinaryInfC{$a \fCenter \LTCjoinbd$}
+        	\AxiomC{$c \fCenter d$}  \AxiomC{$d \fCenter \LTCjoinbd$}
+    	\BinaryInfC{$c \fCenter \LTCjoinbd$}
+        \BinaryInfC{$ a \vee c \fCenter \LTCjoinbd$}
+\end{prooftree}
+\end{proof}
+
+\begin{definition} [lattice]
+A {\em lattice} is a quintuple $(L,\LTCjoin,\LTCbot,\LTCmeet,\LTCtop)$.
+The following conditions hold.
+\begin{enumerate}
+\item {\em join-semilattice}: $(L,\LTCjoin,\LTCbot)$ is a join-semilattice,
+\item {\em meet-semilattice}: $(L,\LTCmeet,\LTCtop)$ is a meet-semilattice,
+\item {\em absorptive law}:  for every $a,b \in L$ we have $a \LTCjoin(a \LTCmeet b) = a$  and  $a \LTCmeet (a \LTCjoin b) = a$. 
+\end{enumerate}
+\end{definition}
+
+The absorptive laws distinguish a lattice from an arbitrary pair of semilattices. It assure that the partial orders on $L$ induced by the two semilattices are opposite to each other.
+%%%
+
+\begin{definition} [lattice homomorphisms]
+\begin{enumerate}
+\item 
+A {\em lattice homomorphism} is a function 
+$f: A \longrightarrow B$ such that:
+\[  f(\bot) = \bot  \hskip 2cm \mbox{and} \hskip 2cm
+f(a \LTCjoin b) = f(a) \LTCjoin f(b) \]
+\[  f(\LTCtop) = \LTCtop  \hskip 2cm \mbox{and} \hskip 2cm
+f(a \LTCmeet b) = f(a) \LTCmeet f(b) \]
+\item
+A {\em lattice isomorphism} is a one-to-one and onto lattice homomorphism. 
+\end{enumerate}
+\end{definition}
+%
+\begin{definition} [order-preserving functions and order isomorphisms]
+Let $(A,\leq_A)$ and $(B,\leq_B)$ are posets. 
+\begin{enumerate}
+\item An {\em order-preserving function} of posets is a function 
+$g: A \longrightarrow B$ such that the order is preserved. 
+\item 
+An {\em order-isomorphism} of posets is a one-to-one and onto function 
+$g: A \longrightarrow B$ such that the order is preserved bi-directionally. 
+\end{enumerate}
+Pictorially, 
+\begin{prooftree}
+	\def\fCenter{\leq_A}
+	\AxiomC{$a \fCenter b$}
+    \def\fCenter{\leq_B}
+    \UnaryInfC{$ g(a) \fCenter g(b) $}
+    \def\fCenter{\leq}
+\DisplayProof \hskip 1.5cm 
+	\def\fCenter{\leq_A}
+	\AxiomC{$a \fCenter b$}
+    \doubleLine
+    \def\fCenter{\leq_B}
+    \UnaryInfC{$ g(a) \fCenter g(b) $}
+    \def\fCenter{\leq}
+\end{prooftree}
+\end{definition}
+%
+\begin{proposition} 
+If $g$ is an order isomorphism then its inverse $g^{-1}$ is also an order isomorphism. 
+\end{proposition}
+\begin{proof} \hskip -5cm
+\begin{prooftree}
+	\def\fCenter{\leq_B}
+	\AxiomC{$g(g^{-1}(a)) = a \fCenter b = g(g^{-1}(b)) $}
+    \doubleLine
+    \def\fCenter{\leq_A}
+    \UnaryInfC{$ g^{-1}(a) \fCenter g^{-1}(b) $}
+    \def\fCenter{\leq}
+\end{prooftree}
+\end{proof}
+%
+\begin{proposition}\label{LTC:OPF}
+Every lattice homomorphisms are order-preserving functions.
+Moreover, every lattice isomorphisms are order-isomorphisms.
+\end{proposition}
+\begin{proof}
+Let $f$ be a lattice homomorphism, $g$ be a lattice isomorphism.
+\begin{prooftree}
+	\AxiomC{$ a \fCenter b $}
+    \UnaryInfC{$ a \vee b = b$}
+    \UnaryInfC{$ f(a \vee b) = f(a) \vee f(b) = f(b) $}
+    \UnaryInfC{$f(a) \leq f(b)$}
+   \DisplayProof \hskip 2cm 
+	\AxiomC{$ a \fCenter b$}
+	\doubleLine
+	\UnaryInfC{$ a \LTCjoin b = b$}
+	\doubleLine
+	\UnaryInfC{$ g(a) \LTCjoin g(b) = g(a \LTCjoin b) = g(b)$}
+	\doubleLine
+	\UnaryInfC{$ g(a) \fCenter g(b)$}
+\end{prooftree}
+\end{proof}
+%
+However the converse of the former is not true; 
+an order-preserving function is not
+a lattice homomorphism in general.
+%
+\begin{figure}[ht]
+\begin{tikzpicture}[description/.style={fill=white,inner sep=2pt}]
+\matrix (m) [matrix of math nodes, row sep=1.5em,
+column sep=0.3em, text height=1.5ex, text depth=0.25ex]
+{ 
+& \top & &&&\longrightarrow& \top_B\\
+a & & b  &&&\longrightarrow& m \\
+& \bot & &&&\longrightarrow& \bot_B \\
+};
+
+\path[-] 
+(m-2-1) edge (m-1-2)
+		edge (m-3-2)
+(m-2-3) edge (m-1-2)
+		edge (m-3-2)
+(m-2-7) edge (m-1-7)
+		edge (m-3-7) ;
+\end{tikzpicture}
+
+\caption{Example: an order-preserving function is not
+a lattice homomorphism}
+\label{LCT:CE1}
+\end{figure}
+%
+\begin{example}
+
+
+Let $(\set{\bot,a,b,\top},\vee,\bot,\wedge,\top)$ and
+$(\set{\bot_B,m,\top_B},\vee_B,\bot_B,\wedge_B,\top_B)$ be lattices(See Figure~\ref{LCT:CE1}).
+An order preserving function $f(\bot) = \bot_B, f(\top) = \top_B, 
+f(a) = f(b) = m$ is not a homomorphism, 
+for $f(a \vee b) = f(\top) = \top_B$ is not equal to 
+$f(a) \vee_B f(b) = m \vee_B m = m$. 
+\end{example}
+%
+%
+%
+The converse of the latter is true. 
+\begin{proposition} \label{LTC:latticeIsomorphism}
+Let $A$ and $B$ are lattices. 
+A one-to-one and onto function $f : A \longrightarrow B$ is an order-isomorphism 
+iff it is a lattice isomorphism.
+\end{proposition}
+
+\begin{proof}
+($\Leftarrow$) The latter of Proposition~\ref{LTC:OPF}.
+
+($\Rightarrow$) 
+\begin{enumerate}
+\item $f(\bot_A) = \bot_B$: 
+Since $f$ is onto, there exists some $a \in A$ 
+such that $f(a) = \bot_B$. Then,
+\begin{prooftree}
+\AxiomC{$ f(a) \fCenter f(\bot_A) $}
+\UnaryInfC{$ a \fCenter \bot_A$}
+\end{prooftree}
+
+\item $f(a \vee b) = f(a) \vee f(b)$: 
+There also exists some $c$ 
+such that $ f(c) = f(a) \LTCjoin f(b)$. Then,
+\begin{prooftree}
+\AxiomC{$a \fCenter a \LTCjoin b$}
+\UnaryInfC{$f(a) \fCenter f(a \LTCjoin b)$}
+\AxiomC{$b \fCenter a \LTCjoin b$}
+\UnaryInfC{$f(b) \fCenter f(a \LTCjoin b)$}
+\BinaryInfC{$f(a) \LTCjoin f(b) \fCenter f(a \LTCjoin b)$}
+%
+\AxiomC{$f(a) \fCenter f(c)$}
+\UnaryInfC{$a  \fCenter c$}
+\AxiomC{$f(b) \fCenter f(c)$}
+\UnaryInfC{$b  \fCenter c$}
+\BinaryInfC{$a \LTCjoin b \fCenter c$}
+\UnaryInfC{$f(a \LTCjoin b) \fCenter f(c)$}
+%
+\BinaryInfC{$f (a \LTCjoin b) = f(a) \LTCjoin f(b)$}
+\end{prooftree}
+\end{enumerate}
+\end{proof}
+
+%
+% distributive lattice
+%
+Since lattices come with two binary operations, 
+it is natural to ask whether one of them distributes over the other, 
+i.e. whether one or the other of the following dual laws holds 
+for every three elements $a, b, c$ of $L$:
+
+\begin{enumerate}
+\item {\em Distributivity of $\LTCjoin$ over $\LTCmeet$}:
+$ c \LTCjoin (a \LTCmeet  b) = (c \LTCjoin a) \LTCmeet   (c \LTCjoin b)$
+\item {\em Distributivity of $\LTCmeet$   over $\LTCjoin$}:
+$c \LTCmeet  (a\LTCjoin b) = (c\LTCmeet  a) \LTCjoin  (c\LTCmeet  b)$
+\end{enumerate}
+
+\begin{definition}[distributive lattice]\label{distributiveLattice}
+A lattice $(L,\LTCjoin,\LTCmeet,\LTCbot,\LTCtop)$ is a distributive lattice 
+if it satisfies the avobe two {\em distributive laws}.
+\end{definition}
+
+The following definition and lemma shows that one is enough 
+to define distributivity; the other (its dual) is automatically holds. 
+
+\begin{lemma}[dual of distributive law holds]
+If the distributive law holds in a lattice,  then so does its dual.
+\end{lemma}
+\begin{proof}
+\begin{eqnarray*}
+   (c \LTCjoin a) \LTCmeet (c \LTCjoin b)
+= (c \LTCmeet c) \LTCjoin (c \LTCmeet b) \LTCjoin  (a \LTCmeet c) \LTCjoin (a \LTCmeet b) 
+&=&  c \LTCjoin (a \LTCmeet b)  \\
+   (c \LTCmeet a) \LTCjoin (c \LTCmeet b)
+=  (c \LTCjoin c) \LTCmeet (c \LTCjoin b) \LTCmeet  (a \LTCjoin c) \LTCmeet (a \LTCjoin b) 
+&=&  c \LTCmeet (a \LTCjoin b)
+\end{eqnarray*}
+\end{proof}
+
+\subsection{Boolean Algebras} 
+
+\begin{definition}[boolean algebra]
+A {\em  Boolean algebra} is a sextuple 
+$(L,\LTCjoin,\LTCbot,\LTCmeet,\LTCtop,\lnegP{\mbox{\textendash}})$.
+The following conditions hold:
+\begin{enumerate}
+\item {\em distributive lattice}: 
+$(L,\LTCjoin,\LTCbot,\LTCmeet,\LTCtop)$ is a distributive lattice,
+\item  {\em complement law}: for each element $a$, 
+there exists at most one  $\lneg{a}$  satisfying  
+$a \LTCjoin \lneg{a} = \LTCtop$ and $a \LTCmeet \lneg{a} = \LTCbot$.  
+\end{enumerate}
+\end{definition}
+
+\section{Heyting  Algebras}
+
+\begin{definition}[heyting algebra]
+A {\em  Heyting algebra} is a sextuple 
+$(L,\LTCjoin,\LTCbot,\LTCmeet,\LTCtop,\RLimp)$.
+The following conditions hold:
+\begin{enumerate}
+\item {\em lattice}: 
+$(L,\LTCjoin,\LTCbot,\LTCmeet,\LTCtop)$ is a lattice,
+\item  {\em residual law}: for each pair of elements $(a,b)$, 
+there exists an element $a \LTCimp b$  such that  
+$c \fCenter a \LTCimp b$ iff $a \LTCmeet c \fCenter b$.  
+The inference rule can also be used as upside down.  Pictorially,
+\hskip -7cm
+\begin{prooftree}
+	\AxiomC{$c \LTCmeet a \fCenter b$}
+    \UnaryInfC{$c \fCenter a \RLimp b$}
+ \DisplayProof \hskip 96pt   
+    \AxiomC{$c \fCenter a \RLimp b$}
+    \UnaryInfC{$c \LTCmeet a \fCenter b$}
+\end{prooftree}
+\end{enumerate}
+\end{definition}
+
+% complete join-semilattice
+%
+\begin{definition} [complete join-semilattices and lattices]
+A poset $(L,\leq)$ is called a  {\em complete join-semilattice} 
+if every subset $A$ of $L$ has a join.  
+Taking $A=L$ shows that every complete join-semilattice has a greatest element
+$\bigvee L = \top$.
+A complete meet-semilattice is a dual of complete join semi-lattice. 
+A poset $(L,\leq)$ is called a  {\em complete lattice}  if every subset $S$ of $L$ has a join and a meet. 
+\end{definition}
+%
+%　complete join-semilattice is a complete lattice
+%
+\begin{proposition} [complete join-semilattice is a complete lattice] \label{LTC:completeLattice}
+For any subset $A$ of $L$, consider the set  $X$ of lower bounds for $A$. 
+Let
+\[ X  =  \set{ x \in L | x \leq A } \]
+and set
+\[ \bigwedge A = \bigvee X \]
+\end{proposition}
+\begin{proof}
+
+\begin{enumerate}
+\item  {$\bigvee X  \leq A$}: 
+$X \leq a \Rightarrow \bigvee X \leq a$(for all $a \in A$),
+hence $\bigvee X \leq A$. 
+%
+\item  {$y \leq A \Rightarrow y \leq \bigvee X$}: 
+Clearly $y \in X \Rightarrow y \leq \bigvee X$. 
+\end{enumerate}
+
+\end{proof}
+
+\subsection{Commutative Residuated Lattices}
+
+A book dedicated to residuated lattices
+\cite{zbMATH05611027}\cite{isbnplus9780444521415}.
+
+\newcommand{\RLleft}{a \RLotimes c \fCenter b}
+\newcommand{\RLright}{c \fCenter a \RLimp b}
+
+\begin{definition}[commutative residuated lattice]
+A commutative {\em  residuated lattice} is a octaple 
+$(L,\vee,\bot,\wedge,\top,\RLimp,\RLotimes,\RLone)$.
+The following conditions hold:
+\begin{enumerate}
+\item {\em lattice}: 
+$(L,\vee,\bot,\wedge,\top)$ is a lattice,
+\item {\em commutative monoid}: 
+$(L,\RLotimes,\RLone)$ is a commutative monoid,
+\item  {\em residual law}: for each pair of elements $(a,b)$, 
+there exists an element $a \RLimp b$  such that residual law holds:
+\hskip -7cm
+\begin{prooftree}
+	\AxiomC{$\RLleft$}
+    \doubleLine
+    \UnaryInfC{$\RLright$}
+\end{prooftree}
+\end{enumerate}
+\end{definition}
+
+%%%
+\begin{proposition} [stability of residual operators]
+\label{RL:stability}
+If $a \leq b$ and $c \leq d$, 
+then 
+$ a \RLotimes c \fCenter b \RLotimes d$
+and
+$ b \RLimp c \fCenter a \RLimp d$.
+\end{proposition}
+
+\begin{proof}
+Pictorially; 
+\begin{prooftree}
+	\AxiomC{$a \fCenter b $}
+    		\AxiomC{$c \fCenter d $} 
+			\AxiomC{$ \RLotimesbd \fCenter \RLotimesbd $}	
+    		\UnaryInfC{$ d \fCenter b \RLimp  (\RLotimesbd)$}
+    	\BinaryInfC {$c \fCenter b \RLimp (\RLotimesbd)$}
+    	\UnaryInfC{$ b \fCenter  c \RLimp (\RLotimesbd)$}
+    \BinaryInfC{$a \fCenter  c \RLimp (\RLotimesbd)$}
+    \UnaryInfC{ $\RLotimesac\fCenter \RLotimesbd$}
+    \DisplayProof \hskip .1cm
+	\AxiomC{$a \fCenter b$}
+        	\AxiomC{$\RLimpbc \fCenter \RLimpbc$}
+    		\UnaryInfC{$b \RLotimes (\RLimpbc) \fCenter c$}
+    		\AxiomC{$c \fCenter d$}
+    	\BinaryInfC{$b \RLotimes (\RLimpbc) \fCenter d$}
+    	\UnaryInfC{$b \fCenter (\RLimpbc) \RLimp d$}
+    \BinaryInfC{$a \fCenter (\RLimpbc) \RLimp d$}
+    \UnaryInfC{$\RLimpbc \fCenter \RLimpad$}
+\end{prooftree}
+\end{proof}
+
+\begin{fact}
+$ \LTCtop \RLotimes \LTCtop = \LTCtop$, 
+since $ \RLone \leq \LTCtop$ and 
+$\LTCtop \RLotimes \RLone = \LTCtop \leq \LTCtop \RLotimes \LTCtop$. 
+\end{fact}
+
+The residual law exactly says that
+the operation $a \RLimp \QTargument$ is the right adjoint to 
+$\QTargument \RLotimes a$.
+
+\[  a  \RLotimes  \QTargument  \dashv   a \RLimp \QTargument  \]
+
+It is known that adjointness can also be defined 
+by using {\em unit} and {\em counit}.
+%
+%  unit and counit  
+%
+\newcommand{\RLunit}{c \fCenter a \RLimp (a \RLotimes c)}
+\newcommand{\RLcounit}{a \RLotimes (a \RLimp b) \fCenter b}
+
+\begin{proposition}
+The following conditions on a residuated lattice $L$ are equivalent:
+\begin{enumerate}
+\item  The residual law holds.
+\item  The unit ($\RLunit$) and counit ($\RLcounit$) axiom holds. \\
+\end{enumerate}
+\end{proposition}
+\begin{proof}
+%
+(1) $\Rightarrow$ (2):
+\begin{prooftree}
+	\AxiomC{$a \RLotimes c \fCenter a \RLotimes c$}
+    \UnaryInfC{$ \RLunit$}
+\DisplayProof  \hskip  2cm
+    \AxiomC{$a \RLimp b \fCenter a \RLimp b$}
+    \UnaryInfC{$ \RLcounit $}
+\end{prooftree}
+%
+(2) $\Rightarrow$ (1):
+\begin{prooftree}
+    \AxiomC{$ c \fCenter a \RLimp (a \RLotimes c)$}
+    \AxiomC{$a \RLotimes c \fCenter b$}
+	\UnaryInfC{$a \RLimp (a \RLotimes c) \fCenter a \RLimp b$}
+    \BinaryInfC{$c \fCenter a \RLimp b$}
+\DisplayProof
+    \AxiomC{$c \fCenter a \RLimp b$}
+	\UnaryInfC{$ a \RLotimes c \fCenter  a \RLotimes (a \RLimp b)$}
+    \AxiomC{$ a \RLotimes (a \RLimp b) \fCenter b$}
+    \BinaryInfC{$ a \RLotimes c \fCenter b$}
+\end{prooftree}
+\end{proof}
+
+\begin{proposition} [A residuated lattice is distributive]
+\label{RLdistibutive}
+A function $ c \RLotimes (\mbox{\textendash})$ preserves joins.
+Similarly, a function $ c \LLimp \QTargument$ preserves meets.
+\[ c \LLotimes  (a \LTCjoin b) =  (c \LLotimes a) \LTCjoin (c \LLotimes b)
+\hskip 2cm 
+ c \LLimp (a \LTCmeet b) =  (c \LLimp a) \LTCmeet (c \LLimp b) \]
+\end{proposition}
+
+\begin{proof}
+\begin{prooftree}
+		\AxiomC{$c \fCenter c$}
+		\AxiomC{$a \fCenter \LTCjoinab$}
+	\BinaryInfC{$\RLotimesca \fCenter c \RLotimes (\LTCjoinab)$}
+		\AxiomC{$c \fCenter c$}
+		\AxiomC{$b \fCenter \LTCjoinab$}
+	\BinaryInfC{$\RLotimescb \fCenter c \RLotimes (\LTCjoinab)$}
+	\BinaryInfC{$\RLojcacb \fCenter c \RLotimes (\LTCjoinab)$}	
+\end{prooftree}
+\begin{prooftree}
+	\AxiomC{$ \RLotimesca \fCenter \RLojcacb$}
+		\UnaryInfC{$ a \fCenter c \RLimp (\RLojcacb)$}
+	\AxiomC{$ \RLotimescb \fCenter \RLojcacb$}
+		\UnaryInfC{$ b \fCenter c \RLimp (\RLojcacb)$}
+	\BinaryInfC{$ \LTCjoinab \fCenter c \RLimp (\RLojcacb)$}
+\UnaryInfC{$ c \RLotimes (\LTCjoinab) \fCenter \RLojcacb$}
+\end{prooftree}
+%%
+\begin{prooftree}
+		\AxiomC{$c \fCenter c$}  \AxiomC{$ \LTCmeetab \fCenter a$}
+    \BinaryInfC{$c \RLimp (\LTCmeetab) \fCenter c \RLimp a$}
+    	\AxiomC{$c \fCenter c$}  \AxiomC{$ \LTCmeetab \fCenter b$}
+    \BinaryInfC{$c \RLimp (\LTCmeetab) \fCenter c \RLimp b$}
+   	\BinaryInfC{$c \RLimp (\LTCmeetab) \fCenter \RLimcacb$}
+\end{prooftree}
+\begin{prooftree}
+		\AxiomC{$\RLimcacb \fCenter \RLimpca$}
+	\UnaryInfC{$c \RLotimes (\RLimcacb) \fCenter a$}
+		\AxiomC{$\RLimcacb \fCenter \RLimpcb$}
+	\UnaryInfC{$c \RLotimes (\RLimcacb) \fCenter b$}
+	\BinaryInfC{$c \RLotimes (\RLimcacb) \fCenter \LTCmeetab$}
+	\UnaryInfC{$\RLimcacb \fCenter c \RLimp (\LTCmeetab)$}
+\end{prooftree}
+\end{proof}
+
+It follows directly that
+the operation $a \RLimp \QTargument$ and $\QTargument \RLotimes a$
+are order preserving maps. 
+
+\newcommand{\RLbigwedge}{\bigvee ( c \RLotimes A) }
+\newcommand{\RLbigimp}{\bigwedge ( c \RLimp A)}
+
+\begin{proposition} [Adjoint Functor Theorem] \label{RL:infiniteDistributivity}
+Let $L$ be a residuated lattice. 
+Let $ c \RLotimes A = \set { c \otimes a | \forall a \in A}$. 
+\begin{enumerate}
+\item $c \RLotimes \QTargument$ preserves all joins which exist in $L$. 
+%
+\[  c \RLotimes \bigvee A  = \RLbigwedge  \]
+%
+\item $c \RLimp \QTargument$ preserves all meets which exist in $L$. 
+\end{enumerate}
+%
+\[   c \RLimp  \bigwedge A = \RLbigimp  \]
+%
+\end{proposition}
+
+\begin{proof}
+\begin{enumerate}
+\item
+Let $A$ be a subset of $L$ (i.e. $A \subseteq L$) such that $\bigvee A$ exists.
+
+\begin{prooftree}
+	\AxiomC{$c \fCenter c$}  \AxiomC{$ A \fCenter \bigvee A$}
+    \BinaryInfC{$ c \RLotimes A \fCenter c \RLotimes \bigvee A$}
+    \UnaryInfC{$ \bigvee (c \RLotimes A) \fCenter c \RLotimes \bigvee A$}
+\DisplayProof \hskip 3cm 
+    \AxiomC{$ c \RLotimes A \fCenter \bigvee(c \RLotimes A) $}
+    \UnaryInfC{$  A \fCenter   c  \RLimp \bigvee(c \RLotimes A)$ }
+    \UnaryInfC {$ \bigvee A \fCenter  c  \RLimp \bigvee(c \RLotimes A) $}
+    \UnaryInfC {$ c \RLotimes \bigvee A \fCenter \bigvee(c \RLotimes A) $}
+\end{prooftree}
+
+\item Let $A \subseteq L$ such that $\bigwedge A$ exists.
+
+\begin{prooftree}
+	\AxiomC{$c \fCenter c$}  \AxiomC{$ \bigwedge A \fCenter A$}
+    \BinaryInfC{$c \RLimp \bigwedge A \fCenter c \RLimp A$}
+    \UnaryInfC{$  c \RLimp \bigwedge A \fCenter \bigwedge (c \RLimp A)$}
+\DisplayProof \hskip 3cm 
+    \AxiomC{$ \bigwedge (c \RLimp A) \fCenter c \RLimp A $}
+    \UnaryInfC{$ c \RLotimes \bigwedge (c \RLimp A) \fCenter A$ }
+    \UnaryInfC {$ c \RLotimes \bigwedge (c \RLimp A) \fCenter  \bigwedge A $}
+    \UnaryInfC {$ \bigwedge (c \RLimp A) \fCenter c \RLimp \bigwedge A $}
+\end{prooftree}
+
+\end{enumerate}
+
+\end{proof}
+
+\begin{fact} [anihilative law] \label{RL:anihilation}
+For every $a \in L$, $a \QTotimes \bot = \bot$
+\end{fact}
+\begin{proof}
+$a \QTotimes \bigvee\emptyset = \bigvee (a \QTotimes \emptyset)
+= \bigvee\emptyset$
+\end{proof}
+%%
+
+\subsection {Examples of commutative residual lattices}
+
+\subsubsection{Commutative Semirings}
+
+\begin{definition}[commutative semiring]
+A commutative (i.e. $a \cdotbin b = b \cdotbin a$)
+{\it semiring} is a quintuple $(R,+,0,\cdotbin,1) $.
+The following conditions hold:
+%
+\begin{enumerate} 
+\item {\em additive commutative monoid}:
+$(R,+,0)$ is a commutative monoid with identity element $0$,
+\item {\em multiplicative commutative monoid}:
+$(R,\cdotbin,1)$ is a commutative monoid with identity element $1$, 
+\item {\em anihilative law}:  $a \cdotbin 0 = 0$,
+\item {\em distributive law}:
+$\cdotbin$ distibutes over $+$;
+\[ c \cdotbin (a + b) = (c+a) \cdotbin (c+b) \]
+\end{enumerate}
+\end{definition}
+
+\begin{remark}
+A commutative residuated lattice 
+is an idempotent (i.e. $a + a = 0$) commutative semiring.
+\end{remark}
+
+\subsubsection{Standard Kleene Algebras}
+
+\begin{definition} [Kleene algebra]
+A {\em Kleene algebra} is an idempotent (and thus partially ordered) semiring 
+endowed with a closure operator ${*}$.
+\end{definition}
+%
+\begin{remark} [standard kleene algebras]
+A commutative residuated lattice is a standard kleene algebra 
+in the following sense.
+We define an additional unary operator ${*}$; 
+for each $a \in L$, 
+let $S = \set{\RLone,a,a^2,\ldots}$ 
+where $a^n = \underbrace{a \RLotimes \ldots \RLotimes a}_{n}$
+and define $a^{*} \defeq \bigvee S$.
+%
+The following conditions hold,
+\begin{center}
+\begin{prooftree}
+	\AxiomC{}
+	\UnaryInfC{$\RLone \vee ( a \RLotimes a^{*} ) = a^{*}$}
+\DisplayProof \hskip 2cm
+	\AxiomC{$a \QTotimes b \leq b$}
+    \UnaryInfC{$a^{*} \RLotimes b \leq b$}
+\end{prooftree}
+\end{center}
+\end{remark}
+
+
+
+
+\subsubsection{Unital Commutative Quantales}
+A quantale is a join-semilattice $Q$
+equipped with a multiplication which is distributive over arbitrary joins. 
+ 
+%%
+In this article, we only consider unital (i.e. having an identity element) commutative quantales. 
+%%
+\begin{definition}[unital commutative quantales]
+A (unital commutative) {\em quantale} is a quadruple 
+$(Q,\bigvee,\QTotimes,\RLone)$.
+The following conditions hold:
+\begin{enumerate}
+\item {\em complete join-semilattice}:
+$(Q,\bigvee)$ is a complete join-semilattice,
+\item {\em commutative monoid}:
+$(Q,{\QTotimes},\RLone)$ is a commutative monoid,
+\item {\em infinite distributive law}: 
+for any $a \in Q$, $a \QTotimes \QTargument$ preserves all joins in $Q$. 
+\[ a \QTotimes \bigvee X = \bigvee (a \QTotimes X) \]
+\end{enumerate}
+\end{definition}
+%%
+\begin{proposition} [$a \QTotimes \QTargument$ is an order preserving map]
+If $c \leq d$, then $ a \QTotimes c \leq a \QTotimes d$.
+\end{proposition}
+\begin{proof}
+Recall that $c \leq d$ iff  $c \vee d = d$.
+The claim is $ (a \QTotimes c) \vee (a \QTotimes d) = a \QTotimes d$. 
+But this claim can be proved easily by distributivity: 
+ $ a \QTotimes d
+= a \QTotimes (c \vee d)
+= (a \QTotimes c) \vee (a \QTotimes d)$.
+\end{proof}
+
+\begin{definition} [Implication]
+For each $a,b \in Q$ set
+\[ X  \defeq \set{x \in Q |  a \RLotimes x \leq b} \]
+and set
+\[ a \RLimp b \defeq \bigvee X \]
+to produce an operation (implication) 
+$ {\QTargument} { \RLimp } {\QTargument} : Q \times Q \RLimp Q$.
+\end{definition}
+
+\begin{proposition} [counit]
+$a \QTotimes (a \QTmultimap b)  \leq b$ holds.
+\end{proposition}
+\begin{proof} \hskip -7cm
+\begin{prooftree}
+\AxiomC{$a \QTotimes X \fCenter b$}
+\UnaryInfC{$\bigvee (a \QTotimes X) \fCenter b$}
+\UnaryInfC{$a \QTotimes \bigvee X \fCenter b$}
+\end{prooftree}
+\end{proof}
+%
+\begin{proposition} [Adjoint Functor Theorem]
+If $Q$ has all joins and $a \QTotimes \QTargument$ preserves them, 
+it has a right adjoint $a \QTmultimap \QTargument$. 
+Otherwise said, for any $a,b,x \in Q$, the residual law holds:
+\begin{prooftree}
+\AxiomC{$a \QTotimes x \fCenter b$}
+\doubleLine
+\UnaryInfC{$x \fCenter a \QTmultimap b$}
+\end{prooftree}
+\end{proposition}
+\begin{proof}
+\begin{enumerate}
+\item
+$a \QTotimes x \leq b$ means $x \in X$, hence $x \leq \bigvee X$.
+\item
+\begin{prooftree}
+\AxiomC{$x \fCenter  a \RLimp b$}
+\UnaryInfC{$ a \QTotimes x \fCenter a \QTotimes (a \RLimp b)$}
+\AxiomC{$a \QTotimes (a \QTotimes b) \fCenter b$}
+\BinaryInfC{$a \QTotimes x \fCenter b$}
+\end{prooftree}
+\end{enumerate}
+$(\Rightarrow)$ 
+Since $a \QTmultimap b = \bigvee X$ is an upper bound for $X$, 
+it is obvious that any $x \in X$ is smaller than $\bigvee X$. 
+$(\Leftarrow)$  
+We already know that  $a \QTotimes (a \QTmultimap b)  \leq b$.
+It directly follows from stability that 
+$x \leq a \QTmultimap b$ implies $a \QTotimes x \leq b$. 
+\end{proof}
+
+Since $(Q,\bigvee)$ is a complete join-semilattice, 
+it is a complete lattice(Proposition~\ref{LTC:completeLattice}).
+The proposition says 
+that every unital commutative quantale is a complete lattice 
+in which residual law holds;
+i.e. a unital commutative quantale is a (complete) commutative residuated lattice.
+
+The converse is true; a complete commutative residuated lattice
+is a (unital, commutative) quantale, 
+since it satisfies infinite distributive law
+(Proposition~\ref{RL:infiniteDistributivity}).
+
+\subsection{Negations in residuated lattice}
+In this subsection, we consider {\em negations} in residuated lattices.
+First, we set a designated element $\RLzero$ called {\em zero}. 
+%%
+
+\begin{definition} [linear negation] \label{linearNegation}
+Let $L$ be a residuated lattice. 
+We specify an arbitrary designated element $\RLzero \in L$ and set 
+\[ \RLneg a \defeq a \QTmultimap \RLzero  \] 
+to produce an operation, called {\em linear negation} 
+$ \RLneg{\QTargument}  : L  \rightarrow L$.
+\end{definition}
+%
+\begin{proposition} \label{RL:orderReversing}
+A {\em linear negation} 
+$ \RLneg{\QTargument}  : L  \rightarrow L$ is an order-reversing function. 
+\end{proposition}
+\begin{proof}
+This is clear from stability(Proposition~\ref{RL:stability}).
+\begin{prooftree}
+\AxiomC{$ a \fCenter b$}
+\AxiomC{$ \RLzero \fCenter \RLzero$}
+\BinaryInfC{$ b \RLimp \RLzero \fCenter a \RLimp \RLzero$}
+\UnaryInfC{$ \RLnegB \fCenter \RLnegA$}
+\end{prooftree}
+\end{proof}
+%%
+\begin{proposition} \label{DeMorganEZ}
+One side of De Morgan law holds. 
+\[ 
+	\RLneg{\RLone} = \RLzero
+\hskip 48pt
+	\RLneg{\LTCbot} = \LTCtop
+\hskip 48pt
+	\RLnegP{a \LTCjoin b} =  \RLnegA \LTCmeet \RLnegB
+\]
+\end{proposition}
+\begin{proof}
+It directly follows from residual law 
+that $\RLneg a$ is the unique largest element $x$ satisfying 
+$a \QTotimes x \leq \RLzero$. 
+\begin{prooftree}
+\AxiomC{$\RLnegA \leq \RLnegA$}
+\UnaryInfC{$a \QTotimes \RLnegA \leq \RLzero$}
+\DisplayProof \hskip 3cm 
+\AxiomC{$a \QTotimes x \leq \RLzero$}
+\UnaryInfC{$x \leq \RLnegA$}
+\end{prooftree}
+Put $a = \RLone$ and $a = \LTCbot$ in the above. Specifically, 
+\begin{prooftree} 
+	\AxiomC{$\RLneg{\RLone} \fCenter \RLneg{\RLone}$}
+	\UnaryInfC{$ \RLone \RLotimes \RLneg{\RLone} \fCenter \RLzero$}
+    \UnaryInfC{$ \RLneg{\RLone} \fCenter \RLzero$}
+\DisplayProof \hskip 24pt
+	\AxiomC{$\RLzero \fCenter \RLzero$}
+    \UnaryInfC{$\RLone \RLotimes \RLzero \fCenter \RLzero$}
+	\UnaryInfC{$\RLzero \fCenter \RLneg\RLone$}
+\DisplayProof \hskip 48pt	
+	\AxiomC{$\LTCbot \fCenter \RLzero$}
+	\UnaryInfC{$\LTCbot \QTotimes \LTCtop \fCenter \RLzero$}
+	\UnaryInfC{$\LTCtop \fCenter \RLneg{\LTCbot}$}
+\end{prooftree}
+
+\begin{prooftree}
+\AxiomC{$a \fCenter a \LTCjoin b$} 
+ \UnaryInfC {$\RLnegP{a \LTCjoin b} \fCenter \RLnegA $} 
+\AxiomC{$b \fCenter a \LTCjoin b$} 
+ \UnaryInfC {$\RLnegP{a \LTCjoin b} \fCenter \RLnegB $} 
+  \BinaryInfC  {$\RLnegP{a \LTCjoin b} \fCenter \RLnegA \LTCmeet \RLnegB $}
+%
+\DisplayProof \hskip 48pt
+%
+\AxiomC {$\RLnegA \LTCmeet \RLnegB  \fCenter  \RLnegA$}
+ \UnaryInfC{$a \fCenter \DeMorganMeet$}
+\AxiomC {$\RLnegA \LTCmeet \RLnegB  \fCenter  \RLnegB$}
+ \UnaryInfC{$b \fCenter \DeMorganMeet$}
+ \BinaryInfC  {$a \LTCjoin b\fCenter \DeMorganMeet$}
+ \UnaryInfC {$ \RLnegA \LTCmeet \RLnegB \fCenter \RLnegP{a \LTCjoin b} $}
+\end{prooftree}
+\end{proof}
+%%
+%%
+\begin{definition}[residual lattice with double negation elimination]
+An {\em residual lattice with double negation elimination} 
+is a nonuple
+$(L,\vee,\bot,\wedge,\top,\RLimp,\RLotimes,\RLone,\RLzero)$.
+The following conditions hold:
+\begin{enumerate}
+\item {\em residuated lattice}:
+$(L,\vee,\bot,\wedge,\top,\RLimp,\RLotimes,\RLone)$ is a residuated lattice,
+\item {\em multiplicative zero}: 
+$\RLzero \in L$ is a distinguished object,
+\item {\em double negation elimination law}:
+ $\dRLneg a = a$  for all $a \in L$(Definition~\ref{linearNegation}).
+\end{enumerate}
+\end{definition}
+%
+\begin{proposition}
+In case double negation elimination law holds (i.e.  $a = \dRLnegA$), 
+$\RLneg{\QTargument}$ is an order isomorphism.
+Then $\RLneg{\QTargument}$ is a lattice homomorphism
+from $(A,\leq)$ to its opposite $(A^{\sf op}, \geq)$(Proposition~\ref{LTC:latticeIsomorphism}).
+\end{proposition}
+\begin{proof}
+We want to prove 
+$\RLneg{\QTargument}$ is an order-reversing 
+bijection of $L$ to itself. 
+\begin{enumerate}
+\item {\em order-reversing}: Proposition~\ref{RL:orderReversing}),
+\item {\em one to one}: $\RLnegA = \RLnegB$ implies $a = \dRLnegA = \dRLnegB = b$,
+\item {\em onto}: $\RLnegP{\RLnegB} = b$ ; 
+i.e. $\RLneg{\QTargument}$  itself is an inverse function. 
+\end{enumerate}
+\end{proof}
+%
+The above proposition says 
+that $\RLneg{\QTargument}$ carries joins into meets and vice versa; 
+that is De Morgan Law holds. However, we can prove the De Morgan Law more directly.
+%
+\begin{proposition} [De Morgan Law]
+The other side of De Morgan Law holds (Proposition~\ref{DeMorganEZ}) 
+in residual lattices with double negation elimination.
+
+\[
+	\RLneg{\RLzero} = \RLone
+\hskip  48pt 
+	\RLneg{\LTCtop} = \LTCbot
+\hskip 48pt
+  \RLnegP{a \LTCmeet b} =  \RLnegA \LTCjoin \RLnegB \]
+\end{proposition}
+
+\begin{proof} 
+\[ \RLneg{\RLzero} = \dRLneg{\RLone} = \RLone 
+\hskip 48pt
+ \RLneg{\LTCtop} = \dRLneg{\LTCbot} = \LTCbot \]
+\[ \RLneg{(a \LTCmeet b)} = \RLneg{(\dRLneg{a} \LTCmeet \dRLneg{b})}
+= \dRLneg {(\RLnegA \LTCjoin \RLnegB)} = \RLnegA \LTCjoin \RLnegB
+\]
+\end{proof}
+%
+% closure operators on residual lattices 
+%
+\begin{definition} [closure operators for residual lattices]
+\label{RL:closureDef}
+If $L$ is a residual lattice, 
+a map $\closure{\QTargument} : L \longrightarrow L$
+is called a {\em closure operator},
+if for every $a,b\in L$ the following properties hold:
+\begin{enumerate}
+\item {\em extensivity} :  $a \leq \closureA$,
+\item {\em idempotence} : $ \dclosureA \leq \closureA$ 
+\hskip 48pt
+(extensibity gives $\closureA \leq \dclosureA$, hence $\dclosureA = \closureA$),
+\item {\em monotonicity} : $a \leq b$ implies $\closureA \leq \closureB$,
+\item {\em monoid}:
+$ \closureA  \RLotimes \closureB \leq \closure{a \RLotimes b}$.
+\end{enumerate}
+\end{definition}
+
+\newcommand{\cLTCmeetAB} {\closureA \LTCmeet \closureB}
+\newcommand{\cRLotimesAB}{\closureA \RLotimes \closureB}
+\newcommand{\cRLimpAB}{\closureA \RLimp \closureB}
+
+\begin{proposition}
+The monoid condition is equal to the following condition. 
+\[ \closure{\cRLotimesAB} = \closure{a \RLotimes b} \] 
+\end{proposition}
+
+\begin{proof} 
+It is clear from  extensivity that $\cRLotimesAB \leq \closure{\cRLotimesAB}$. 
+The other direction is;
+\begin{prooftree}
+\AxiomC{$ \cRLotimesAB \fCenter \closure{a \RLotimes b} $}
+\UnaryInfC{$ \closure{\cRLotimesAB} \fCenter \closure{a \RLotimes b} $}
+\DisplayProof \hskip 24pt
+\AxiomC{$a \fCenter \closureA$}
+\AxiomC{$b \fCenter \closureB$}
+\BinaryInfC{$ a \RLotimes b \fCenter \cRLotimesAB$}
+\UnaryInfC{$ \closure{a \RLotimes b} \fCenter \closure{\cRLotimesAB}$}
+\end{prooftree}
+\end{proof}
+
+\begin{definition} [closed elements]
+The element satisfying $\closureA  = a$ are said to be {\em closed}. 
+We denote by $C$ the set of closed elements: 
+$C = \set{a \in L | \closureA = a}$.
+\end{definition}
+
+\begin{lemma}
+$C$ is closed uner $\LTCmeet$ and $\RLimp$. 
+\end{lemma}
+
+\begin{proof}
+\hskip -7cm
+\begin{prooftree}
+\AxiomC{$ \cLTCmeetAB \fCenter \closureA$}
+\UnaryInfC{$ \closure{\cLTCmeetAB} \fCenter \closureA$}
+\AxiomC{$ \cLTCmeetAB \fCenter \closureB$}
+\UnaryInfC{$ \closure{\cLTCmeetAB} \fCenter \closureB$}
+\BinaryInfC{$ \closure{\cLTCmeetAB} \fCenter \cLTCmeetAB$}
+%
+\DisplayProof \hskip 48pt
+%
+\AxiomC{$\cRLimpAB \fCenter \cRLimpAB$}
+\UnaryInfC{$\closureA \RLotimes (\cRLimpAB) \fCenter \closureB$}
+\UnaryInfC{$\closure{\closureA \RLotimes (\cRLimpAB)} \fCenter \closureB$}
+\UnaryInfC{$\closure{\closureA \RLotimes \closure{\cRLimpAB}} \fCenter \closureB$}
+\UnaryInfC{$\closureA \RLotimes \closure{\cRLimpAB} \fCenter \closureB$}
+\UnaryInfC{$\closure{\cRLimpAB} \fCenter \cRLimpAB$}
+\end{prooftree}
+\end{proof}
+
+\begin{proposition}
+Let $(L,\LTCjoin,\bot,\LTCmeet,\top,\RLimp,\RLcdot,\RLone)$ 
+be a commutative residual lattice
+with a closure operation $\closure{\QTargument}$. 
+Put
+\[  a \RLoplus b = \closure{a \LTCjoin b}   \hskip 3cm 
+ a \RLotimes b = \closure{a \RLcdot b} \]
+Then $(C,\RLoplus,\closure{\bot},\wedge,\top,\RLimp,\RLotimes,\closure{\RLone})$ 
+is also a residuated lattice. 
+\end{proposition}
+
+\begin{proof}
+\begin{enumerate}
+\item {\em  $(C,\RLoplus,\closure{\bot},\LTCmeet,\LTCtop)$ is a lattice}:
+Since $C$ is closed under $\LTCmeet$, $\LTCmeet$ is a meet. 
+We show $\RLoplus$ is a join of $C$ under the same partial order as $L$. 
+\begin{prooftree}
+\AxiomC{$ \closureA \fCenter \closureA \LTCjoin \closureB$}
+\UnaryInfC{$ \closureA \fCenter \closure{\closureA \LTCjoin \closureB}$}
+\UnaryInfC{$ \closureA \fCenter  \closureA \RLoplus \closureB$}
+\DisplayProof \hskip 12pt
+\AxiomC{$ \closureB \fCenter \closureA \LTCjoin \closureB$}
+\UnaryInfC{$ \closureB \fCenter \closure{\closureA \LTCjoin \closureB}$}
+\UnaryInfC{$ \closureB \fCenter  \closureA \RLoplus \closureB$}
+\DisplayProof \hskip 48pt
+\AxiomC{$\closureA \fCenter \closureC$}
+\AxiomC{$\closureB \fCenter \closureC$}
+\BinaryInfC{$\closureA \LTCjoin \closureB \fCenter \closureC$}
+\UnaryInfC{$\closure{\closureA \LTCjoin \closureB} \fCenter \closureC$}
+\UnaryInfC{$\closureA \RLoplus \closureB \fCenter \closureC$}
+\end{prooftree}
+
+\item {\em $(C,\RLotimes,\closure{\RLone})$ is a commutative monoid}: 
+\[ \closureA \RLotimes \closure{\RLone}
+= \closure{\closureA \RLcdot \closure{\RLone}}
+= \closure{a \RLcdot \RLone}
+= \closureA
+\]
+\[ 
+\closureA \RLotimes (\closureB \RLotimes \closureC)
+=  \closure{\closureA \RLcdot \closure{\closureB \RLcdot \closureC}}
+=  \closure{a \RLcdot (b \RLcdot c)}
+=  \closure{(a \RLcdot b) \RLcdot c}
+=  \closure{ \closure{\closureA \RLcdot \closureB} \RLcdot \closureC}
+=  (\closureA \RLotimes \closureB) \RLotimes \closureC
+\]
+%
+\item {\em residual law holds}:  
+
+\begin{prooftree}
+\AxiomC{$ \closureA \RLcdot \closureC \fCenter \closure{\closureA \RLcdot \closureC}$}
+\AxiomC{$ \closureA \RLotimes \closureC \fCenter \closureB$}
+\UnaryInfC{$\closure{\closureA \RLcdot \closureC} \fCenter \closureB$}
+\BinaryInfC{$\closureA \RLcdot \closureC \fCenter \closureB$}
+\UnaryInfC{$ \closureC \fCenter \closureA \RLimp \closureB$}
+\DisplayProof \hskip 24pt
+\AxiomC{$ \closureC \fCenter \closureA \RLimp \closureB$}
+\UnaryInfC{$ \closureA \RLcdot \closureC \fCenter  \closureB$}
+\UnaryInfC{$ \closure{\closureA \RLcdot \closureC} \fCenter  \closureB$}
+\UnaryInfC{$ \closureA \RLotimes \closureC \fCenter  \closureB$}
+\end{prooftree}
+\end{enumerate}
+\end{proof}
+
+\begin{proposition}
+$\dlneg{\QTargument}$ is a closure operator(Definition~\ref{RL:closureDef})
+on a residual lattice. That is, the following conditions hold:
+\begin{enumerate}
+\item {\em extensivity} :  $a \leq \dRLnegA$,
+\item {\em idempotence} : $ \dRLneg{(\dRLnegA)} \leq \dRLnegA$ ,
+\item {\em monotonicity} : $a \leq b$ implies $\dRLnegA \leq \dRLnegB$,
+\item {\em monoid}:
+$ \dRLnegA  \RLotimes \dRLnegB \leq \dRLneg{(a \RLotimes b)}$.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+\hskip -7cm
+\begin{prooftree}
+\AxiomC{$\RLnegA \fCenter \RLnegA$}
+\UnaryInfC{$a \RLotimes \RLnegA \fCenter \RLzero$}
+\UnaryInfC{$\RLnegA \RLotimes a \fCenter \RLzero$}
+\UnaryInfC{$a \fCenter \dRLnegA$}
+\DisplayProof \hskip 48pt
+\AxiomC{$\RLnegA \fCenter \dRLnegP{\RLnegA}$}
+\UnaryInfC{$\dRLnegP{\dRLnegA} \fCenter \dRLnegA$}
+\DisplayProof \hskip 48pt
+\AxiomC{$a \fCenter b$}
+\UnaryInfC{$\RLnegB \fCenter \RLnegA$}
+\UnaryInfC{$\dRLnegA \fCenter \dRLnegB$}
+% \DisplayProof \hskip 48pt
+\end{prooftree}
+
+\begin{prooftree}
+\AxiomC{$ \RLotimesab \fCenter \RLotimesab$}
+\UnaryInfC{$\RLnegP{\RLotimesab} \RLotimes \RLotimesab \fCenter \RLzero$}
+\UnaryInfC{$\RLnegP{\RLotimesab} \RLotimes b \fCenter \RLnegA$}
+\AxiomC{$\RLzero \fCenter \RLzero$}
+\BinaryInfC{$\dRLnegA \RLotimes \RLnegP{\RLotimesab} \RLotimes b \fCenter \RLzero$}
+\UnaryInfC{$\dRLnegA \RLotimes \RLnegP{\RLotimesab} \fCenter \RLnegB$}
+\AxiomC{$\RLzero \fCenter \RLzero$}
+\BinaryInfC{$\dRLnegB \RLotimes \dRLnegA \RLotimes \RLnegP{\RLotimesab} 
+\fCenter \RLzero$}
+\UnaryInfC{$\dRLnegA \RLotimes \dRLnegB \fCenter \dRLnegP{\RLotimesab} $}
+\end{prooftree}
+\end{proof}
+
+\begin{proposition}
+$\RLnegA$ is a closed element, i.e.  $\RLnegA = \dRLnegP{\RLnegA}$.
+\end{proposition}
+
+\begin{prooftree}
+\AxiomC{$ \RLnegA \RLotimes a \fCenter \RLzero$}
+\UnaryInfC{$ a \fCenter \RLnegP{\RLnegA}$}
+\UnaryInfC{$\RLnegP{\RLnegP{\RLnegA}} \fCenter \RLnegA$}
+\end{prooftree}
+
+
+
+
+
+
+
+
+
+

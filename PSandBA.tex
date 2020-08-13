@@ -1,0 +1,178 @@
+
+\subsection{Phase Space}
+\def\fCenter{\subseteq}
+
+\begin{definition}[power set] 
+Given a set $M$,
+the power set of  $M$ is the set of all subsets of $M$
+including the $\emptyset$ (empty set) and $M$ itself.
+The power set of $M$ is denoted by $\PSpowerset{M}$.
+\end{definition}
+%%
+\begin{fact}
+$(\PSpowerset{M},\cup,\emptyset,\cap,M,{\PSargument}^{\complement}) $ 
+is always a complete boolean algebra, 
+where $\cup$(set union), $\emptyset$(empty set),
+$\cap$(set intersection) and ${\PSargument}^{\complement}$(set complement) 
+are the usual set-theoretic operations.
+It is ordered by $\subseteq$(set inclusion).
+\end{fact}
+%
+\begin{definition}
+Let $(M,\PScdot,\PSidentity)$ be a commutative monoid. 
+A binary function
+%
+$ {\PSargument} { \PScdot} {\PSargument} : M \times M \longrightarrow M$ 
+%
+is naturally extended to binary operations on $\PSpowerset{M}$:
+ \begin{eqnarray*}
+ X \otimes Z  &=&  \bigcup \set{ x \PScdot z | x \in X, z \in Z} \\
+ X \multimap Y  &=&  \bigcup \set{ z  | \forall x \in X (x \PScdot z \in Y)} 
+ \end{eqnarray*}
+ for any subset $X$,$Y$,$Z$ of $M$.
+\end{definition}
+
+That is, 
+\begin{enumerate}
+\item 
+$ X \otimes Z$ contains all the possible interactions 
+between one element of $x \in X$ and one element of $z \in Z$. 
+\item 
+$ X \multimap Y$ contains all the possible elements $z \in Z$
+such that $\forall x \in X (x \PScdot z \in Y)$.
+\end{enumerate}
+
+\begin{fact}
+Let $(M,\cdot,\PSidentity) $ be a commutative monoid.
+Then 
+$(\PSpowerset{M},\RLotimes,\set{\PSidentity})$ 
+is also a commutative monoid.
+\end{fact}
+\begin{proof}
+\begin{enumerate} 
+\item {\em neutrality law}:  for every  $X \subseteq M$  
+we have $\set{\PSidentity} \RLotimes X
+= \bigcup \set{  \PSidentity  \PScdot x  | x \in X} 
+= X$,
+\item {\em associative law}:  for every $X,Y,Z \subseteq M$,
+we have 
+$X \RLotimes ( Y \RLotimes Z)  \\
+= \bigcup \set{ x \PScdot (y \PScdot z) | x \in X, y \in Y, z \in Z} 
+= \bigcup \set{ (x \PScdot y) \PScdot z | x \in X, y \in Y, z \in Z}  \\
+= (X \RLotimes Y) \RLotimes Z$,
+\item {\em commutative law}: for every $X,Y \subseteq M$,
+we have 
+$X \RLotimes Y  
+= \bigcup \set{ x \PScdot y  | x \in X, y \in Y} 
+= \bigcup \set{ y \PScdot x  | x \in X, y \in Y} 
+= Y \RLotimes X$.
+\end{enumerate}
+\end{proof}
+%%
+%%
+\begin{proposition}
+Let $(M,\cdot,\PSidentity) $ be a commutative monoid.
+Then 
+$(\PSpowerset{M},\cup,\emptyset,\cap,M,\multimap,\otimes,\set{\PSidentity})$ 
+is a residuated lattice.
+\end{proposition}
+\begin{proof}
+\begin{enumerate}
+\item {\em lattice}: 
+$(\PSpowerset{M},\cup,\emptyset,\cap,M)$ 
+is a lattice. In fact, it is a complete distributive lattice.
+\item {\em commutative monoid}:
+The extension of $\PScdot$ to $\PSpowerset{M}$  induces  a commutative monoid $(\PSpowerset{M},\otimes,\set{\PSidentity}) $. 
+\item {\em residual law}: 
+for each pair of elements $(X,Y)$, 
+there exists an element $X \QTmultimap Y$  
+such that residual law holds: \hskip -7cm
+\begin{prooftree}
+	\AxiomC{$ X \otimes Z \fCenter Y$}
+	\doubleLine
+	\UnaryInfC{$ Z \fCenter X \multimap Y$}
+\end{prooftree}
+\end{enumerate}
+\end{proof}
+
+
+
+\def\fCenter{\leq}
+
+\subsubsection{Heyting Algebras}
+
+Consider a special kind of commutative residual lattices, 
+in which the commutative monoid and the meet operation coincide 
+(i.e. $a \QTotimes b = a \wedge b$, $\RLone = \LTCtop$). 
+Such lattices are called {\em Heyting Algebras}.
+
+\newcommand{\LTCresiduateLeft}{a \LTCmeet c \fCenter b}
+\newcommand{\LTCresiduateRight}{c \fCenter a \LTCimp b}
+
+\begin{definition} [Heyting Algebra] \label{HeytingAlgebra}
+An {\it Heyting Algebra} is a sextuple $(L,\LTCjoin,\bot,\LTCmeet,\top,\LTCimp)$.
+The following conditions hold:
+\begin{enumerate}
+\item {\em lattice}: $(L,\LTCjoin,\LTCbot,\LTCmeet,\LTCtop)$ is a lattice,
+\item {\em residual law}:  for each pair of elements $(a,b)$, 
+there exists an element $\LTCimpab$ such that the residual law holds:
+\begin{prooftree}
+	\AxiomC{$\LTCresiduateLeft$}
+    \doubleLine
+    \UnaryInfC{$\LTCresiduateRight$}
+\end{prooftree}
+\end{enumerate}
+\end{definition}
+
+Next proposition says the conditions on residual lattices. 
+%%
+\begin{definition} [weakening and contraction]
+Let $A$ be a subset of a residual lattice $L$. 
+\begin{enumerate}
+\item $A$ satisfies {\it weakening (or strictly two-sided) } 
+iff $\forall a \in A (a \leq \RLone)$.
+\item $A$ satisfies {\it contraction (or idempotent)} 
+iff $\forall a \in A ( a \otimes a = a)$. 
+\end{enumerate}
+\end{definition}
+%
+\begin{proposition} \label{RL:WeakeningContraction}
+A residual lattice $L$ satisfies both weakening and contraction 
+iff $L$ is a Heyting Algebra. 
+\end{proposition}
+\begin{proof}
+$(\Rightarrow)$  We want to prove $\LTCtop = \bigwedge\emptyset = \RLone$ 
+and  $a \wedge b = a \QTotimes b$. 
+\begin{enumerate}
+\item {$\RLone = \LTCtop$}: 
+The weakening condition says $\RLone$ is the unique greatest element.
+%
+\item 
+\begin{enumerate}
+\item If $L$ satisfies weakening 
+then $a \RLotimes b \leq a \LTCmeet b$.
+\item If $L$ satisfies contraction
+then $a \LTCmeet b \leq a \RLotimes b $.
+\end{enumerate}
+\begin{prooftree}
+ \AxiomC{$a \fCenter a$}
+ \AxiomC{$b \fCenter \RLone$}
+\BinaryInfC{$a \RLotimes b \fCenter a \RLotimes \RLone$}
+\UnaryInfC{$a \RLotimes b \fCenter a$}
+%
+ \AxiomC{$a \fCenter \RLone$}
+ \AxiomC{$b \fCenter b$}
+\BinaryInfC{$a \RLotimes b \fCenter \RLone \RLotimes b$}
+\UnaryInfC{$a \RLotimes b \fCenter b$}
+%
+\BinaryInfC{$a \RLotimes b \fCenter a \LTCmeet b$}
+\DisplayProof \hskip 48pt
+ \AxiomC{$a \LTCmeet b \fCenter a$}
+ \AxiomC{$a \LTCmeet b \fCenter b$}
+\BinaryInfC{$(a \LTCmeet b) \RLotimes (a \LTCmeet b) \fCenter a \RLotimes b$}
+\UnaryInfC{$a \LTCmeet b \fCenter a \RLotimes b$}
+\end{prooftree}
+\end{enumerate}
+$(\Leftarrow)$ 
+The converse is obvious. 
+\end{proof}

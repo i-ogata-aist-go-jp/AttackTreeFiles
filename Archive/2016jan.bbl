@@ -1,0 +1,92 @@
+\begin{thebibliography}{10}
+
+\bibitem{Girard87tcs}
+Jean-Yves Girard.
+\newblock Linear logic.
+\newblock {\em Theoretical Computer Science}, 50:1--102, 1987.
+
+\bibitem{Girard95a}
+Jean-Yves Girard, Yves Lafont, and Laurent Regnier, editors.
+\newblock {\em Linear Logic, its syntax and semantics}, number 222 in Advances
+  in Linear Logic, London Mathematical Society Lecture Notes Series. Cambridge
+  University Press, 1995.
+
+\bibitem{Girard88book}
+Jean-Yves Girard, Yves Lafont, and P.~Taylor.
+\newblock {\em Proofs and Types}.
+\newblock Cambridge Tracts in Theoretical Computer Science 7. Cambridge
+  University Press, 1988.
+
+\bibitem{sep-consequence-algebraic}
+Ramon Jansana.
+\newblock Propositional consequence relations and algebraic logic.
+\newblock In Edward~N. Zalta, editor, {\em The Stanford Encyclopedia of
+  Philosophy}. Spring 2011 edition, 2011.
+
+\bibitem{DBLP:conf/ifip1-7/KordyMRS10}
+Barbara Kordy, Sjouke Mauw, Sasa Radomirovic, and Patrick Schweitzer.
+\newblock Foundations of attack-defense trees.
+\newblock In Pierpaolo Degano, Sandro Etalle, and Joshua~D. Guttman, editors,
+  {\em Formal Aspects in Security and Trust}, volume 6561 of {\em Lecture Notes
+  in Computer Science}, pages 80--95. Springer, 2010.
+
+\bibitem{KoMaRaSc2}
+Barbara Kordy, Sjouke Mauw, Sa\v{s}a Radomirovi\'{c}, and Patrick Schweitzer.
+\newblock {Attack--Defense Trees}.
+\newblock {\em Journal of Logic and Computation}, 24(1):55--87, 2014.
+
+\bibitem{DBLP:journals/corr/abs-1303-7397}
+Barbara Kordy, Ludovic Pietre-Cambacedes, and Patrick Schweitzer.
+\newblock Dag-based attack and defense modeling: Don't miss the forest for the
+  attack trees.
+\newblock {\em CoRR}, abs/1303.7397, 2013.
+
+\bibitem{Lincoln94ll}
+Patrick Lincoln.
+\newblock Deciding provability of linear logic formulas.
+\newblock In J.-Y. Girard, Y.~Lafont, and L.~Regnier, editors, {\em Advances in
+  Linear Logic}, pages 109--122. Cambridge University Press, 1995.
+\newblock Proceedings of the Workshop on Linear Logic, Ithaca, New York, June
+  1993.
+
+\bibitem{Lincoln90simple}
+Patrick Lincoln, John Mitchell, Andre Scedrov, and Natarajan Shankar.
+\newblock Decision problems for propositional linear logic.
+\newblock {\em Annals of Pure and Applied Logic}, 56:239--311, April 1992.
+
+\bibitem{Lincoln94tcs}
+Patrick Lincoln and Andre Scedrov.
+\newblock First order linear logic without modalities is {NEXPTIME}-hard.
+\newblock {\em Theoretical Computer Science}, 135(1):139--154, 1994.
+
+\bibitem{Ono92x}
+Hiroakira Ono.
+\newblock Algebraic aspect of logics without structural rules.
+\newblock {\em Contemporary Mathematics}, 131 (part3):601--621, 1992.
+\newblock Proceedings of the International Coference on Algebra Honoring
+  A.Mal'cev,Novosibirsk,1989.
+
+\bibitem{Ono93y}
+Hiroakira Ono.
+\newblock Semantics for substructural logics.
+\newblock In {\em Substructural Logics}, pages 259--291. Oxford University
+  Press, 1993.
+
+\bibitem{Schneier:1999:AT}
+Bruce Schneier.
+\newblock Attack trees.
+\newblock {\em Dr. Dobb's Journal of Software Tools}, 24(12):21--22, 24, 26,
+  28--29, December 1999.
+
+\bibitem{Troelstra92}
+Anne~S. Troelstra.
+\newblock {\em Lectures on Linear Logic}.
+\newblock CSLI Lecture Notes 29, Center for the Study of Language and
+  Information, Stanford, California, 1992.
+
+\bibitem{yetter1990}
+David~N. Yetter.
+\newblock Quantales and (noncommutative) linear logic.
+\newblock {\em Journal of Symbolic Logic}, 55(1):41--64, 03 1990.
+
+\end{thebibliography}

@@ -1,0 +1,185 @@
+%
+% Rules
+%
+\begin{table}
+\begin{prooftree}
+\RightLabel{Ax}  \AxiomC{}  \UnaryInfC {$A \fCenter A$}
+\end{prooftree}
+\begin{prooftree}
+\AxiomC	{$\Gamma \fCenter A$} 
+\AxiomC{$\Delta\fCenter A \RLimp B$}  
+\RightLabel{M.P.}
+\BinaryInfC{$\Gamma,\Delta \fCenter B$}
+	\DisplayProof  \hskip 32pt
+\AxiomC{$\Gamma \fCenter A$} 
+\AxiomC{$\Gamma \fCenter B$}  
+\RightLabel{Conjunction}
+\BinaryInfC{$\Gamma \fCenter A \with B$}
+\end{prooftree}
+\caption{Inference Rules: Deduction from Assumption}
+\end{table}
+
+\newcommand{\DTwea} { \alwaysNoLine \AxiomC{$\Pi_1$}  
+	\UnaryInfC{$\Gamma \fCenter B$}}
+
+\newcommand{\DTcon} { \alwaysNoLine \AxiomC{$\Pi_1$}  
+	\UnaryInfC{$\Gamma,A,A  \fCenter B$}}
+
+
+\newcommand{\DTmpaONE}{ 	\alwaysNoLine 		
+	\AxiomC{$\Pi_1$} 		\UnaryInfC{$ \Gamma,A \fCenter B$} 	}
+\newcommand{\DTmpaTWO}{  \alwaysNoLine 
+	\AxiomC{$\Pi_2$}{ \UnaryInfC{$ \Delta \fCenter \LTCimpBC$}}}
+
+\newcommand{\DTmpbONE}{ 	\alwaysNoLine 		
+	\AxiomC{$\Pi_1$} 		\UnaryInfC{$ \Gamma \fCenter B$} 	}
+\newcommand{\DTmpbTWO}{  \alwaysNoLine 
+	\AxiomC{$\Pi_2$}{ \UnaryInfC{$ \Delta,A  \fCenter \LTCimpBC$}}}
+
+\newcommand{\DTadjONE} { \alwaysNoLine \AxiomC{$\Pi_1$}  
+	\UnaryInfC{$\Gamma, C \fCenter A$}}
+\newcommand{\DTadjTWO} { \alwaysNoLine \AxiomC{$\Pi_2$}
+	\UnaryInfC{$\Gamma, C \fCenter B$}}
+
+\newcommand{\HBTleadsto}
+	{\hskip 6pt \raisebox{-16pt}{\LARGE $\leadsto$}  \hskip 6pt }
+\newcommand{\HBTleadstoAx}
+	{\hskip 24pt \raisebox{0pt}{\LARGE $\leadsto$}  \hskip 24pt }
+\newcommand{\HBTleadstoWea}
+	{\hskip 24pt \raisebox{-6pt}{\LARGE $\leadsto$}  \hskip 24pt }
+\newcommand{\HBTleadstoCon}
+	{\hskip 24pt \raisebox{-12pt}{\LARGE $\leadsto$}  \hskip 24pt }
+
+%%%
+
+We now advance to a theory of Deduction from assumption. 
+
+\subsubsection{Internal and External deductions}
+
+In sequent calculi, we can distinguish several notions of deduction from hypotheses. 
+
+\begin{enumerate}
+\item $B$ is an internal consequence of $\Gamma$  iff 
+the sequent $ \Gamma \LLvdash B$ is a conditional tautology. 
+%
+\item $B$ is an external consequence of $\Gamma$  iff  
+the sequent $\LLvdash B$ is derivable from hypotheses: 
+$\LLvdash A_1, \ldots, \LLvdash A_n$.  We write 
+\begin{prooftree}
+\AxiomC{$\LLvdash A_1$}
+\AxiomC{$\ldots$}
+\AxiomC{$\LLvdash A_n$}
+\TrinaryInfC{$\LLvdash B$}
+\end{prooftree}
+\end{enumerate}
+%
+Our important motivation stems from the search for the notation of deduction where $B$ is said to follow an assumption $\Gamma$ in an explicit manner.  Suppose $\Gamma$ is a context( i.e., multiset of formulas). 
+%
+In this case, we say $B$ is an internal consequence of $\Gamma$ and write $\Gamma \fCenter B$. 
+%
+Thus, informally, ``a sequent $\Gamma \fCenter B$ is derivable'' means that $B$ is provable assuming all the formulas in $\Gamma$. 
+
+Another notion of deduction from hypotheses is an external consequence;  a sequent $S$ is externally deducible (i.e., derivable)  from a multiset $X$ of sequents if $S$ can be derived with the element of $X$.
+
+
+
+\begin{lemma}[Deduction Theorem]
+The deduction theorem holds, i.e.,
+\[
+ \Gamma, A \fCenter B  \hskip 48pt \mbox{implies} \hskip 48pt
+  \Gamma \fCenter \LTCimpAB
+\]
+\end{lemma}
+%
+\begin{proof}
+By induction on the length of derivations. 
+\flushleft{\textbf{\large base case}}
+\begin{prooftree}
+\RightLabel{Ax}  \AxiomC{}  \UnaryInfC {$A \fCenter A$}
+	\DisplayProof \HBTleadstoAx
+\RightLabel{Axiom I}  \AxiomC{}  \UnaryInfC {$\fCenter \LTCimpNP{A}{A}$}
+\end{prooftree}
+%
+\flushleft{\textbf{\large induction step}}
+% Weakening
+\begin{prooftree}
+	\DTwea
+		\alwaysSingleLine
+			\RightLabel{Weakening}
+			\UnaryInfC{$\Gamma,A \fCenter B$}
+\DisplayProof 	\HBTleadstoWea
+	\DTwea
+		\alwaysSingleLine
+			\RightLabel{K}
+			\UnaryInfC{$\Gamma \fCenter \LTCimpAB$}
+\end{prooftree}
+% Contraction
+\begin{prooftree}
+	\DTcon
+		\alwaysSingleLine
+			\RightLabel{Contraction}
+			\UnaryInfC{$\Gamma,A \fCenter B$}
+\DisplayProof 	\HBTleadstoCon
+	\DTcon
+		\alwaysSingleLine
+			\RightLabel{I.H.}
+			\UnaryInfC{$\Gamma \fCenter \LTCimpNP{A}{(\LTCimpAB)}$}
+			\RightLabel{W}
+			\UnaryInfC{$\Gamma \fCenter \LTCimpAB$}
+\end{prooftree}
+% Modus Ponens A
+\begin{prooftree}
+	\DTmpaONE
+	\DTmpaTWO
+		\alwaysSingleLine
+		\RightLabel{M.P.} 
+		\BinaryInfC{$\Gamma, \Delta, A \fCenter C$}
+\DisplayProof 	\HBTleadsto
+	\DTmpaONE
+		\alwaysSingleLine
+		\RightLabel{I.H.}
+		\UnaryInfC{$ \Gamma \fCenter \LTCimpAB$}
+%
+	\DTmpaTWO
+		\alwaysSingleLine
+			\RightLabel{B} 
+			\BinaryInfC{$\Gamma, \Delta  \fCenter \LTCimpAC$}
+\end{prooftree}
+% Modus Ponens B
+\begin{prooftree}
+	\DTmpbONE
+	\DTmpbTWO
+		\alwaysSingleLine
+		\RightLabel{M.P.} 
+		\BinaryInfC{$\Gamma, \Delta, A \fCenter C$}
+\DisplayProof  \HBTleadsto
+	\DTmpbONE
+%
+	\DTmpbTWO
+		\alwaysSingleLine
+		\RightLabel{I.H.} 	\UnaryInfC{$ \Gamma \fCenter \LTCimpABC$}
+		\RightLabel{C} 		\UnaryInfC{$\Gamma, \Delta  \fCenter \LTCimpBAC$}
+	\RightLabel{M.P.} 
+	\BinaryInfC{$\Gamma, \Delta  \fCenter \LTCimpAC$}
+\end{prooftree}
+% Adjunction
+\begin{prooftree}
+	\DTadjONE    	\DTadjTWO
+		\alwaysSingleLine
+		\RightLabel{Adj.} 
+		\BinaryInfC{$\Gamma,C  \fCenter \LTCmeetAB$}
+\DisplayProof
+\hskip 12pt \mbox{\LARGE $\leadsto$}  \hskip 12pt 
+	\DTadjONE \alwaysSingleLine \RightLabel{I.H.} 
+		\UnaryInfC {$\Gamma \fCenter \LTCimpCA$}
+	\DTadjTWO \alwaysSingleLine \RightLabel{I.H.}
+		\UnaryInfC {$\Gamma \fCenter \LTCimpCB$}
+	\RightLabel{Adj.} 		
+	\BinaryInfC{$\Gamma, \Delta  \fCenter \LTCmeetNP{(\LTCimpCA)}{(\LTCimpCB)}$}
+			\RightLabel{$\LTCmeet$ intro.} 
+			\UnaryInfC{$\Gamma, \Delta  \fCenter \LTCimpNP{C}{(\LTCmeetAB)}$}
+\end{prooftree}
+\end{proof}
+
+\subsubsection{Cut}
+

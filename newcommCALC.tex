@@ -1,0 +1,120 @@
+%% lambda Calculus
+
+\newcommand{\lambdaCalc}{$\lambda$-calculus}
+\newcommand{\lambdaTerm}{$\lambda$-term}
+
+%% CND and ND system
+
+\newcommand{\CNDsystem}{$\mbox{\bf CND}^{2}$}
+\newcommand{\NDsystem}{$\mbox{\bf ND}^{2}$}
+
+%% cps
+
+% \newcommand{\cpsSystem}{$\ineg\iand\ibot\iexists$-logic}
+\newcommand{\cpsSystem}{CPS logic}
+\newcommand{\cpsCalc}{${\lambda^{\sf CPS}}$}
+
+\newcommand{\cpsAstep}{\stackrel{\mbox{\tiny A}}{\rightarrow}}
+\newcommand{\cpsSstep}{\stackrel{\mbox{\tiny S}}{\rightarrow}}
+\newcommand{\cpsLstep}{\stackrel{\mbox{\tiny L}}{\rightarrow}}
+\newcommand{\cpsEstep}{\stackrel{\mbox{\tiny E}}{\rightarrow}}
+
+\newcommand{\cpsBeta}{\stackrel{\beta}{\rightarrow}}
+\newcommand{\cpsEta}{\stackrel{\eta}{\rightarrow}}
+\newcommand{\cpsBetaEta}{\stackrel{\beta\eta}{\rightarrow}}
+\newcommand{\cpsTwoHead}{\stackrel{\beta\eta}{\twoheadrightarrow}}
+\newcommand{\cpsPara}{\stackrel{\beta\eta}{\Rightarrow}}
+\newcommand{\cpsBetaEtaEqual}{\stackrel{\beta\eta}{=}}
+
+%% lm calc
+\newcommand{\lmCalc}{$\lambda\mu^{\sf R}$}
+\newcommand{\lmBeta}{\RRsBeta{\lmCalc}}
+\newcommand{\lmEta}{\RRsEta{\lmCalc}}
+\newcommand{\lmBetaEta}{\RRsBetaEta{\lmCalc}}
+\newcommand{\lmStar}{\RRsTwohead{\lmCalc}}
+\newcommand{\lmEtaDash}{\stackrel{{\eta'}}{\RRs{\lmCalc}}}
+\newcommand{\lmNu}{\stackrel{{\nu}}{\RRs{\lmCalc}}}
+
+
+%% parigot calc
+\newcommand{\parigotCalc}{$\lambda\mu$}
+\newcommand{\parigotBeta}{\RRsBeta{\parigotCalc}}
+\newcommand{\parigotMu}{\RRsMu{\parigotCalc}}
+\newcommand{\parigotMuOp}{\RRsMuOp{\parigotCalc}}
+\newcommand{\parigotRho}{\RRsRho{\parigotCalc}}
+\newcommand{\parigotRhoOp}{\RRsRhoOp{\parigotCalc}}
+\newcommand{\parigotBetaMuRho}{\RRsBetaMuRho{\parigotCalc}}
+\newcommand{\parigotStar}{\RRsTwohead{\parigotCalc}}
+
+\newcommand{\parigotTheta}{\RRsTheta{\parigotCalc}}
+\newcommand{\parigotEta}{\RRsEta{\parigotCalc}}
+\newcommand{\parigotEtaOp}{\RRsEtaOp{\parigotCalc}}
+\newcommand{\parigotNu}{\RRsNu{\parigotCalc}}
+%% lmcr calc
+\newcommand{\lmcrCalc}{$\lambda\mu^{\mbox{\tiny\sf CR}}$}
+\newcommand{\lmcrBeta}{\RRsBeta{\lmcrCalc}}
+\newcommand{\lmcrEta}{\RRsEta{\lmcrCalc}}
+\newcommand{\lmcrBetaEta}{\RRsBetaEta{\lmcrCalc}}
+\newcommand{\lmcrStar}{\RRsTwohead{\lmcrCalc}}
+
+\newcommand{\lmcrAstep}{\RRsStep{A}{\lmcrCalc}}
+\newcommand{\lmcrLstep}{\RRsStep{L}{\lmcrCalc}}
+\newcommand{\lmcrSstep}{\RRsStep{S}{\lmcrCalc}}
+\newcommand{\lmcrEstep}{\RRsStep{E}{\lmcrCalc}}
+\newcommand{\lmcrLSSstep}{\RRsStep{LSS}{\lmcrCalc}}
+\newcommand{\lmcrLSSSstep}{\RRsStep{LSSS}{\lmcrCalc}}
+
+%% ND calc
+\newcommand{\fCalc}{$\lambda\Lambda$}
+\newcommand{\fBeta}{\RRsBeta{\fCalc}}
+\newcommand{\fEta}{\RRsEta{\fCalc}}
+\newcommand{\fBetaEta}{\RRsBetaEta{\fCalc}}
+\newcommand{\fStar}{\RRsTwohead{\fCalc}}
+
+%% nkcr calc
+\newcommand{\nkcrCalc}{$\lambda\nu$}
+
+\newcommand{\nkcrBeta}{\stackrel{\beta}{\RRs{\nkcrCalc}}}
+\newcommand{\nkcrEta}{\stackrel{\eta}{\RRs{\nkcrCalc}}}
+\newcommand{\nkcrBetaEta}{\stackrel{\beta\eta}{\RRs{\nkcrCalc}}}
+\newcommand{\nkcrStar}{\RRsTwohead{\nkcrCalc}}
+\newcommand{\nkcrPRbetaeta}{\stackrel{\beta\eta}{\RRS{\nkcrCalc}}}
+
+%% callcc calc
+\newcommand{\CALLCCsystem}{$\mbox{\bf NK}^{2}$}
+\newcommand{\callccCalc}{$\lambda^{\mbox{\tiny\sf ML}}$}
+
+\newcommand{\callccBeta}{\RRsBeta{\callccCalc}}
+\newcommand{\callccEta}{\RRsEta{\callccCalc}}
+\newcommand{\callccBetaEta}{\RRsBetaEta{\callccCalc}}
+\newcommand{\callccStar}{\RRsTwohead{\callccCalc}}
+
+%% seldin calc
+\newcommand{\SELDINsystem}{$\cneg\cand\cexists$-logic}
+\newcommand{\seldinCalc}{$\lambda^{\cneg\cand\cexists}$}
+
+\newcommand{\seldinBeta}{\RRsBeta{\seldinCalc}}
+\newcommand{\seldinEta}{\RRsEta{\seldinCalc}}
+\newcommand{\seldinBetaEta}{\RRsBetaEta{\seldinCalc}}
+\newcommand{\seldinStar}{\RRsTwohead{\seldinCalc}}
+
+%% ncps calc
+\newcommand{\ncpsCalc}{${\lambda^{\sf N}}$}
+
+\newcommand{\ncpsBeta}{\stackrel{\beta}{\RRs{\sf n}}}
+\newcommand{\ncpsEta}{\stackrel{\eta}{\RRs{\sf n}}}
+\newcommand{\ncpsBetaEta}{\stackrel{\beta\eta}{\RRs{\sf n}}}
+\newcommand{\ncpsStar}{\RRsTwohead{\sf n}}
+
+%% vcps calc
+
+\newcommand{\vcpsCalc}{${\lambda^{\sf V}}$}
+
+\newcommand{\vcpsBeta}{\stackrel{\beta}{\RRs{\sf v}}}
+\newcommand{\vcpsEta}{\stackrel{\eta}{\RRs{\sf v}}}
+\newcommand{\vcpsBetaEta}{\stackrel{\beta\eta}{\RRs{\sf v}}}
+\newcommand{\vcpsStar}{\RRsTwohead{\sf v}}
+
+
+
+

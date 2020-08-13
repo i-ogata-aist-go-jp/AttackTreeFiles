@@ -1,0 +1,28 @@
+\newcommand{\LLdistLeaf}[1]{
+\LLaxiom{A} \LLaxiom{#1}
+\RightLabel{$\otimes$R}
+\BinaryInfC{ $A,#1\fCenter A \otimes #1 $ }
+\RightLabel{$\oplus$R}
+\UnaryInfC{$A,#1\fCenter\LLdistForm$} 
+}
+
+\newcommand{\LLsrcLeaf}[1]{
+\LLaxiom{A}  \LLaxiom{#1} 
+\RightLabel{$\oplus$R}  \UnaryInfC{$#1 \fCenter B \oplus C$} 
+\RightLabel{$\otimes$R}  \BinaryInfC{$A , #1 \fCenter \LLsrcForm$}
+\RightLabel{$\otimes$L}  \UnaryInfC{$A \otimes #1 \fCenter \LLsrcForm$}
+}
+
+\begin{table}[t]  \label{distributiveLaw}
+\begin{prooftree}
+\LLdistLeaf{B}  \LLdistLeaf{C}
+\RightLabel{$\oplus$L} \BinaryInfC{ $A, B\oplus C\fCenter  (\LLdistForm)$}
+\RightLabel{$\otimes$L} \UnaryInfC{ $\LLsrcForm \fCenter \LLdistForm$}
+\end{prooftree}
+%
+\begin{prooftree}
+\LLsrcLeaf{B}  \LLsrcLeaf{C}
+\RightLabel{$\oplus$L} \BinaryInfC{ $\LLdistForm \fCenter \LLsrcForm$}
+\end{prooftree}
+\caption{Distributibity in Linear Logic}
+\end{table}
